@@ -1,0 +1,3490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <link rel="shortcut icon" href="img/favicon.ico"> 
+    <title>Home - Documentation Business Cloud Mobile</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="css/base.min.css" rel="stylesheet">
+    <link href="css/cinder.css" rel="stylesheet">  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">  
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+      
+</head>
+
+<body class="homepage" >
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+
+            <!-- Main title -->
+
+            
+            <a class="navbar-brand" href=".">Documentation Business Cloud Mobile</a> 
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fas fa-search"></i> Rechercher
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+         
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#bienvenue-sur-la-documentation-de-lapi-business-cloud-mobile">Bienvenue sur la documentation de l'API Business Cloud Mobile</a></li>
+            <li class="second-level"><a href="#intallation-de-lapi-en-local">Intallation de l'API en local</a></li>
+                
+            <li class="second-level"><a href="#ensemble-des-module-necessaires">Ensemble des module nécessaires</a></li>
+                
+            <li class="second-level"><a href="#documentation-des-routes">Documentation des routes</a></li>
+                
+                <li class="third-level"><a href="#authentification">Authentification</a></li>
+                <li class="third-level"><a href="#profil-utilisateur">Profil utilisateur</a></li>
+                <li class="third-level"><a href="#utilisateurs">Utilisateurs</a></li>
+                <li class="third-level"><a href="#factures">Factures</a></li>
+                <li class="third-level"><a href="#devis">Devis</a></li>
+                <li class="third-level"><a href="#articles">Articles</a></li>
+                <li class="third-level"><a href="#notes-de-frais">Notes de frais</a></li>
+                <li class="third-level"><a href="#depenses">Dépenses</a></li>
+                <li class="third-level"><a href="#conversations">Conversations</a></li>
+                <li class="third-level"><a href="#paiement">Paiement</a></li>
+                <li class="third-level"><a href="#statistiques">Statistiques</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="bienvenue-sur-la-documentation-de-lapi-business-cloud-mobile">Bienvenue sur la documentation de l'API Business Cloud Mobile</h1>
+<p>Vous trouverez ici, l'ensemble de la documentation relative à l'API.</p>
+<h2 id="intallation-de-lapi-en-local">Intallation de l'API en local</h2>
+<ul>
+<li><code>Récupération du projet</code> - <a href="https://github.com/Sebastien-Lechat/Business-Cloud-Mobile-API">Lien du GitHub</a>.</li>
+<li><code>Exécution de commande</code> - Ensemble des commandes nécessaire à exécuter pour le lancement du projet.</li>
+</ul>
+<pre><code>npm install
+npm start
+</code></pre>
+<ul>
+<li><code>Lancement du serveur</code> - Le serveur est lancé à l'adresse suivante : <a href="http://localhost:3000/">http://localhost:3000/</a></li>
+</ul>
+<h2 id="ensemble-des-module-necessaires">Ensemble des module nécessaires</h2>
+<ul>
+<li><code>Express</code> - <a href="https://www.npmjs.com/package/express">Lien du module</a>.</li>
+<li><code>Body-parser</code> - <a href="https://www.npmjs.com/package/express">Lien du module</a>.</li>
+<li><code>Bcrypt</code> - <a href="https://www.npmjs.com/package/bcrypt">Lien du module</a>.</li>
+<li><code>Mongoose</code> - <a href="https://www.npmjs.com/package/mongoose">Lien du module</a>.</li>
+<li><code>JsonWebToken</code> - <a href="https://www.npmjs.com/package/jsonwebtoken">Lien du module</a>.</li>
+<li><code>Nodemailer</code> - <a href="https://www.npmjs.com/package/nodemailer">Lien du module</a>.</li>
+<li><code>Cors</code> - <a href="https://www.npmjs.com/package/cors">Lien du module</a>.</li>
+<li><code>Socket.io</code> - <a href="https://www.npmjs.com/package/socket.io">Lien du module</a>.</li>
+<li><code>Firebase cloud messaging</code> - <a href="https://firebase.google.com/docs">Lien de la documentation</a>.</li>
+</ul>
+<h2 id="documentation-des-routes">Documentation des routes</h2>
+<h3 id="authentification">Authentification</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="connexion">Connexion</h4>
+<hr />
+<p><strong>Route de connexion pour n'importe quel type d'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/auth/login</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Mot de passe de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot; : &quot;Successfully connected&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue">Requête échoué</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101001&quot;,
+    &quot;message&quot;: &quot;Email/Password is missing&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Mauvais mot de passe.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101002&quot;,
+    &quot;message&quot;: &quot;Invalid password&quot;
+}
+</code></pre>
+<hr />
+<h4 id="inscription">Inscription</h4>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<p><strong>Route de d'inscription d'un utilisateur (client ou entreprise).</strong></p>
+<p><strong>URL</strong> : <code>/auth/register</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>birthdayDate</td>
+<td>date</td>
+<td>Date de naisse de l'utilisateur</td>
+<td>-</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Mot de passe de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Adresse de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>Code postal de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>Ville de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Pays</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numTVA</td>
+<td>string</td>
+<td>Numéro de TVA de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numSIRET</td>
+<td>string</td>
+<td>Numéro de SIRET de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numRCS</td>
+<td>string</td>
+<td>Numéro de RCS de l'entreprise</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_1">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successfully registred&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_1">Requête échoué</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101051&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101052&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101052&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Mot de passe invalide ou à faible sécurité.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101053&quot;,
+    &quot;message&quot;: &quot;Invalid password&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101054&quot;,
+    &quot;message&quot;: &quot;Invalid TVA number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de SIRET invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101055&quot;,
+    &quot;message&quot;: &quot;Invalid SIRET number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de RCS invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101056&quot;,
+    &quot;message&quot;: &quot;Invalid RCS number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="mot-de-passe-oublie">Mot de passe oublié</h4>
+<hr />
+<p><strong>Route de récupération du mot depasse utilisateur. Le mail contient un lien de redirection sur le site pour modifier le mot de passe.</strong></p>
+<p><strong>URL</strong> : <code>/auth/password-lost</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>xxxx</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_2">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Email successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_2">Requête échoué</h5>
+<p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
+<p><strong>Code</strong> : <code>500</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101101&quot;,
+    &quot;message&quot;: &quot;Internal server error, email can not be send&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="verification-de-lemail-envoi">Vérification de l'email (envoi)</h4>
+<hr />
+<p><strong>Route d'envoi d'un email contenant un code de vérification à un utilisateur après son inscription, ou si il change de mail dans son profil.</strong></p>
+<p><strong>URL</strong> : <code>/auth/request-verify-email</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_3">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Email successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_3">Requête échoué</h5>
+<p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
+<p><strong>Code</strong> : <code>500</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;500001&quot;,
+    &quot;message&quot;: &quot;Internal server error, email can not be send&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="verification-de-lemail-verification">Vérification de l'email (vérification)</h4>
+<hr />
+<p><strong>Route de vérification de l'email grâce au code reçu dans le mail de la requête précédente. Le code est valable 10 minutes.</strong></p>
+<p><strong>URL</strong> : <code>/auth/verify-email</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>Code à 6 chiffre reçu dans le mail</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_4">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful verification&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_4">Requête échoué</h5>
+<p><strong>Condition</strong> : Mauvais code.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101201&quot;,
+    &quot;message&quot;: &quot;Wrong code&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_5">Requête échoué</h5>
+<p><strong>Condition</strong> : Code expiré.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101202&quot;,
+    &quot;message&quot;: &quot;This code is no longer valid&quot;
+}
+</code></pre>
+<hr />
+<h3 id="profil-utilisateur">Profil utilisateur</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-du-profil">Récupération du profil</h4>
+<hr />
+<p><strong>Route de récupération des informations de son profil utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/account</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_5">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful profil acquisition&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+        &quot;verify_email&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_6">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modification-des-informations-personnelles">Modification des informations personnelles</h4>
+<hr />
+<p><strong>Route de modification des informations personnelles, des informations de contact et deavatar de l'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/account/information</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avatar</td>
+<td>file</td>
+<td>Avatar de l'utilisateur</td>
+<td>-</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>birthdayDate</td>
+<td>date</td>
+<td>Date de naisse de l'utilisateur</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_6">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Profile successfully updated&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+        &quot;verify_email&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_7">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102051&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102052&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Erreur lors de l'enregistrement de l'avatar.</p>
+<p><strong>Code</strong> : <code>500</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;500002&quot;,
+    &quot;message&quot;: &quot;Internal server error, avatar can not be saved&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modification-du-mot-de-passe">Modification du mot de passe</h4>
+<hr />
+<p><strong>Route de modification du mot de passe de l'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/account/password</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>oldPassword</td>
+<td>string</td>
+<td>Ancien mot de passe de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>newPassword</td>
+<td>string</td>
+<td>Nouveau mot de passe de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_7">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Password successfully updated&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+        &quot;verify_email&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_8">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Ancien mot de passe invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102101&quot;,
+    &quot;message&quot;: &quot;Invalid old password&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Nouveau mot de passe invalide ou à faible sécurité.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102102&quot;,
+    &quot;message&quot;: &quot;Invalid new password&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modification-de-ladresse">Modification de l'adresse</h4>
+<hr />
+<p><strong>Route de modification des information de location de l'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>account/address</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Adresse de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>Code postal de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>Ville de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Pays</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_8">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Address successfully updated&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+        &quot;verify_email&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_9">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Code postal invalid.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102151&quot;,
+    &quot;message&quot;: &quot;Invalid zip code&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modification-des-informations-entreprise">Modification des informations entreprise</h4>
+<hr />
+<p><strong>Route de modification des informations liées à l'entreprise d'un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/account/enterprise</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>numTVA</td>
+<td>string</td>
+<td>Numéro de TVA de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numSIRET</td>
+<td>string</td>
+<td>Numéro de SIRET de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numRCS</td>
+<td>string</td>
+<td>Numéro de RCS de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle les factures seront générées pour le client</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_9">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Enterprise successfully updated&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+        &quot;isActive&quot;: &quot;&quot;,
+        &quot;verify_email&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_10">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102201&quot;,
+    &quot;message&quot;: &quot;Invalid TVA number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de SIRET invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102202&quot;,
+    &quot;message&quot;: &quot;Invalid SIRET number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de RCS invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102203&quot;,
+    &quot;message&quot;: &quot;Invalid RCS number&quot;
+}
+</code></pre>
+<hr />
+<h3 id="utilisateurs">Utilisateurs</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-utilisateurs">Liste des utilisateurs</h4>
+<hr />
+<p><strong>Route d'obtention de la liste des utilisateurs en fonction des permissions. Un client verra son employé référent et le gérant, un employé verra ses clients et les autres employés, et pour finir le gérant verra l'ensemble des utilisateurs de l'application.</strong></p>
+<p><strong>URL</strong> : <code>/users</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_10">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful users acquisition&quot;,
+    &quot;users&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_11">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-dun-utilisateur">Récupération d'un utilisateur</h4>
+<hr />
+<p><strong>Route de récupération des informations d'un utilisateur grâce à son id.</strong></p>
+<p><strong>URL</strong> : <code>/user/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de l'utilisateur cible</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_11">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful user acquisition&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_12">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-un-client">Créer un client</h4>
+<hr />
+<p><strong>Route de création d'un client par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/customer</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idEmployee</td>
+<td>string</td>
+<td>ID de l'employé référent du client</td>
+<td>-</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Adresse de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>Code postal de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>Ville de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Pays</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numTVA</td>
+<td>string</td>
+<td>Numéro de TVA de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numSIRET</td>
+<td>string</td>
+<td>Numéro de SIRET de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numRCS</td>
+<td>string</td>
+<td>Numéro de RCS de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle les factures seront générée pour le client</td>
+<td>-</td>
+</tr>
+<tr>
+<td>note</td>
+<td>string</td>
+<td>Annotation sur le client sur le client</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_12">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Customer successfully created&quot;,
+    &quot;customer&quot;: {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_13">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103151&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103152&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103152&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103154&quot;,
+    &quot;message&quot;: &quot;Invalid TVA number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de SIRET invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103155&quot;,
+    &quot;message&quot;: &quot;Invalid SIRET number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de RCS invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103156&quot;,
+    &quot;message&quot;: &quot;Invalid RCS number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modifier-un-client">Modifier un client</h4>
+<hr />
+<p><strong>Route de modification d'un client par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/customer</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : ``</p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID du client dont on veut modifier les informations</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idEmployee</td>
+<td>string</td>
+<td>ID de l'employé référent du client</td>
+<td>-</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>Adresse de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>Code postal de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>Ville de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>Pays</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numTVA</td>
+<td>string</td>
+<td>Numéro de TVA de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numSIRET</td>
+<td>string</td>
+<td>Numéro de SIRET de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>numRCS</td>
+<td>string</td>
+<td>Numéro de RCS de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle les factures seront générées pour le client</td>
+<td>-</td>
+</tr>
+<tr>
+<td>note</td>
+<td>string</td>
+<td>Annotation sur le client sur le client</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_13">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Customer successfully updated&quot;,
+    &quot;user&quot;: {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;currency&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;activity&quot; : &quot;&quot;,
+        &quot;numTVA&quot; : &quot;&quot;,
+        &quot;numSIRET&quot; : &quot;&quot;,
+        &quot;numRCS&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;idEmployee&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_14">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103201&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103202&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103203&quot;,
+    &quot;message&quot;: &quot;Invalid TVA number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de SIRET invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103204&quot;,
+    &quot;message&quot;: &quot;Invalid SIRET number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de RCS invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103205&quot;,
+    &quot;message&quot;: &quot;Invalid RCS number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-un-client">Supprimer un client</h4>
+<hr />
+<p><strong>Route de suppression d'un client par un employé ou un gérant. La requête ne supprimera pas réellement l'utilisateur, elle le désactivera seulement.</strong></p>
+<p><strong>URL</strong> : <code>/customer/:id/:email</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID du client à supprimer</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>:email</td>
+<td>string</td>
+<td>Email du client à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_14">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Customer successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_15">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-un-employe">Créer un employé</h4>
+<hr />
+<p><strong>Route de création d'un employé par un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/employee</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idManager</td>
+<td>string</td>
+<td>ID du gérant</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Mot de passe de l'utilisateur ou de l'entreprise</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>Rôle de l'employé au sein de l'entreprise</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_15">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Employee successfully created&quot;,
+    &quot;customer&quot;: {
+        &quot;idManager&quot;: &quot;&quot;,
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;role&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_16">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103301&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103302&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103303&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Mot de passe invalide ou à faible sécurité.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103304&quot;,
+    &quot;message&quot;: &quot;Invalid password&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modifier-un-employe">Modifier un employé</h4>
+<hr />
+<p><strong>Route de xxxxxxxx.</strong></p>
+<p><strong>URL</strong> : <code>/employee</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de l'employé à modifier</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom et prénom de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>Téléphone de l'utilisateur ou de l'entreprise</td>
+<td>-</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>Rôle de l'employé au sein de l'entreprise</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_16">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Employee successfully updated&quot;,
+    &quot;customer&quot;: {
+        &quot;idManager&quot;: &quot;&quot;,
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;role&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_17">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103351&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103352&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de téléphone invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103353&quot;,
+    &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-un-employe">Supprimer un employé</h4>
+<hr />
+<p><strong>Route de suppression d'un employé par un gérant. La requête ne supprimera pas réellement l'employé, elle le désactivera seulement.</strong></p>
+<p><strong>URL</strong> : <code>/employee/:id/:email</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de l'employé à supprimer</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>:email</td>
+<td>string</td>
+<td>Email de l'employé à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_17">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Employee successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_18">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<h3 id="factures">Factures</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-factures">Liste des factures</h4>
+<hr />
+<p><strong>Route de récupération de la liste de ses factures pour un client, des factures de tout ses clients pour un employé et de tous les utilisateurs pour un gérant</strong></p>
+<p><strong>URL</strong> : <code>/bills</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_18">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful bills acquisition&quot;,
+    &quot;bills&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;billNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;amountPaid&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;paidAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_19">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-dune-facture">Récupération d'une facture</h4>
+<hr />
+<p><strong>Route de récupération d'une facture. Un client ne peut récupérer que ses factures, un employé les factures de ses clients, et un gérant les factures de tous les utilisateurs.</strong></p>
+<p><strong>URL</strong> : <code>/bill/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la facture à récupérer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_19">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful bill acquisition&quot;,
+    &quot;bill&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;billNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;amountPaid&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;paidAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_20">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-une-facture">Créer une facture</h4>
+<hr />
+<p><strong>Route de création d'une facture pour les employés et les gérants.</strong></p>
+<p><strong>URL</strong> : <code>/bill</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Statut de la facture</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idCustomer</td>
+<td>string</td>
+<td>ID du client lié à la facture</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idEntreprise</td>
+<td>string</td>
+<td>ID de l'entreprise du gérant</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>billNumber</td>
+<td>string</td>
+<td>Numéro unique de facture</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle la facture sera généré</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>date</td>
+<td>Date limite à laquelle le client peut payer la facture</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>taxe</td>
+<td>string</td>
+<td>Taxe appliquer sur la facture de manière globale</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_20">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Bill successfuly created&quot;,
+    &quot;bill&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;billNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_21">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de facture invalide</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104151&quot;,
+    &quot;message&quot;: &quot;Invalid bill number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modifier-une-facture">Modifier une facture</h4>
+<hr />
+<p><strong>Route de modification d'une facture par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/bill</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de la facture à modifier</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Statut de la facture</td>
+<td>-</td>
+</tr>
+<tr>
+<td>idCustomer</td>
+<td>string</td>
+<td>ID du client lié à la facture</td>
+<td>-</td>
+</tr>
+<tr>
+<td>billNumber</td>
+<td>string</td>
+<td>Numéro unique de facture</td>
+<td>-</td>
+</tr>
+<tr>
+<td>articles</td>
+<td>array</td>
+<td>Tableaux de l'ensemble des articles de la facture</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle la facture sera généré</td>
+<td>-</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>date</td>
+<td>Date limite à laquelle le client peut payer la facture</td>
+<td>-</td>
+</tr>
+<tr>
+<td>taxe</td>
+<td>string</td>
+<td>Taxe appliquer sur la facture de manière globale</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_21">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Bill successfully updated&quot;,
+    &quot;bill&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;billNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;amountPaid&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;paidAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_22">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de facture invalide</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104201&quot;,
+    &quot;message&quot;: &quot;Invalid bill number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-une-facture">Supprimer une facture</h4>
+<hr />
+<p><strong>Route de suppression d'une facture par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/bill/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_22">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Bill successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_23">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<h3 id="devis">Devis</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-devis">Liste des devis</h4>
+<hr />
+<p><strong>Route de récupération de la liste de ses devis pour un client, des devis de tout ses clients pour un employé et de tous les utilisateurs pour un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/estimates</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_23">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful etimates acquisition&quot;,
+    &quot;estimates&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;estimateNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_24">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-dun-devis">Récupération d'un devis</h4>
+<hr />
+<p><strong>Route de récupération d'un devis. Un client ne peut récupérer que ses devis, un employé les devis de ses clients, et un gérant les devis de tous les utilisateurs.</strong></p>
+<p><strong>URL</strong> : <code>/estimate/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID du devis à récupérer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_24">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful bill acquisition&quot;,
+    &quot;estimate&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;estimateNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_25">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-un-devis">Créer un devis</h4>
+<hr />
+<p><strong>Route de création d'un devis pour les employés et les gérants.</strong></p>
+<p><strong>URL</strong> : <code>/estimate</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Statut du devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idCustomer</td>
+<td>string</td>
+<td>ID du client lié au devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idEntreprise</td>
+<td>string</td>
+<td>ID de l'entreprise du gérant</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>estimateNumber</td>
+<td>string</td>
+<td>Numéro unique de devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle le devis sera généré</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>date</td>
+<td>Date limite à laquelle le client peut accepter le devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>taxe</td>
+<td>string</td>
+<td>Taxe appliquer sur le devis de manière globale</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_25">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;estimate successfuly created&quot;,
+    &quot;estimate&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;estimateNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_26">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de devis invalide</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105151&quot;,
+    &quot;message&quot;: &quot;Invalid estimate number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modifier-un-devis">Modifier un devis</h4>
+<hr />
+<p><strong>Route de modification d'un devis par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/estimate</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID du devis à modifier</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Statut du devis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>idCustomer</td>
+<td>string</td>
+<td>ID du client lié au devis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>estimateNumber</td>
+<td>string</td>
+<td>Numéro unique de devis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>articles</td>
+<td>array</td>
+<td>Tableaux de l'ensemble des articles du devis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>Monnaie avec laquelle le devis sera généré</td>
+<td>-</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td>date</td>
+<td>Date limite à laquelle le client peut payer le devis</td>
+<td>-</td>
+</tr>
+<tr>
+<td>taxe</td>
+<td>string</td>
+<td>Taxe appliquer sur le devis de manière globale</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_26">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Estimate successfully updated&quot;,
+    &quot;estimate&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;status&quot;: &quot;&quot;,
+        &quot;idCustomer&quot;: &quot;&quot;,
+        &quot;idEntreprise&quot;: &quot;&quot;,
+        &quot;billNumber&quot;: &quot;&quot;,
+        &quot;articles&quot;: [{
+            &quot;idArticle&quot;: &quot;&quot;,
+            &quot;quantity&quot;: &quot;&quot;,
+        },{...}],
+        &quot;currency&quot;: &quot;&quot;,
+        &quot;taxe&quot;: &quot;&quot;,
+        &quot;priceHT&quot;: &quot;&quot;,
+        &quot;priceTTC&quot;: &quot;&quot;,
+        &quot;amountPaid&quot;: &quot;&quot;,
+        &quot;deadline&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;paidAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_27">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de devis invalide</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104201&quot;,
+    &quot;message&quot;: &quot;Invalid estimate number&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-un-devis">Supprimer un devis</h4>
+<hr />
+<p><strong>Route de suppression d'un devis par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/estimate/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID du devis à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_27">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Estimate successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_28">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<h3 id="articles">Articles</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-articles">Liste des articles</h4>
+<hr />
+<p><strong>Route de récupération de la liste des articles pour un gérant ou un employé.</strong></p>
+<p><strong>URL</strong> : <code>/articles</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_28">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful articles acquisition&quot;,
+    &quot;articles&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;tva&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_29">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-un-article">Créer un article</h4>
+<hr />
+<p><strong>Route de xxxxxxxx.</strong></p>
+<p><strong>URL</strong> : <code>/article</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Nom de l'article</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>number</td>
+<td>Numéro de compte comptable de l'article</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>Prix unitaire de l'article</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>tva</td>
+<td>number</td>
+<td>TVA appliqué à l'article</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description de l'article</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_29">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Article successfully created&quot;,
+    &quot;article&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;&quot;,
+        &quot;tva&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    } 
+
+}
+</code></pre>
+<h5 id="requete-echoue_30">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-un-article">Supprimer un article</h4>
+<hr />
+<p><strong>Route de suppression d'un article par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/article/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de l'article à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_30">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Article successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_31">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<h3 id="notes-de-frais">Notes de frais</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-notes-de-frais">Liste des notes de frais</h4>
+<hr />
+<p><strong>Route de récupération de la liste des notes de frais pour un gérant ou un employé.</strong></p>
+<p><strong>URL</strong> : <code>/expense-employee</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_31">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful expenses acquisition&quot;,
+    &quot;expenses&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;idEmployee/idManager&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_32">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<h4 id="creer-une-note-de-frais">Créer une note de frais</h4>
+<hr />
+<p><strong>Route de création d'une note de frais pour les employés et les gérants.</strong></p>
+<p><strong>URL</strong> : <code>/expense-employee</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idEmployee/idManager</td>
+<td>string</td>
+<td>ID de l'employé ou du gérant créant la note de frais</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>Montant de la note de frais</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>Category de la note de frais</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>number</td>
+<td>Numéro de compte comptable de la note de frais</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file</td>
+<td>Document de justification de la note de frais</td>
+<td>-</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description de la note de frais</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_32">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Expense successfully created&quot;, 
+    &quot;expense&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;category&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;idEmployee/idManager&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_33">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-une-note-de-frais">Supprimer une note de frais</h4>
+<hr />
+<p><strong>Route de suppression d'une note de frais par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/expense-employee/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la note de frais à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_33">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Expense employee successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_34">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h3 id="depenses">Dépenses</h3>
+<h4 id="liste-des-depenses">Liste des dépenses</h4>
+<hr />
+<p><strong>Route de récupération de la liste des des dépenses pour un gérant ou un employé.</strong></p>
+<p><strong>URL</strong> : <code>/expense</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_34">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful expenses acquisition&quot;,
+    &quot;expenses&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;category&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;idEmployee/idManager&quot;: &quot;&quot;,
+        &quot;idProject&quot;: &quot;&quot;,
+        &quot;invoiced&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_35">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-une-depense">Créer une dépense</h4>
+<hr />
+<p><strong>Route de création d'une note de frais pour les employés et les gérants.</strong></p>
+<p><strong>URL</strong> : <code>/expense-employee</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idEmployee/idManager</td>
+<td>string</td>
+<td>ID de l'employé ou du gérant créant la dépense</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>idProject</td>
+<td>string</td>
+<td>ID du projet lié à la dépense</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>price</td>
+<td>number</td>
+<td>Montant de la dépense</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>number</td>
+<td>Numéro de compte comptable de la dépense</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>Category de dépense</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>invoiced</td>
+<td>boolean</td>
+<td>Booléen pour savoir si la dépense est facturé ou non</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>file</td>
+<td>file</td>
+<td>Document de justification de la dépense</td>
+<td>-</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description de la dépense</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_35">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Expense successfully created&quot;, 
+    &quot;expense&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;category&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;idEmployee/idManager&quot;: &quot;&quot;,
+        &quot;idProject&quot;: &quot;&quot;,
+        &quot;invoiced&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_36">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-une-depense">Supprimer une dépense</h4>
+<hr />
+<p><strong>Route de suppression d'une dépense par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/expense/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la dépense à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_36">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Expense successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_37">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h3 id="conversations">Conversations</h3>
+<h4 id="liste-des-conversations">Liste des conversations</h4>
+<hr />
+<p><strong>Route de récupération de la liste des conversation d'un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/conversations</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_37">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful conversation acquisition&quot;,
+    &quot;conversations&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;idUser&quot;: &quot;&quot;,
+        &quot;idUser1&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_38">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="creer-une-conversation">Créer une conversation</h4>
+<hr />
+<p><strong>Route de création d'une conversation par un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/conversation</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<p>| Paramètres | Type | Description | Obligatoire |
+| idUser | string | ID du premier utilisateur de la conversation | ✔️ |
+| idUser1 | string | ID du second utilisateur de la conversation | ✔️ | </p>
+<h5 id="requete-reussie_38">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Conversation successfully created&quot;,
+    &quot;conversation&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;idUser&quot;: &quot;&quot;,
+        &quot;idUser1&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echoue_39">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-une-conversation">Supprimer une conversation</h4>
+<hr />
+<p><strong>Route de suppression d'une conversation par un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/conversation/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la conversation à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_39">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Chat successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echoue_40">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="liste-des-messages">Liste des messages</h4>
+<hr />
+<p><strong>Route de récupération de la liste des messages pour une conversation.</strong></p>
+<p><strong>URL</strong> : <code>/conversation/messages/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_40">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful messages acquisition&quot;,
+    &quot;conversations&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;idUser&quot;: &quot;&quot;,
+        &quot;idConversation&quot;: &quot;&quot;,
+        &quot;text&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echoue_41">Requête échoué</h5>
+<p><strong>Condition</strong> : Erreur d'authentification.</p>
+<p><strong>Code</strong> : <code>401</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;401001&quot;,
+    &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
+}
+</code></pre>
+<h3 id="paiement">Paiement</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="effectuer-un-payement">Effectuer un payement</h4>
+<hr />
+<p><strong>Route de xxxxxxxx.</strong></p>
+<p><strong>URL</strong> : ``</p>
+<p><strong>Methode</strong> : ``</p>
+<p><strong>Token requis</strong> : ``</p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_41">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false
+}
+</code></pre>
+<h5 id="requete-echoue_42">Requête échoué</h5>
+<p><strong>Condition</strong> : </p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;&quot;,
+    &quot;message&quot;: &quot;&quot;
+}
+</code></pre>
+<hr />
+<h3 id="statistiques">Statistiques</h3>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="obtenir-les-statistiques">Obtenir les statistiques</h4>
+<hr />
+<p><strong>Route de xxxxxxxx.</strong></p>
+<p><strong>URL</strong> : ``</p>
+<p><strong>Methode</strong> : ``</p>
+<p><strong>Token requis</strong> : ``</p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+<td>xxxx</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_42">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false
+}
+</code></pre>
+<h5 id="requete-echoue_43">Requête échoué</h5>
+<p><strong>Condition</strong> : </p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;&quot;,
+    &quot;message&quot;: &quot;&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- --></div>
+         
+    </div>
+
+    
+    <footer class="col-md-12 text-center">
+         
+        <hr>
+        <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+        </p>
+          
+    </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+    <script>
+        var base_url = {
+            {
+                base_url | tojson
+            }
+        }
+    </script>
+    
+    <script src="js/base.js"></script>
+    <script src="search/main.js"></script> <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Fermer</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Rechercher</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    De là, vous pouvez rechercher dans la documentation. Entrez vos termes de recherche ci-dessous.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Recherche..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2021-03-19 14:47:59.688405+00:00
+-->

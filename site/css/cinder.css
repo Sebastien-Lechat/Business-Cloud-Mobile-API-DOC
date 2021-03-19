@@ -1,0 +1,211 @@
+/*
+  Cinder Theme for MkDocs | Copyright 2015 Christopher Simpkins | MIT License
+*/
+
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    background-color: #FFF;
+    color: #2865A2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #222;
+}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
+    color: #B1B7B9;
+}
+
+h2 {
+    margin-top: 35px;
+}
+
+h1,
+h2 {
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+h4 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    margin-top: 22px;
+    font-size: 22px;
+}
+
+h4::before {
+    content: "»  ";
+}
+
+h5 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-weight: 400;
+    font-size: 19px;
+}
+
+pre,
+code {
+    background-color: #FCFDFF;
+}
+
+pre>code {
+    font-size: 13px;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+pre {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.lead {
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.0312em;
+    color: #B1B7B9;
+}
+
+.navbar-default {
+    background-color: #2865A2;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border-bottom: 8px #EBF2F2 solid; */
+}
+
+.navbar-default li a {
+    font-size: 16px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.bs-sidenav {
+    background-image: url("../img/grid11.png");
+    background-repeat: repeat;
+    font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+.well {
+    background-color: #FCFDFF;
+}
+
+.btn-default {
+    background-color: #FCFDFF;
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td,
+.table-striped>tbody>tr:nth-child(2n+1)>th {
+    background-color: #FCFDFF;
+}
+
+#mkdocs-search-query:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#mkdocs-search-query {
+    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2865A2;
+    height: 45px;
+}
+
+footer>hr {
+    width: 35%;
+}
+
+.bs-sidebar.affix {
+    top: 95px;
+}
+
+div.col-md-3 {
+    padding-left: 15px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    background-color: #355270;
+}
+
+th {
+    background-color: #f5f5f5;
+    text-align: left;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+    padding: 4px 8px;
+    border: #e0e0e0 1px solid;
+}
+
+tbody tr td {
+    border: #e0e0e0 1px solid;
+    background-color: white !important;
+}
+
+.table>thead:first-child>tr:first-child>th {
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 900px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        width: 1300px;
+    }
+}
