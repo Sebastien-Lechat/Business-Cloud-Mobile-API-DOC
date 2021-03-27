@@ -72,7 +72,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
     }
 }
@@ -432,7 +432,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
         "verify_email": "",
     }
@@ -504,7 +504,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
         "verify_email": "",
     }
@@ -611,7 +611,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
         "verify_email": "",
     }
@@ -707,7 +707,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
         "verify_email": "",
     }
@@ -791,7 +791,7 @@ npm start
         "refreshToken" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
         "isActive": "",
         "verify_email": "",
     }
@@ -885,7 +885,7 @@ npm start
         "phone" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
     },{...}]
 }
 ```
@@ -951,7 +951,7 @@ npm start
         "numRCS" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
     }
 }
 ```
@@ -988,7 +988,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| idEmployee | string | ID de l'employé référent du client | - | 
+| userId | string | ID de l'employé référent du client | - | 
 | name | string | Nom et prénom de l'utilisateur ou de l'entreprise | ✔️ | 
 | email | string | Email de l'utilisateur ou de l'entreprise | ✔️ | 
 | phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
@@ -1028,7 +1028,7 @@ npm start
         "numRCS" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
     }
 }
 ```
@@ -1138,7 +1138,7 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | id | string | ID du client dont on veut modifier les informations | ✔️ |
-| idEmployee | string | ID de l'employé référent du client | - | 
+| userId | string | ID de l'employé référent du client | - | 
 | name | string | Nom et prénom de l'utilisateur ou de l'entreprise | - | 
 | email | string | Email de l'utilisateur ou de l'entreprise | - | 
 | phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
@@ -1179,7 +1179,7 @@ npm start
         "numRCS" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "idEmployee": "",
+        "userId": "",
     }
 }
 ```
@@ -1419,7 +1419,7 @@ npm start
 
 ---
 
-**Route de xxxxxxxx.**
+**Route de création d'un employé par un gérant.**
 
 **URL** : `/employee`
 
@@ -1585,21 +1585,21 @@ npm start
     "bills": [{
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "billNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "billNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "amountPaid": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
-        "paidAt": "",
+        "payementDate": "",
     },{...}]
 }
 ```
@@ -1649,22 +1649,22 @@ npm start
     "bill": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "billNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "billNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "amountPaid": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
-        "paidAt": "",
+        "payementDate": "",
     }
 }
 ```
@@ -1702,9 +1702,9 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | status | string | Statut de la facture | ✔️ | 
-| idCustomer | string | ID du client lié à la facture | ✔️ | 
-| idEntreprise | string | ID de l'entreprise du gérant | ✔️ | 
-| billNumber | string | Numéro unique de facture | ✔️ | 
+| clientId | string | ID du client lié à la facture | ✔️ | 
+| entrepriseId | string | ID de l'entreprise du gérant | ✔️ | 
+| billNum | string | Numéro unique de facture | ✔️ | 
 | currency | string | Monnaie avec laquelle la facture sera généré | ✔️ |
 | deadline | date | Date limite à laquelle le client peut payer la facture | ✔️ |
 | taxe | string | Taxe appliquer sur la facture de manière globale | - |
@@ -1720,14 +1720,14 @@ npm start
     "bill": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "billNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "billNum": "",
         "articles": [],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
@@ -1781,8 +1781,8 @@ npm start
 | ------ | ------ | ------ | ------ |
 | id | string | ID de la facture à modifier | ✔️ | 
 | status | string | Statut de la facture | - | 
-| idCustomer | string | ID du client lié à la facture | - | 
-| billNumber | string | Numéro unique de facture | - | 
+| clientId | string | ID du client lié à la facture | - | 
+| billNum | string | Numéro unique de facture | - | 
 | articles | array | Tableaux de l'ensemble des articles de la facture | - | 
 | currency | string | Monnaie avec laquelle la facture sera généré | - |
 | deadline | date | Date limite à laquelle le client peut payer la facture | - |
@@ -1799,22 +1799,22 @@ npm start
     "bill": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "billNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "billNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "amountPaid": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
-        "paidAt": "",
+        "payementDate": "",
     }
 }
 ```
@@ -1923,17 +1923,17 @@ npm start
     "estimates": [{
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "estimateNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "estimateNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
@@ -1986,17 +1986,17 @@ npm start
     "estimate": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "estimateNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "estimateNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
@@ -2037,9 +2037,9 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | status | string | Statut du devis | ✔️ | 
-| idCustomer | string | ID du client lié au devis | ✔️ | 
-| idEntreprise | string | ID de l'entreprise du gérant | ✔️ | 
-| estimateNumber | string | Numéro unique de devis | ✔️ | 
+| clientId | string | ID du client lié au devis | ✔️ | 
+| entrepriseId | string | ID de l'entreprise du gérant | ✔️ | 
+| estimateNum | string | Numéro unique de devis | ✔️ | 
 | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ |
 | deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |
 | taxe | string | Taxe appliquer sur le devis de manière globale | - |
@@ -2055,14 +2055,14 @@ npm start
     "estimate": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "estimateNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "estimateNum": "",
         "articles": [],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
@@ -2116,8 +2116,8 @@ npm start
 | ------ | ------ | ------ | ------ |
 | id | string | ID du devis à modifier | ✔️ | 
 | status | string | Statut du devis | - | 
-| idCustomer | string | ID du client lié au devis | - | 
-| estimateNumber | string | Numéro unique de devis | - | 
+| clientId | string | ID du client lié au devis | - | 
+| estimateNum | string | Numéro unique de devis | - | 
 | articles | array | Tableaux de l'ensemble des articles du devis | - | 
 | currency | string | Monnaie avec laquelle le devis sera généré | - |
 | deadline | date | Date limite à laquelle le client peut payer le devis | - |
@@ -2134,22 +2134,22 @@ npm start
     "estimate": {
         "id": "",
         "status": "",
-        "idCustomer": "",
-        "idEntreprise": "",
-        "billNumber": "",
+        "clientId": "",
+        "entrepriseId": "",
+        "billNum": "",
         "articles": [{
-            "idArticle": "",
+            "articleId": "",
             "quantity": "",
         },{...}],
         "currency": "",
         "taxe": "",
-        "priceHT": "",
-        "priceTTC": "",
+        "totalHT": "",
+        "totalTTC": "",
         "amountPaid": "",
         "deadline": "",
         "createdAt": "",
         "updatedAt": "",
-        "paidAt": "",
+        "payementDate": "",
     }
 }
 ```
@@ -2288,7 +2288,7 @@ npm start
 
 ---
 
-**Route de xxxxxxxx.**
+**Route de création d'un article pour un employé ou un gérant.**
 
 **URL** : `/article`
 
@@ -2418,12 +2418,13 @@ npm start
     "error": false,
     "message": "Successful expenses acquisition",
     "expenses": [{
+        "userExpenseNum": "",
         "id": "",
         "price": "",
         "accountNumber": "",
         "file": "",
         "description": "",
-        "idEmployee/idManager": "",
+        "userId/idManager": "",
         "createdAt": "",
         "updatedAt": "",
     },{...}]
@@ -2462,7 +2463,8 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| idEmployee/idManager | string | ID de l'employé ou du gérant créant la note de frais | ✔️ | 
+| userExpenseNum | string | Numéro unique de dépense | ✔️ | 
+| userId/idManager | string | ID de l'employé ou du gérant créant la note de frais | ✔️ | 
 | price | number | Montant de la note de frais  | ✔️ | 
 | category | string | Category de la note de frais | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la note de frais | ✔️ | 
@@ -2478,13 +2480,14 @@ npm start
     "error": false,
     "message": "Expense successfully created", 
     "expense": {
+        "userExpenseNum": "",
         "id": "",
         "price": "",
         "accountNumber": "",
         "category": "",
         "file": "",
         "description": "",
-        "idEmployee/idManager": "",
+        "userId/idManager": "",
         "createdAt": "",
         "updatedAt": "",
     }
@@ -2551,6 +2554,578 @@ npm start
 ```
 
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+### Projets
+
+#### Liste des projets
+
+---
+
+**Route de récupération de la liste des projets pour un employé ou un gérant.**
+
+**URL** : `/project`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful projects acquisition",
+    "projects": [{
+        "projectNum": "",
+        "id": "",
+        "title": "",
+        "status": "",
+        "clientId": "",
+        "progression": "",
+        "startDate": "",
+        "deadline": "",
+        "employees":  [""],
+        "fixedRate": "",
+        "hourlyRate": "",
+        "estimateHour": "",
+    },{...}]
+}
+
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Créer un projet
+
+---
+
+**Route de création d'un projet par un employé ou un gérant.**
+
+**URL** : `/project`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| projectNum | string | Numéro unique de projet | ✔️ |
+| title | string | Titre du projet | ✔️ | 
+| status | string | Statut d'avancement du projet | ✔️ | 
+| clientId | string | ID du client lié au projet | ✔️ | 
+| progression | number | Progression du projet | - | 
+| startDate | date | Date de début du projet | - | 
+| deadline | date | Date d'échéance du projet | ✔️ | 
+| employees | string | Liste des employés liés au projet | ✔️ | 
+| fixedRate | date | Taux fixe | - | 
+| hourlyRate | date | Taux horaire | - | 
+| estimateHour | number | Nombre d'heure estimé du projet | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Project successfully created",
+    "project": {
+        "projectNum": "",
+        "id": "",
+        "title": "",
+        "status": "",
+        "clientId": "",
+        "progression": "",
+        "startDate": "",
+        "deadline": "",
+        "employees":  [""],
+        "fixedRate": "",
+        "hourlyRate": "",
+        "estimateHour": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Modifier un projet
+
+---
+
+**Route de modification d'un projet par un employé ou un gérant.**
+
+**URL** : `/project`
+
+**Methode** : `PUT`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID du projet à modifier | ✔️ |
+| projectNum | string | Numéro unique de projet | - |
+| title | string | Titre du projet | - | 
+| status | string | Statut d'avancement du projet | - | 
+| clientId | string | ID du client lié au projet | - | 
+| progression | number | Progression du projet | - | 
+| startDate | date | Date de début du projet | - | 
+| deadline | date | Date d'échéance du projet | - | 
+| employees | array | Liste des employés liés au projet | - | 
+| fixedRate | date | Taux fixe | - | 
+| hourlyRate | date | Taux horaire | - | 
+| estimateHour | number | Nombre d'heures estimées à la réalisation du projet | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Project successfully updated",
+    "project": {
+        "projectNum": "",
+        "id": "",
+        "title": "",
+        "status": "",
+        "clientId": "",
+        "progression": "",
+        "startDate": "",
+        "deadline": "",
+        "employees":  [""],
+        "fixedRate": "",
+        "hourlyRate": "",
+        "estimateHour": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Supprimer un projet
+
+---
+
+**Route de suppression d'un projet par un employé ou un gérant.**
+
+**URL** : `/project/:id`
+
+**Methode** : `DELETE`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID du projet à modifier | ✔️ |
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Project successfully deleted",
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+### Tâches
+
+#### Liste des tâches
+
+---
+
+**Route de récupération de la liste des tâches pour un projet.**
+
+**URL** : `/task`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful tasks acquisition",
+    "tasks": [{
+        "name": "",
+        "progression": "",
+        "description": "",
+        "projectId": "",
+        "employees": [""],
+        "startDate": "",
+        "deadline": "",
+        "estimateHour": "",
+    },{...}]
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Créer une tâche
+
+---
+
+**Route de création d'une tâche par un employé ou un gérant.**
+
+**URL** : `/task`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| name | string | Nom de la tâche | ✔️ | 
+| progression | number | Progression de la tâche | ✔️ | 
+| description | string | Description de la tâche | - | 
+| projectId | string | ID du projet lié à la tâche | ✔️ | 
+| employees | array | Liste des employés liés à la tâche | ✔️ | 
+| startDate | date | Date de début de la tâche | ✔️ | 
+| deadline | date | Date de fin de la tâche | ✔️ | 
+| estimateHour | number | Nombre d'heures estimées | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Task successfully created", 
+    "task": {
+        "name": "",
+        "progression": "",
+        "description": "",
+        "projectId": "",
+        "employees": [""],
+        "startDate": "",
+        "deadline": "",
+        "estimateHour": "",
+    },
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Supprimer une tâche
+
+---
+
+**Route de suppression d'une tâche par un employé ou un gérant.**
+
+**URL** : `/task/:id`
+
+**Methode** : `DELETE`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID de la tâche à supprimer | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Task successfully deleted"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+### Temps
+
+#### Liste des temps enregistrés
+
+---
+
+**Route de récupération de la liste des temps enregistrés pour un projet.**
+
+**URL** : `/time`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful times acquisition",
+    "times": [{
+        "userId": "",
+        "projectId": "",
+        "taskId": "",
+        "billable": "",
+        "duration": "",
+    },{...}]
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Créer un enregistrement de temps
+
+---
+
+**Route de création d'un enregistrement de temps par un employé ou un gérant.**
+
+**URL** : `/time`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| userId | string | ID de l'employé ou le gérant enregistrant le temps | ✔️ | 
+| taskId | string | ID de la tâche lié au temps enregistré | - | 
+| projectId | string | ID du projet lié au temps enregistré | ✔️ | 
+| billable | boolean | Booléen pour savoir si le temps est factirable ou non | ✔️ | 
+| duration | number | Durée estimé de la tâche en heure | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Time successfully created", 
+    "time": {
+        "userId": "",
+        "taskId": "",
+        "projectId": "",
+        "billable": "",
+        "duration": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Supprimer un enregistrement de temps
+
+---
+
+**Route de suppression d'un enregistrement de temps par un employé ou un gérant.**
+
+**URL** : `/time/:id`
+
+**Methode** : `DELETE`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID du temps à supprimer | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Time successfully deleted"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Unauthorized to access to this resource"
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 ### Dépenses
 
@@ -2558,7 +3133,7 @@ npm start
 
 ---
 
-**Route de récupération de la liste des des dépenses pour un gérant ou un employé.**
+**Route de récupération de la liste des dépenses pour un gérant ou un employé.**
 
 **URL** : `/expense`
 
@@ -2581,14 +3156,15 @@ npm start
     "error": false,
     "message": "Successful expenses acquisition",
     "expenses": [{
+        "expenseNum": "",
         "id": "",
         "price": "",
         "accountNumber": "",
         "category": "",
         "file": "",
         "description": "",
-        "idEmployee/idManager": "",
-        "idProject": "",
+        "userId/idManager": "",
+        "projectId": "",
         "invoiced": "",
         "createdAt": "",
         "updatedAt": "",
@@ -2628,8 +3204,9 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| idEmployee/idManager | string | ID de l'employé ou du gérant créant la dépense | ✔️ | 
-| idProject | string | ID du projet lié à la dépense | ✔️ | 
+| expenseNum | string | Numéro unique de dépense | ✔️ | 
+| userId/idManager | string | ID de l'employé ou du gérant créant la dépense | ✔️ | 
+| projectId | string | ID du projet lié à la dépense | ✔️ | 
 | price | number | Montant de la dépense  | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la dépense | ✔️ | 
 | category | string | Category de dépense | ✔️ | 
@@ -2646,14 +3223,15 @@ npm start
     "error": false,
     "message": "Expense successfully created", 
     "expense": {
+        "expenseNum": "",
         "id": "",
         "price": "",
         "accountNumber": "",
         "category": "",
         "file": "",
         "description": "",
-        "idEmployee/idManager": "",
-        "idProject": "",
+        "userId/idManager": "",
+        "projectId": "",
         "invoiced": "",
         "createdAt": "",
         "updatedAt": "",
@@ -2721,6 +3299,7 @@ npm start
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 ### Conversations
 
@@ -2791,6 +3370,7 @@ npm start
 **Paramètres de la requête**
 
 | Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
 | idUser | string | ID du premier utilisateur de la conversation | ✔️ |
 | idUser1 | string | ID du second utilisateur de la conversation | ✔️ | 
 
@@ -2926,11 +3506,11 @@ npm start
 
 ### Paiement
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Effectuer un payement
+#### Effectuer un paiement
 
 ---
 
-**Route de xxxxxxxx.**
+**Route pour effectuer un paiement.**
 
 **URL** : ``
 
@@ -2979,7 +3559,7 @@ npm start
 
 ---
 
-**Route de xxxxxxxx.**
+**Route de récupération des statistiques pour la page d'accueil.**
 
 **URL** : ``
 
