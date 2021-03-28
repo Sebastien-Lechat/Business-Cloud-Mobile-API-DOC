@@ -179,20 +179,20 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101052",
+    "code": "101053",
     "message": "Invalid phone number"
 }
 ```
 
-**Condition** : Mot de passe invalide ou à faible sécurité.
+**Condition** : Mot de passe invalide ou à faible sécurité (Une majuscule, un numéro, un caractère spécial, et de 7 à 30 charactères).
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "101053",
-    "message": "Invalid password"
+    "code": "101054",
+    "message": "Invalid password format"
 }
 ```
 
@@ -203,7 +203,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101054",
+    "code": "101055",
     "message": "Invalid TVA number"
 }
 ```
@@ -215,7 +215,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101055",
+    "code": "101056",
     "message": "Invalid SIRET number"
 }
 ```
@@ -227,8 +227,32 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101056",
+    "code": "101057",
     "message": "Invalid RCS number"
+}
+```
+
+**Condition** : Date de naisseance invalide (DD-MM-YYY).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101058",
+    "message": "Invalid date format"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101059",
+    "message": "This email is already used"
 }
 ```
 

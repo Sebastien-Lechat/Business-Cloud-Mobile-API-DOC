@@ -308,23 +308,23 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101052&quot;,
+    &quot;code&quot;: &quot;101053&quot;,
     &quot;message&quot;: &quot;Invalid phone number&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Mot de passe invalide ou à faible sécurité.</p>
+<p><strong>Condition</strong> : Mot de passe invalide ou à faible sécurité (Une majuscule, un numéro, un caractère spécial, et de 7 à 30 charactères).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101053&quot;,
-    &quot;message&quot;: &quot;Invalid password&quot;
+    &quot;code&quot;: &quot;101054&quot;,
+    &quot;message&quot;: &quot;Invalid password format&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Numéro de TVA invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101054&quot;,
+    &quot;code&quot;: &quot;101055&quot;,
     &quot;message&quot;: &quot;Invalid TVA number&quot;
 }
 </code></pre>
@@ -332,7 +332,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101055&quot;,
+    &quot;code&quot;: &quot;101056&quot;,
     &quot;message&quot;: &quot;Invalid SIRET number&quot;
 }
 </code></pre>
@@ -340,8 +340,24 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101056&quot;,
+    &quot;code&quot;: &quot;101057&quot;,
     &quot;message&quot;: &quot;Invalid RCS number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Date de naisseance invalide (DD-MM-YYY).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101058&quot;,
+    &quot;message&quot;: &quot;Invalid date format&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : L'email est déjà utilisé par un autre utilisateur.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101059&quot;,
+    &quot;message&quot;: &quot;This email is already used&quot;
 }
 </code></pre>
 <hr />
@@ -4228,5 +4244,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-27 18:35:00.136802+00:00
+Build Date UTC : 2021-03-28 17:14:54.869411+00:00
 -->
