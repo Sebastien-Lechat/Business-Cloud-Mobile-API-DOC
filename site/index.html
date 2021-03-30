@@ -564,6 +564,12 @@ npm start
 </thead>
 <tbody>
 <tr>
+<td>userId</td>
+<td>string</td>
+<td>ID de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
 <td>email</td>
 <td>string</td>
 <td>Email de l'utilisateur</td>
@@ -579,12 +585,12 @@ npm start
 }
 </code></pre>
 <h5 id="requete-echouee_6">Requête échouée</h5>
-<p><strong>Condition</strong> : Email manquant.</p>
+<p><strong>Condition</strong> : Email ou id manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;101201&quot;,
-    &quot;message&quot;: &quot;Missing email field&quot;
+    &quot;message&quot;: &quot;Missing email or id field&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
@@ -595,12 +601,12 @@ npm start
     &quot;message&quot;: &quot;Invalid email addresse&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide (adresse introuvable).</p>
+<p><strong>Condition</strong> : ID ou adresse email invalide (utilisateur introuvable).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;101203&quot;,
-    &quot;message&quot;: &quot;Invalid user address&quot;
+    &quot;message&quot;: &quot;Invalid user information&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
@@ -4351,5 +4357,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-30 07:17:24.254878+00:00
+Build Date UTC : 2021-03-30 08:08:30.161871+00:00
 -->

@@ -487,6 +487,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
+| userId | string | ID de l'utilisateur | ✔️ | 
 | email | string | Email de l'utilisateur | ✔️ | 
 
 ##### Requête réussie
@@ -502,7 +503,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Email manquant.
+**Condition** : Email ou id manquant.
 
 **Code** : `400`
 
@@ -510,7 +511,7 @@ npm start
 {
     "error": true,
     "code": "101201",
-    "message": "Missing email field"
+    "message": "Missing email or id field"
 }
 ```
 
@@ -526,7 +527,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide (adresse introuvable).
+**Condition** : ID ou adresse email invalide (utilisateur introuvable).
 
 **Code** : `400`
 
@@ -534,7 +535,7 @@ npm start
 {
     "error": true,
     "code": "101203",
-    "message": "Invalid user address"
+    "message": "Invalid user information"
 }
 ```
 
