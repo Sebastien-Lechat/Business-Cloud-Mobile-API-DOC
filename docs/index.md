@@ -73,7 +73,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
     }
 }
 ```
@@ -88,11 +87,11 @@ npm start
 {
     "error": true,
     "code": "101001",
-    "message": "Email/Password is missing"
+    "message": "Missing email or password field"
 }
 ```
 
-**Condition** : Mauvais mot de passe.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -100,7 +99,91 @@ npm start
 {
     "error": true,
     "code": "101002",
-    "message": "Invalid password"
+    "message": "Invalid email addresse"
+}
+```
+
+**Condition** : Mauvaise information de connexion.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101003",
+    "message": "Invalid login credential"
+}
+```
+
+**Condition** : Si l'adresse email n'est pas encore vérifié.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101004",
+    "message": "Email address is not verified"
+}
+```
+
+**Condition** : Si la double authentification est activé mais que le code n'est pas fourni.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101005",
+    "message": "Double authentification is activated, code is required"
+}
+```
+
+**Condition** : Si le code de double authentification est faux.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101006",
+    "message": "Wrong code"
+}
+```
+
+**Condition** : Si le code de double authentification est expiré.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101007",
+    "message": "This code is no longer valid"
+}
+```
+
+**Condition** : Si le compte de l'utilisateur est désactivé.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101008",
+    "message": "This account is disabled"
+}
+```
+
+**Condition** : Trop de tentative de connexion sur ce mail.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101008",
+    "message": "Too many attempts on this email (5 max) - Please wait (5min)"
 }
 ```
 
@@ -442,7 +525,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Mauvais code.
+**Condition** : Email ou code manquant.
 
 **Code** : `400`
 
@@ -450,11 +533,57 @@ npm start
 {
     "error": true,
     "code": "101201",
-    "message": "Wrong code"
+    "message": "Missing email or code field"
 }
 ```
 
-##### Requête échouée
+**Condition** : Adresse email invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101202",
+    "message": "Invalid email addresse"
+}
+```
+
+**Condition** : Code ou adresse email invalide (utilisateur introuvable).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101203",
+    "message": "Invalid user information"
+}
+```
+
+**Condition** : L'email n'est pas en court de vérification.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101204",
+    "message": "You need to make a request to check this email"
+}
+```
+
+**Condition** : Mauvais code.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101205",
+    "message": "Wrong code"
+}
+```
 
 **Condition** : Code expiré.
 
@@ -463,7 +592,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101202",
+    "code": "101206",
     "message": "This code is no longer valid"
 }
 ```
@@ -510,8 +639,8 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101201",
-    "message": "Missing email or id field"
+    "code": "101251",
+    "message": "Missing email or userId field"
 }
 ```
 
@@ -522,7 +651,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101202",
+    "code": "101252",
     "message": "Invalid email addresse"
 }
 ```
@@ -534,8 +663,20 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101203",
+    "code": "101253",
     "message": "Invalid user information"
+}
+```
+
+**Condition** : Double authentification désactivé.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101254",
+    "message": "Double authentification is not activated on this account"
 }
 ```
 
@@ -602,7 +743,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
         "verify_email": "",
     }
 }
@@ -674,7 +814,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
         "verify_email": "",
     }
 }
@@ -781,7 +920,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
         "verify_email": "",
     }
 }
@@ -877,7 +1015,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
         "verify_email": "",
     }
 }
@@ -961,7 +1098,6 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "isActive": "",
         "verify_email": "",
     }
 }
