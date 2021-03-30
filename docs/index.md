@@ -160,7 +160,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -264,7 +264,7 @@ npm start
 
 **Route de récupération du mot depasse utilisateur. Le mail contient un lien de redirection sur le site pour modifier le mot de passe.**
 
-**URL** : `/auth/password-lost`
+**URL** : `/auth/request-password-lost`
 
 **Methode** : `POST`
 
@@ -274,7 +274,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| email | string | Email de l'utilisateur | xxxx |
+| email | string | Email de l'utilisateur | ✔️ |
 
 ##### Requête réussie
 
@@ -289,6 +289,30 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Email manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101101",
+    "message": "Missing email field"
+}
+```
+
+**Condition** : Adresse email invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101102",
+    "message": "Invalid email addresse"
+}
+```
+
 **Condition** : Echec de l'envoi du mail.
 
 **Code** : `500`
@@ -296,12 +320,13 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101101",
+    "code": "500001",
     "message": "Internal server error, email can not be send"
 }
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Vérification de l'email (envoi)
 
@@ -334,6 +359,42 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Email manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101151",
+    "message": "Missing email field"
+}
+```
+
+**Condition** : Adresse email invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101152",
+    "message": "Invalid email addresse"
+}
+```
+
+**Condition** : Email déjà vérifié.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101153",
+    "message": "Email already verified"
+}
+```
+
 **Condition** : Echec de l'envoi du mail.
 
 **Code** : `500`
@@ -341,12 +402,13 @@ npm start
 ```json
 {
     "error": true,
-    "code": "500001",
+    "code": "500002",
     "message": "Internal server error, email can not be send"
 }
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Vérification de l'email (vérification)
 
@@ -403,6 +465,88 @@ npm start
     "error": true,
     "code": "101202",
     "message": "This code is no longer valid"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Double authentification (envoi)
+
+---
+
+**Route d'envoi d'un email contenant un code de vérification à un utilisateur lors de sa connexion, si la double authentification est activé.**
+
+**URL** : `/auth/request-double-auth`
+
+**Methode** : `POST`
+
+**Token requis** : `NON`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| email | string | Email de l'utilisateur | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Email successfully send"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Email manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101201",
+    "message": "Missing email field"
+}
+```
+
+**Condition** : Adresse email invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101202",
+    "message": "Invalid email addresse"
+}
+```
+
+**Condition** : Adresse email invalide (adresse introuvable).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101203",
+    "message": "Invalid user address"
+}
+```
+
+**Condition** : Echec de l'envoi du mail.
+
+**Code** : `500`
+
+```json
+{
+    "error": true,
+    "code": "500003",
+    "message": "Internal server error, email can not be send"
 }
 ```
 
@@ -549,7 +693,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -580,7 +724,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "500002",
+    "code": "500004",
     "message": "Internal server error, avatar can not be saved"
 }
 ```
@@ -1083,7 +1227,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -1222,7 +1366,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -1401,7 +1545,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 
@@ -1506,7 +1650,7 @@ npm start
 }
 ```
 
-**Condition** : Adresse email invalide.
+**Condition** : Adresse email invalide (format invalide).
 
 **Code** : `400`
 

@@ -296,7 +296,7 @@ npm start
     &quot;message&quot;: &quot;Missing important fields&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -365,7 +365,7 @@ npm start
 <h4 id="mot-de-passe-oublie">Mot de passe oublié</h4>
 <hr />
 <p><strong>Route de récupération du mot depasse utilisateur. Le mail contient un lien de redirection sur le site pour modifier le mot de passe.</strong></p>
-<p><strong>URL</strong> : <code>/auth/password-lost</code></p>
+<p><strong>URL</strong> : <code>/auth/request-password-lost</code></p>
 <p><strong>Methode</strong> : <code>POST</code></p>
 <p><strong>Token requis</strong> : <code>NON</code></p>
 <p><strong>Paramètres de la requête</strong></p>
@@ -383,7 +383,7 @@ npm start
 <td>email</td>
 <td>string</td>
 <td>Email de l'utilisateur</td>
-<td>xxxx</td>
+<td>✔️</td>
 </tr>
 </tbody>
 </table>
@@ -395,11 +395,27 @@ npm start
 }
 </code></pre>
 <h5 id="requete-echouee_2">Requête échouée</h5>
+<p><strong>Condition</strong> : Email manquant.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101101&quot;,
+    &quot;message&quot;: &quot;Missing email field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101102&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
 <p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
 <p><strong>Code</strong> : <code>500</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101101&quot;,
+    &quot;code&quot;: &quot;500001&quot;,
     &quot;message&quot;: &quot;Internal server error, email can not be send&quot;
 }
 </code></pre>
@@ -438,11 +454,35 @@ npm start
 }
 </code></pre>
 <h5 id="requete-echouee_3">Requête échouée</h5>
+<p><strong>Condition</strong> : Email manquant.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101151&quot;,
+    &quot;message&quot;: &quot;Missing email field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101152&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Email déjà vérifié.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101153&quot;,
+    &quot;message&quot;: &quot;Email already verified&quot;
+}
+</code></pre>
 <p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
 <p><strong>Code</strong> : <code>500</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;500001&quot;,
+    &quot;code&quot;: &quot;500002&quot;,
     &quot;message&quot;: &quot;Internal server error, email can not be send&quot;
 }
 </code></pre>
@@ -505,6 +545,73 @@ npm start
 }
 </code></pre>
 <hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="double-authentification-envoi">Double authentification (envoi)</h4>
+<hr />
+<p><strong>Route d'envoi d'un email contenant un code de vérification à un utilisateur lors de sa connexion, si la double authentification est activé.</strong></p>
+<p><strong>URL</strong> : <code>/auth/request-double-auth</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_5">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Email successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_6">Requête échouée</h5>
+<p><strong>Condition</strong> : Email manquant.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101201&quot;,
+    &quot;message&quot;: &quot;Missing email field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101202&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide (adresse introuvable).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101203&quot;,
+    &quot;message&quot;: &quot;Invalid user address&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Echec de l'envoi du mail.</p>
+<p><strong>Code</strong> : <code>500</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;500003&quot;,
+    &quot;message&quot;: &quot;Internal server error, email can not be send&quot;
+}
+</code></pre>
+<hr />
 <h3 id="profil-utilisateur">Profil utilisateur</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="recuperation-du-profil">Récupération du profil</h4>
@@ -532,7 +639,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_5">Requête réussie</h5>
+<h5 id="requete-reussie_6">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -563,7 +670,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_6">Requête échouée</h5>
+<h5 id="requete-echouee_7">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -623,7 +730,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_6">Requête réussie</h5>
+<h5 id="requete-reussie_7">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -654,7 +761,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_7">Requête échouée</h5>
+<h5 id="requete-echouee_8">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -663,7 +770,7 @@ npm start
     &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -683,7 +790,7 @@ npm start
 <p><strong>Code</strong> : <code>500</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;500002&quot;,
+    &quot;code&quot;: &quot;500004&quot;,
     &quot;message&quot;: &quot;Internal server error, avatar can not be saved&quot;
 }
 </code></pre>
@@ -726,7 +833,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_7">Requête réussie</h5>
+<h5 id="requete-reussie_8">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -757,7 +864,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_8">Requête échouée</h5>
+<h5 id="requete-echouee_9">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -827,7 +934,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_8">Requête réussie</h5>
+<h5 id="requete-reussie_9">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -858,7 +965,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_9">Requête échouée</h5>
+<h5 id="requete-echouee_10">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -920,7 +1027,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_9">Requête réussie</h5>
+<h5 id="requete-reussie_10">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -951,7 +1058,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_10">Requête échouée</h5>
+<h5 id="requete-echouee_11">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1012,7 +1119,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_10">Requête réussie</h5>
+<h5 id="requete-reussie_11">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1029,7 +1136,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_11">Requête échouée</h5>
+<h5 id="requete-echouee_12">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1065,7 +1172,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_11">Requête réussie</h5>
+<h5 id="requete-reussie_12">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1092,7 +1199,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_12">Requête échouée</h5>
+<h5 id="requete-echouee_13">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1200,7 +1307,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_12">Requête réussie</h5>
+<h5 id="requete-reussie_13">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1227,7 +1334,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_13">Requête échouée</h5>
+<h5 id="requete-echouee_14">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1244,7 +1351,7 @@ npm start
     &quot;message&quot;: &quot;Missing important fields&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -1389,7 +1496,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_13">Requête réussie</h5>
+<h5 id="requete-reussie_14">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1416,7 +1523,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_14">Requête échouée</h5>
+<h5 id="requete-echouee_15">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1425,7 +1532,7 @@ npm start
     &quot;message&quot;: &quot;Unauthorized to access to this resource&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -1498,14 +1605,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_14">Requête réussie</h5>
+<h5 id="requete-reussie_15">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Customer successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_15">Requête échouée</h5>
+<h5 id="requete-echouee_16">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1571,7 +1678,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_15">Requête réussie</h5>
+<h5 id="requete-reussie_16">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1589,7 +1696,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_16">Requête échouée</h5>
+<h5 id="requete-echouee_17">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1606,7 +1713,7 @@ npm start
     &quot;message&quot;: &quot;Missing important fields&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -1681,7 +1788,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_16">Requête réussie</h5>
+<h5 id="requete-reussie_17">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1699,7 +1806,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_17">Requête échouée</h5>
+<h5 id="requete-echouee_18">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1715,7 +1822,7 @@ npm start
     &quot;message&quot;: &quot;Missing important fields&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Adresse email invalide.</p>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -1764,14 +1871,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_17">Requête réussie</h5>
+<h5 id="requete-reussie_18">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Employee successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_18">Requête échouée</h5>
+<h5 id="requete-echouee_19">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1808,7 +1915,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_18">Requête réussie</h5>
+<h5 id="requete-reussie_19">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1834,7 +1941,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_19">Requête échouée</h5>
+<h5 id="requete-echouee_20">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1870,7 +1977,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_19">Requête réussie</h5>
+<h5 id="requete-reussie_20">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1897,7 +2004,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_20">Requête échouée</h5>
+<h5 id="requete-echouee_21">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -1969,7 +2076,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_20">Requête réussie</h5>
+<h5 id="requete-reussie_21">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1991,7 +2098,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_21">Requête échouée</h5>
+<h5 id="requete-echouee_22">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2077,7 +2184,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_21">Requête réussie</h5>
+<h5 id="requete-reussie_22">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2104,7 +2211,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_22">Requête échouée</h5>
+<h5 id="requete-echouee_23">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2148,14 +2255,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_22">Requête réussie</h5>
+<h5 id="requete-reussie_23">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Bill successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_23">Requête échouée</h5>
+<h5 id="requete-echouee_24">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2192,7 +2299,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_23">Requête réussie</h5>
+<h5 id="requete-reussie_24">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2217,7 +2324,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_24">Requête échouée</h5>
+<h5 id="requete-echouee_25">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2253,7 +2360,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_24">Requête réussie</h5>
+<h5 id="requete-reussie_25">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2278,7 +2385,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_25">Requête échouée</h5>
+<h5 id="requete-echouee_26">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2350,7 +2457,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_25">Requête réussie</h5>
+<h5 id="requete-reussie_26">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2372,7 +2479,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_26">Requête échouée</h5>
+<h5 id="requete-echouee_27">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2458,7 +2565,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_26">Requête réussie</h5>
+<h5 id="requete-reussie_27">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2485,7 +2592,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_27">Requête échouée</h5>
+<h5 id="requete-echouee_28">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2529,14 +2636,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_27">Requête réussie</h5>
+<h5 id="requete-reussie_28">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Estimate successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_28">Requête échouée</h5>
+<h5 id="requete-echouee_29">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2573,7 +2680,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_28">Requête réussie</h5>
+<h5 id="requete-reussie_29">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2590,7 +2697,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_29">Requête échouée</h5>
+<h5 id="requete-echouee_30">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2650,7 +2757,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_29">Requête réussie</h5>
+<h5 id="requete-reussie_30">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2668,7 +2775,7 @@ npm start
 
 }
 </code></pre>
-<h5 id="requete-echouee_30">Requête échouée</h5>
+<h5 id="requete-echouee_31">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2704,14 +2811,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_30">Requête réussie</h5>
+<h5 id="requete-reussie_31">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Article successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_31">Requête échouée</h5>
+<h5 id="requete-echouee_32">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2748,7 +2855,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_31">Requête réussie</h5>
+<h5 id="requete-reussie_32">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2766,7 +2873,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_32">Requête échouée</h5>
+<h5 id="requete-echouee_33">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2837,7 +2944,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_32">Requête réussie</h5>
+<h5 id="requete-reussie_33">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2856,7 +2963,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_33">Requête échouée</h5>
+<h5 id="requete-echouee_34">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2892,14 +2999,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_33">Requête réussie</h5>
+<h5 id="requete-reussie_34">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Expense employee successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_34">Requête échouée</h5>
+<h5 id="requete-echouee_35">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -2936,7 +3043,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_34">Requête réussie</h5>
+<h5 id="requete-reussie_35">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2958,7 +3065,7 @@ npm start
 }
 
 </code></pre>
-<h5 id="requete-echouee_35">Requête échouée</h5>
+<h5 id="requete-echouee_36">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3054,7 +3161,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_35">Requête réussie</h5>
+<h5 id="requete-reussie_36">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3075,7 +3182,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_36">Requête échouée</h5>
+<h5 id="requete-echouee_37">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3177,7 +3284,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_36">Requête réussie</h5>
+<h5 id="requete-reussie_37">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3198,7 +3305,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_37">Requête échouée</h5>
+<h5 id="requete-echouee_38">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3234,14 +3341,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_37">Requête réussie</h5>
+<h5 id="requete-reussie_38">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Project successfully deleted&quot;,
 }
 </code></pre>
-<h5 id="requete-echouee_38">Requête échouée</h5>
+<h5 id="requete-echouee_39">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3278,7 +3385,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_38">Requête réussie</h5>
+<h5 id="requete-reussie_39">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3295,7 +3402,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_39">Requête échouée</h5>
+<h5 id="requete-echouee_40">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3373,7 +3480,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_39">Requête réussie</h5>
+<h5 id="requete-reussie_40">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3390,7 +3497,7 @@ npm start
     },
 }
 </code></pre>
-<h5 id="requete-echouee_40">Requête échouée</h5>
+<h5 id="requete-echouee_41">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3426,14 +3533,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_40">Requête réussie</h5>
+<h5 id="requete-reussie_41">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Task successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_41">Requête échouée</h5>
+<h5 id="requete-echouee_42">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3470,7 +3577,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_41">Requête réussie</h5>
+<h5 id="requete-reussie_42">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3484,7 +3591,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_42">Requête échouée</h5>
+<h5 id="requete-echouee_43">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3544,7 +3651,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_42">Requête réussie</h5>
+<h5 id="requete-reussie_43">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3558,7 +3665,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_43">Requête échouée</h5>
+<h5 id="requete-echouee_44">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3594,14 +3701,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_43">Requête réussie</h5>
+<h5 id="requete-reussie_44">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Time successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_44">Requête échouée</h5>
+<h5 id="requete-echouee_45">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3638,7 +3745,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_44">Requête réussie</h5>
+<h5 id="requete-reussie_45">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3659,7 +3766,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_45">Requête échouée</h5>
+<h5 id="requete-echouee_46">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3743,7 +3850,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_45">Requête réussie</h5>
+<h5 id="requete-reussie_46">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3764,7 +3871,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_46">Requête échouée</h5>
+<h5 id="requete-echouee_47">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3800,14 +3907,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_46">Requête réussie</h5>
+<h5 id="requete-reussie_47">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Expense successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_47">Requête échouée</h5>
+<h5 id="requete-echouee_48">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3844,7 +3951,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_47">Requête réussie</h5>
+<h5 id="requete-reussie_48">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3858,7 +3965,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_48">Requête échouée</h5>
+<h5 id="requete-echouee_49">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3900,7 +4007,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_48">Requête réussie</h5>
+<h5 id="requete-reussie_49">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3914,7 +4021,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_49">Requête échouée</h5>
+<h5 id="requete-echouee_50">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3950,14 +4057,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_49">Requête réussie</h5>
+<h5 id="requete-reussie_50">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Chat successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_50">Requête échouée</h5>
+<h5 id="requete-echouee_51">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -3993,7 +4100,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_50">Requête réussie</h5>
+<h5 id="requete-reussie_51">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4008,7 +4115,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_51">Requête échouée</h5>
+<h5 id="requete-echouee_52">Requête échouée</h5>
 <p><strong>Condition</strong> : Erreur d'authentification.</p>
 <p><strong>Code</strong> : <code>401</code></p>
 <pre><code class="language-json">{
@@ -4062,13 +4169,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_51">Requête réussie</h5>
+<h5 id="requete-reussie_52">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_52">Requête échouée</h5>
+<h5 id="requete-echouee_53">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4123,13 +4230,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_52">Requête réussie</h5>
+<h5 id="requete-reussie_53">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_53">Requête échouée</h5>
+<h5 id="requete-echouee_54">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4244,5 +4351,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-03-28 17:14:54.869411+00:00
+Build Date UTC : 2021-03-30 07:17:24.254878+00:00
 -->
