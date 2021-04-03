@@ -189,10 +189,12 @@ npm start
 
 ---
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 #### Inscription
 
 ---
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 **Route de d'inscription d'un utilisateur (client ou entreprise).**
 
 **URL** : `/auth/register`
@@ -205,15 +207,15 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| name | string | Nom et prénom de l'utilisateur ou de l'entreprise | ✔️ | 
-| email | string | Email de l'utilisateur ou de l'entreprise | ✔️ | 
-| phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
-| birthdayDate | date | Date de naisse de l'utilisateur | - |
-| password | string | Mot de passe de l'utilisateur ou de l'entreprise | ✔️ | 
-| address | string | Adresse de l'utilisateur ou de l'entreprise | - |
-| zip | string | Code postal de l'utilisateur ou de l'entreprise | - |
-| city | string | Ville de l'utilisateur ou de l'entreprise | - |
-| country | string | Pays | - |
+| name | string | Nom et prénom du client ou de l'entreprise | ✔️ | 
+| email | string | Email du client ou de l'entreprise | ✔️ | 
+| phone | string | Téléphone du client ou de l'entreprise | - |
+| birthdayDate | date | Date de naisse du client | - |
+| password | string | Mot de passe du client ou de l'entreprise | ✔️ | 
+| address | string | Adresse du client ou de l'entreprise | - |
+| zip | string | Code postal du client ou de l'entreprise | - |
+| city | string | Ville du client ou de l'entreprise | - |
+| country | string | Pays du client ou de l'entreprise | - |
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
@@ -255,7 +257,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
@@ -372,7 +374,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Email manquant.
+**Condition** : Champ email manquant.
 
 **Code** : `400`
 
@@ -442,7 +444,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Email manquant.
+**Condition** : Champ email manquant.
 
 **Code** : `400`
 
@@ -525,7 +527,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Email ou code manquant.
+**Condition** : Champ email ou code manquant.
 
 **Code** : `400`
 
@@ -632,7 +634,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Email ou id manquant.
+**Condition** : Champ email ou userId manquant.
 
 **Code** : `400`
 
@@ -694,6 +696,54 @@ npm start
 
 ---
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Double authentification (activation)
+
+---
+
+**Route d'activation de la double authentification pour un utilisateur.**
+
+**URL** : `/auth/active-double-auth`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| isActive | boolean | Booléen pour définir si la double authentification est actié ou non | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Double authentification successfully updated"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champ isActive manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101301",
+    "message": "Missing isActive field"
+}
+```
+
+ 
+
+---
+
 ### Profil utilisateur
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Récupération du profil
@@ -750,17 +800,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modification des informations personnelles
@@ -821,17 +861,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Adresse email invalide (format invalide).
 
@@ -845,7 +875,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
@@ -927,17 +957,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Ancien mot de passe invalide.
 
@@ -984,7 +1004,7 @@ npm start
 | address | string | Adresse de l'utilisateur ou de l'entreprise | - |
 | zip | string | Code postal de l'utilisateur ou de l'entreprise | - |
 | city | string | Ville de l'utilisateur ou de l'entreprise | - |
-| country | string | Pays | - |
+| country | string | Pays de l'utilisateur ou de l'entreprise | - |
 
 ##### Requête réussie
 
@@ -1022,17 +1042,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Code postal invalid.
 
@@ -1105,17 +1115,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Numéro de TVA invalide.
 
@@ -1197,17 +1197,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -1263,17 +1253,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -1294,13 +1274,14 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | userId | string | ID de l'employé référent du client | - | 
-| name | string | Nom et prénom de l'utilisateur ou de l'entreprise | ✔️ | 
-| email | string | Email de l'utilisateur ou de l'entreprise | ✔️ | 
-| phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
-| address | string | Adresse de l'utilisateur ou de l'entreprise | - |
-| zip | string | Code postal de l'utilisateur ou de l'entreprise | - |
-| city | string | Ville de l'utilisateur ou de l'entreprise | - |
-| country | string | Pays | - |
+| name | string | Nom et prénom du client ou de l'entreprise | ✔️ | 
+| email | string | Email du client ou de l'entreprise | ✔️ | 
+| password | string | Mot de passe du client ou de l'entreprise | ✔️ | 
+| phone | string | Téléphone du client ou de l'entreprise | - |
+| address | string | Adresse du client ou de l'entreprise | - |
+| zip | string | Code postal du client ou de l'entreprise | - |
+| city | string | Ville du client ou de l'entreprise | - |
+| country | string | Pays du client ou de l'entreprise | - |
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
@@ -1317,6 +1298,7 @@ npm start
     "message": "Customer successfully created",
     "customer": {
         "id":"",
+        "userId": "",
         "avatar" : "",
         "name" : "",
         "email" : "",
@@ -1333,24 +1315,11 @@ npm start
         "numRCS" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "userId": "",
     }
 }
 ```
 
 ##### Requête échouée
-
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 **Condition** : Champs obligatoires manquants.
 
@@ -1376,15 +1345,27 @@ npm start
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "103152",
+    "code": "103153",
     "message": "Invalid phone number"
+}
+```
+
+**Condition** : Mot de passe invalide ou à faible sécurité.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103154",
+    "message": "Invalid password format"
 }
 ```
 
@@ -1395,7 +1376,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103154",
+    "code": "103155",
     "message": "Invalid TVA number"
 }
 ```
@@ -1407,7 +1388,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103155",
+    "code": "103156",
     "message": "Invalid SIRET number"
 }
 ```
@@ -1419,8 +1400,20 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103156",
+    "code": "103157",
     "message": "Invalid RCS number"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103158",
+    "message": "This email is already used"
 }
 ```
 
@@ -1444,13 +1437,13 @@ npm start
 | ------ | ------ | ------ | ------ |
 | id | string | ID du client dont on veut modifier les informations | ✔️ |
 | userId | string | ID de l'employé référent du client | - | 
-| name | string | Nom et prénom de l'utilisateur ou de l'entreprise | - | 
-| email | string | Email de l'utilisateur ou de l'entreprise | - | 
-| phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
-| address | string | Adresse de l'utilisateur ou de l'entreprise | - |
-| zip | string | Code postal de l'utilisateur ou de l'entreprise | - |
-| city | string | Ville de l'utilisateur ou de l'entreprise | - |
-| country | string | Pays | - |
+| name | string | Nom et prénom du client ou de l'entreprise | - | 
+| email | string | Email du client ou de l'entreprise | - | 
+| phone | string | Téléphone du client ou de l'entreprise | - |
+| address | string | Adresse du client ou de l'entreprise | - |
+| zip | string | Code postal du client ou de l'entreprise | - |
+| city | string | Ville du client ou de l'entreprise | - |
+| country | string | Pays du client ou de l'entreprise | - |
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
@@ -1468,6 +1461,7 @@ npm start
     "message": "Customer successfully updated",
     "user": {
         "id":"",
+        "userId": "",
         "avatar" : "",
         "name" : "",
         "email" : "",
@@ -1484,22 +1478,21 @@ npm start
         "numRCS" : "",
         "createdAt" : "",
         "updatedAt" : "",
-        "userId": "",
     }
 }
 ```
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
+**Condition** : Champs obligatoires manquants.
 
-**Code** : `401`
+**Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
+    "code": "103201",
+    "message": "Missing id field"
 }
 ```
 
@@ -1510,20 +1503,32 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103201",
+    "code": "103202",
     "message": "Invalid email addresse"
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "103202",
+    "code": "103203",
     "message": "Invalid phone number"
+}
+```
+
+**Condition** : Id du client invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103204",
+    "message": "Invalid customer id"
 }
 ```
 
@@ -1534,7 +1539,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103203",
+    "code": "103205",
     "message": "Invalid TVA number"
 }
 ```
@@ -1546,7 +1551,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103204",
+    "code": "103206",
     "message": "Invalid SIRET number"
 }
 ```
@@ -1558,8 +1563,20 @@ npm start
 ```json
 {
     "error": true,
-    "code": "103205",
+    "code": "103207",
     "message": "Invalid RCS number"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103208",
+    "message": "This email is already used"
 }
 ```
 
@@ -1571,7 +1588,7 @@ npm start
 
 **Route de suppression d'un client par un employé ou un gérant. La requête ne supprimera pas réellement l'utilisateur, elle le désactivera seulement.**
 
-**URL** : `/customer/:id/:email`
+**URL** : `/customer/:id`
 
 **Methode** : `DELETE`
 
@@ -1582,7 +1599,6 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | :id | string | ID du client à supprimer | ✔️ | 
-| :email | string | Email du client à supprimer | ✔️ | 
 
 ##### Requête réussie
 
@@ -1597,15 +1613,27 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
+ **Condition** : Données importantes manquantes.
+ 
+**Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
+    "code": "103251",
+    "message": "Missing id fields"
+}
+```
+
+ **Condition** : Id du client invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103252",
+    "message": "Invalid customer id"
 }
 ```
 
@@ -1627,11 +1655,10 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| idManager | string | ID du gérant | ✔️ |
-| name | string | Nom et prénom de l'utilisateur ou de l'entreprise | ✔️ | 
-| email | string | Email de l'utilisateur ou de l'entreprise | ✔️ | 
-| phone | string | Téléphone de l'utilisateur ou de l'entreprise | ✔️ |
-| password | string | Mot de passe de l'utilisateur ou de l'entreprise | ✔️ | 
+| name | string | Nom et prénom de l'employé | ✔️ | 
+| email | string | Email de l'employé | ✔️ | 
+| phone | string | Téléphone de l'employé | - |
+| password | string | Mot de passe de l'employé | ✔️ | 
 | role | string | Rôle de l'employé au sein de l'entreprise | ✔️ |
 
 ##### Requête réussie
@@ -1642,8 +1669,7 @@ npm start
 {
     "error": false,
     "message": "Employee successfully created",
-    "customer": {
-        "idManager": "",
+    "employee": {
         "id":"",
         "avatar" : "",
         "name" : "",
@@ -1657,18 +1683,6 @@ npm start
 ```
 
 ##### Requête échouée
-
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 **Condition** : Champs obligatoires manquants.
 
@@ -1694,7 +1708,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
@@ -1714,7 +1728,31 @@ npm start
 {
     "error": true,
     "code": "103304",
-    "message": "Invalid password"
+    "message": "Invalid password format"
+}
+```
+
+**Condition** : Rôle invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103305",
+    "message": "Invalid enterprise role"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103306",
+    "message": "This email is already used"
 }
 ```
 
@@ -1737,9 +1775,9 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | id | string | ID de l'employé à modifier | ✔️ | 
-| name | string | Nom et prénom de l'utilisateur ou de l'entreprise | - | 
-| email | string | Email de l'utilisateur ou de l'entreprise | - | 
-| phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
+| name | string | Nom et prénom de l'employé | - | 
+| email | string | Email de l'employé | - | 
+| phone | string | Téléphone de l'employé | - |
 | role | string | Rôle de l'employé au sein de l'entreprise | - |
 
 ##### Requête réussie
@@ -1750,8 +1788,7 @@ npm start
 {
     "error": false,
     "message": "Employee successfully updated",
-    "customer": {
-        "idManager": "",
+    "employee": {
         "id":"",
         "avatar" : "",
         "name" : "",
@@ -1766,24 +1803,15 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+**Condition** : Données importantes manquantes.
+ 
 **Code** : `400`
 
 ```json
 {
     "error": true,
     "code": "103351",
-    "message": "Missing important fields"
+    "message": "Missing id field"
 }
 ```
 
@@ -1799,7 +1827,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de téléphone invalide.
+**Condition** : Numéro de téléphone invalide (format invalide).
 
 **Code** : `400`
 
@@ -1811,6 +1839,42 @@ npm start
 }
 ```
 
+**Condition** : Id de l'employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103354",
+    "message": "Invalid employee id"
+}
+```
+
+**Condition** : Rôle invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103355",
+    "message": "Invalid enterprise role"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103356",
+    "message": "This email is already used"
+}
+```
+
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Supprimer un employé
@@ -1819,7 +1883,7 @@ npm start
 
 **Route de suppression d'un employé par un gérant. La requête ne supprimera pas réellement l'employé, elle le désactivera seulement.**
 
-**URL** : `/employee/:id/:email`
+**URL** : `/employee/:id`
 
 **Methode** : `DELETE`
 
@@ -1830,7 +1894,6 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | :id | string | ID de l'employé à supprimer | ✔️ | 
-| :email | string | Email de l'employé à supprimer | ✔️ | 
 
 ##### Requête réussie
 
@@ -1845,15 +1908,27 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
+**Condition** : Données importantes manquantes.
+ 
+**Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
+    "code": "103401",
+    "message": "Missing id fields"
+}
+```
+
+ **Condition** : Id de l'employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103402",
+    "message": "Invalid employee id"
 }
 ```
 
@@ -1911,17 +1986,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -1976,17 +2041,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2042,17 +2097,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Numéro de facture invalide
 
@@ -2126,17 +2171,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Numéro de facture invalide
 
@@ -2183,17 +2218,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2248,17 +2273,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2311,17 +2326,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2377,17 +2382,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Numéro de devis invalide
 
@@ -2461,17 +2456,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 **Condition** : Numéro de devis invalide
 
@@ -2518,17 +2503,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2575,17 +2550,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2635,17 +2600,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2680,17 +2635,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2729,7 +2674,7 @@ npm start
         "accountNumber": "",
         "file": "",
         "description": "",
-        "userId/idManager": "",
+        "userId": "",
         "createdAt": "",
         "updatedAt": "",
     },{...}]
@@ -2738,17 +2683,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2769,7 +2704,7 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | userExpenseNum | string | Numéro unique de dépense | ✔️ | 
-| userId/idManager | string | ID de l'employé ou du gérant créant la note de frais | ✔️ | 
+| userId | string | ID de l'employé ou du gérant créant la note de frais | ✔️ | 
 | price | number | Montant de la note de frais  | ✔️ | 
 | category | string | Category de la note de frais | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la note de frais | ✔️ | 
@@ -2792,7 +2727,7 @@ npm start
         "category": "",
         "file": "",
         "description": "",
-        "userId/idManager": "",
+        "userId": "",
         "createdAt": "",
         "updatedAt": "",
     }
@@ -2801,17 +2736,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2846,17 +2771,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2909,17 +2824,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -2979,17 +2884,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -3050,17 +2945,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -3096,17 +2981,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -3154,17 +3029,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3216,17 +3081,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3261,17 +3116,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 
@@ -3316,17 +3161,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
+ 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3372,17 +3207,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3417,17 +3241,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 
@@ -3468,7 +3281,7 @@ npm start
         "category": "",
         "file": "",
         "description": "",
-        "userId/idManager": "",
+        "userId": "",
         "projectId": "",
         "invoiced": "",
         "createdAt": "",
@@ -3479,17 +3292,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3510,7 +3312,7 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | expenseNum | string | Numéro unique de dépense | ✔️ | 
-| userId/idManager | string | ID de l'employé ou du gérant créant la dépense | ✔️ | 
+| userId | string | ID de l'employé ou du gérant créant la dépense | ✔️ | 
 | projectId | string | ID du projet lié à la dépense | ✔️ | 
 | price | number | Montant de la dépense  | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la dépense | ✔️ | 
@@ -3535,7 +3337,7 @@ npm start
         "category": "",
         "file": "",
         "description": "",
-        "userId/idManager": "",
+        "userId": "",
         "projectId": "",
         "invoiced": "",
         "createdAt": "",
@@ -3546,17 +3348,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3591,17 +3382,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 
@@ -3646,17 +3426,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3699,17 +3468,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3744,17 +3502,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3797,17 +3544,6 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Erreur d'authentification.
-
-**Code** : `401`
-
-```json
-{
-    "error": true,
-    "code": "401001",
-    "message": "Unauthorized to access to this resource"
-}
-```
 
 ### Paiement
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3906,3 +3642,29 @@ npm start
 ```
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+### Erreurs globales
+
+**Condition** : Erreur d'authentification.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401001",
+    "message": "Not authorized to access this resource"
+}
+```
+
+**Condition** : Rôle nécessaire pour faire la requête invalide.
+
+**Code** : `401`
+
+```json
+{
+    "error": true,
+    "code": "401002",
+    "message": "You do not have the required permissions"
+}
+```
