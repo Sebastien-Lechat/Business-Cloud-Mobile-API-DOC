@@ -810,11 +810,10 @@ npm start
         &quot;createdAt&quot; : &quot;&quot;,
         &quot;updatedAt&quot; : &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;verify_email&quot;: &quot;&quot;,
+        &quot;needVerifyEmail&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_7">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="modification-des-informations-personnelles">Modification des informations personnelles</h4>
@@ -892,11 +891,11 @@ npm start
         &quot;createdAt&quot; : &quot;&quot;,
         &quot;updatedAt&quot; : &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;verify_email&quot;: &quot;&quot;,
+        &quot;needVerifyEmail&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_8">Requête échouée</h5>
+<h5 id="requete-echouee_7">Requête échouée</h5>
 <p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -911,6 +910,22 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;102052&quot;,
     &quot;message&quot;: &quot;Invalid phone number&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Date de naisseance invalide (DD-MM-YYY).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102053&quot;,
+    &quot;message&quot;: &quot;Invalid date format&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : L'email est déjà utilisé par un autre utilisateur.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102054&quot;,
+    &quot;message&quot;: &quot;This email is already used&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Erreur lors de l'enregistrement de l'avatar.</p>
@@ -986,16 +1001,24 @@ npm start
         &quot;createdAt&quot; : &quot;&quot;,
         &quot;updatedAt&quot; : &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;verify_email&quot;: &quot;&quot;,
+        &quot;needVerifyEmail&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_9">Requête échouée</h5>
-<p><strong>Condition</strong> : Ancien mot de passe invalide.</p>
+<h5 id="requete-echouee_8">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;102101&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Ancien mot de passe invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102102&quot;,
     &quot;message&quot;: &quot;Invalid old password&quot;
 }
 </code></pre>
@@ -1003,8 +1026,8 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;102102&quot;,
-    &quot;message&quot;: &quot;Invalid new password&quot;
+    &quot;code&quot;: &quot;102103&quot;,
+    &quot;message&quot;: &quot;Invalid password format&quot;
 }
 </code></pre>
 <hr />
@@ -1078,17 +1101,17 @@ npm start
         &quot;createdAt&quot; : &quot;&quot;,
         &quot;updatedAt&quot; : &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;verify_email&quot;: &quot;&quot;,
+        &quot;needVerifyEmail&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_10">Requête échouée</h5>
-<p><strong>Condition</strong> : Code postal invalid.</p>
+<h5 id="requete-echouee_9">Requête échouée</h5>
+<p><strong>Condition</strong> : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;102151&quot;,
-    &quot;message&quot;: &quot;Invalid zip code&quot;
+    &quot;message&quot;: &quot;You cannot edit your address with this account&quot;
 }
 </code></pre>
 <hr />
@@ -1110,6 +1133,12 @@ npm start
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>activity</td>
+<td>string</td>
+<td>Activité de l'entreprise</td>
+<td>-</td>
+</tr>
 <tr>
 <td>numTVA</td>
 <td>string</td>
@@ -1162,16 +1191,24 @@ npm start
         &quot;createdAt&quot; : &quot;&quot;,
         &quot;updatedAt&quot; : &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;verify_email&quot;: &quot;&quot;,
+        &quot;needVerifyEmail&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_11">Requête échouée</h5>
-<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<h5 id="requete-echouee_10">Requête échouée</h5>
+<p><strong>Condition</strong> : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;102201&quot;,
+    &quot;message&quot;: &quot;You cannot edit your enterprise with this account&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Numéro de TVA invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102202&quot;,
     &quot;message&quot;: &quot;Invalid TVA number&quot;
 }
 </code></pre>
@@ -1179,7 +1216,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;102202&quot;,
+    &quot;code&quot;: &quot;102203&quot;,
     &quot;message&quot;: &quot;Invalid SIRET number&quot;
 }
 </code></pre>
@@ -1187,7 +1224,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;102203&quot;,
+    &quot;code&quot;: &quot;102204&quot;,
     &quot;message&quot;: &quot;Invalid RCS number&quot;
 }
 </code></pre>
@@ -1236,7 +1273,6 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_12">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="recuperation-dun-utilisateur">Récupération d'un utilisateur</h4>
@@ -1291,7 +1327,6 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_13">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-un-client">Créer un client</h4>
@@ -1424,7 +1459,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_14">Requête échouée</h5>
+<h5 id="requete-echouee_11">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1487,6 +1522,14 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;103158&quot;,
     &quot;message&quot;: &quot;This email is already used&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id employé invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103159&quot;,
+    &quot;message&quot;: &quot;Invalid employee id&quot;
 }
 </code></pre>
 <hr />
@@ -1621,7 +1664,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_15">Requête échouée</h5>
+<h5 id="requete-echouee_12">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1686,6 +1729,14 @@ npm start
     &quot;message&quot;: &quot;This email is already used&quot;
 }
 </code></pre>
+<p><strong>Condition</strong> : Id employé invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103209&quot;,
+    &quot;message&quot;: &quot;Invalid employee id&quot;
+}
+</code></pre>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-un-client">Supprimer un client</h4>
@@ -1720,8 +1771,8 @@ npm start
     &quot;message&quot;: &quot;Customer successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_16">Requête échouée</h5>
-<p><strong>Condition</strong> : Données importantes manquantes.</p>
+<h5 id="requete-echouee_13">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -1805,7 +1856,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_17">Requête échouée</h5>
+<h5 id="requete-echouee_14">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1922,8 +1973,8 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_18">Requête échouée</h5>
-<p><strong>Condition</strong> : Données importantes manquantes.</p>
+<h5 id="requete-echouee_15">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -2005,8 +2056,8 @@ npm start
     &quot;message&quot;: &quot;Employee successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_19">Requête échouée</h5>
-<p><strong>Condition</strong> : Données importantes manquantes.</p>
+<h5 id="requete-echouee_16">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
@@ -2076,7 +2127,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_20">Requête échouée</h5>
+<h5 id="requete-echouee_17">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="recuperation-dune-facture">Récupération d'une facture</h4>
@@ -2131,7 +2182,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_21">Requête échouée</h5>
+<h5 id="requete-echouee_18">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-une-facture">Créer une facture</h4>
@@ -2217,7 +2268,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_22">Requête échouée</h5>
+<h5 id="requete-echouee_19">Requête échouée</h5>
 <p><strong>Condition</strong> : Numéro de facture invalide</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2322,7 +2373,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_23">Requête échouée</h5>
+<h5 id="requete-echouee_20">Requête échouée</h5>
 <p><strong>Condition</strong> : Numéro de facture invalide</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2365,7 +2416,7 @@ npm start
     &quot;message&quot;: &quot;Bill successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_24">Requête échouée</h5>
+<h5 id="requete-echouee_21">Requête échouée</h5>
 <hr />
 <h3 id="devis">Devis</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2419,7 +2470,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_25">Requête échouée</h5>
+<h5 id="requete-echouee_22">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="recuperation-dun-devis">Récupération d'un devis</h4>
@@ -2472,7 +2523,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_26">Requête échouée</h5>
+<h5 id="requete-echouee_23">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-un-devis">Créer un devis</h4>
@@ -2558,7 +2609,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_27">Requête échouée</h5>
+<h5 id="requete-echouee_24">Requête échouée</h5>
 <p><strong>Condition</strong> : Numéro de devis invalide</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2663,7 +2714,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_28">Requête échouée</h5>
+<h5 id="requete-echouee_25">Requête échouée</h5>
 <p><strong>Condition</strong> : Numéro de devis invalide</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2706,7 +2757,7 @@ npm start
     &quot;message&quot;: &quot;Estimate successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_29">Requête échouée</h5>
+<h5 id="requete-echouee_26">Requête échouée</h5>
 <hr />
 <h3 id="articles">Articles</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2752,7 +2803,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_30">Requête échouée</h5>
+<h5 id="requete-echouee_27">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-un-article">Créer un article</h4>
@@ -2822,7 +2873,7 @@ npm start
 
 }
 </code></pre>
-<h5 id="requete-echouee_31">Requête échouée</h5>
+<h5 id="requete-echouee_28">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-un-article">Supprimer un article</h4>
@@ -2857,7 +2908,7 @@ npm start
     &quot;message&quot;: &quot;Article successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_32">Requête échouée</h5>
+<h5 id="requete-echouee_29">Requête échouée</h5>
 <hr />
 <h3 id="notes-de-frais">Notes de frais</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2904,7 +2955,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_33">Requête échouée</h5>
+<h5 id="requete-echouee_30">Requête échouée</h5>
 <hr />
 <h4 id="creer-une-note-de-frais">Créer une note de frais</h4>
 <hr />
@@ -2986,7 +3037,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_34">Requête échouée</h5>
+<h5 id="requete-echouee_31">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-une-note-de-frais">Supprimer une note de frais</h4>
@@ -3021,7 +3072,7 @@ npm start
     &quot;message&quot;: &quot;Expense employee successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_35">Requête échouée</h5>
+<h5 id="requete-echouee_32">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="projets">Projets</h3>
@@ -3072,7 +3123,7 @@ npm start
 }
 
 </code></pre>
-<h5 id="requete-echouee_36">Requête échouée</h5>
+<h5 id="requete-echouee_33">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-un-projet">Créer un projet</h4>
@@ -3181,7 +3232,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_37">Requête échouée</h5>
+<h5 id="requete-echouee_34">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="modifier-un-projet">Modifier un projet</h4>
@@ -3296,7 +3347,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_38">Requête échouée</h5>
+<h5 id="requete-echouee_35">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-un-projet">Supprimer un projet</h4>
@@ -3331,7 +3382,7 @@ npm start
     &quot;message&quot;: &quot;Project successfully deleted&quot;,
 }
 </code></pre>
-<h5 id="requete-echouee_39">Requête échouée</h5>
+<h5 id="requete-echouee_36">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="taches">Tâches</h3>
@@ -3377,7 +3428,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_40">Requête échouée</h5>
+<h5 id="requete-echouee_37">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-une-tache">Créer une tâche</h4>
@@ -3464,7 +3515,7 @@ npm start
     },
 }
 </code></pre>
-<h5 id="requete-echouee_41">Requête échouée</h5>
+<h5 id="requete-echouee_38">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-une-tache">Supprimer une tâche</h4>
@@ -3499,7 +3550,7 @@ npm start
     &quot;message&quot;: &quot;Task successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_42">Requête échouée</h5>
+<h5 id="requete-echouee_39">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="temps">Temps</h3>
@@ -3542,7 +3593,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_43">Requête échouée</h5>
+<h5 id="requete-echouee_40">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-un-enregistrement-de-temps">Créer un enregistrement de temps</h4>
@@ -3608,7 +3659,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_44">Requête échouée</h5>
+<h5 id="requete-echouee_41">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-un-enregistrement-de-temps">Supprimer un enregistrement de temps</h4>
@@ -3643,7 +3694,7 @@ npm start
     &quot;message&quot;: &quot;Time successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_45">Requête échouée</h5>
+<h5 id="requete-echouee_42">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="depenses">Dépenses</h3>
@@ -3693,7 +3744,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_46">Requête échouée</h5>
+<h5 id="requete-echouee_43">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-une-depense">Créer une dépense</h4>
@@ -3790,7 +3841,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_47">Requête échouée</h5>
+<h5 id="requete-echouee_44">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-une-depense">Supprimer une dépense</h4>
@@ -3825,7 +3876,7 @@ npm start
     &quot;message&quot;: &quot;Expense successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_48">Requête échouée</h5>
+<h5 id="requete-echouee_45">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="conversations">Conversations</h3>
@@ -3868,7 +3919,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_49">Requête échouée</h5>
+<h5 id="requete-echouee_46">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-une-conversation">Créer une conversation</h4>
@@ -3916,7 +3967,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_50">Requête échouée</h5>
+<h5 id="requete-echouee_47">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-une-conversation">Supprimer une conversation</h4>
@@ -3951,7 +4002,7 @@ npm start
     &quot;message&quot;: &quot;Chat successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_51">Requête échouée</h5>
+<h5 id="requete-echouee_48">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="liste-des-messages">Liste des messages</h4>
@@ -3994,7 +4045,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_52">Requête échouée</h5>
+<h5 id="requete-echouee_49">Requête échouée</h5>
 <h3 id="paiement">Paiement</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="effectuer-un-paiement">Effectuer un paiement</h4>
@@ -4046,7 +4097,7 @@ npm start
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_53">Requête échouée</h5>
+<h5 id="requete-echouee_50">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4107,7 +4158,7 @@ npm start
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_54">Requête échouée</h5>
+<h5 id="requete-echouee_51">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4240,5 +4291,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-03 10:17:25.097659+00:00
+Build Date UTC : 2021-04-08 06:12:31.603446+00:00
 -->

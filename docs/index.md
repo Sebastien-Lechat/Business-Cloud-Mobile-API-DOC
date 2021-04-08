@@ -793,14 +793,11 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "verify_email": "",
+        "needVerifyEmail": "",
     }
 }
 ```
 
-##### Requête échouée
-
- 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modification des informations personnelles
@@ -854,14 +851,12 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "verify_email": "",
+        "needVerifyEmail": "",
     }
 }
 ```
 
 ##### Requête échouée
-
- 
 
 **Condition** : Adresse email invalide (format invalide).
 
@@ -884,6 +879,30 @@ npm start
     "error": true,
     "code": "102052",
     "message": "Invalid phone number"
+}
+```
+
+**Condition** : Date de naisseance invalide (DD-MM-YYY).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "102053",
+    "message": "Invalid date format"
+}
+```
+
+**Condition** : L'email est déjà utilisé par un autre utilisateur.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "102054",
+    "message": "This email is already used"
 }
 ```
 
@@ -950,14 +969,24 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "verify_email": "",
+        "needVerifyEmail": "",
     }
 }
 ```
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "102101",
+    "message": "Missing important fields"
+}
+```
 
 **Condition** : Ancien mot de passe invalide.
 
@@ -966,7 +995,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "102101",
+    "code": "102102",
     "message": "Invalid old password"
 }
 ```
@@ -978,8 +1007,8 @@ npm start
 ```json
 {
     "error": true,
-    "code": "102102",
-    "message": "Invalid new password"
+    "code": "102103",
+    "message": "Invalid password format"
 }
 ```
 
@@ -1035,16 +1064,14 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "verify_email": "",
+        "needVerifyEmail": "",
     }
 }
 ```
 
 ##### Requête échouée
 
- 
-
-**Condition** : Code postal invalid.
+**Condition** : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.
 
 **Code** : `400`
 
@@ -1052,7 +1079,7 @@ npm start
 {
     "error": true,
     "code": "102151",
-    "message": "Invalid zip code"
+    "message": "You cannot edit your address with this account"
 }
 ```
 
@@ -1074,6 +1101,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
+| activity | string | Activité de l'entreprise | - |
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
@@ -1108,14 +1136,24 @@ npm start
         "createdAt" : "",
         "updatedAt" : "",
         "userId": "",
-        "verify_email": "",
+        "needVerifyEmail": "",
     }
 }
 ```
 
 ##### Requête échouée
 
- 
+**Condition** : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "102201",
+    "message": "You cannot edit your enterprise with this account"
+}
+```
 
 **Condition** : Numéro de TVA invalide.
 
@@ -1124,7 +1162,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "102201",
+    "code": "102202",
     "message": "Invalid TVA number"
 }
 ```
@@ -1136,7 +1174,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "102202",
+    "code": "102203",
     "message": "Invalid SIRET number"
 }
 ```
@@ -1148,7 +1186,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "102203",
+    "code": "102204",
     "message": "Invalid RCS number"
 }
 ```
@@ -1195,10 +1233,6 @@ npm start
 }
 ```
 
-##### Requête échouée
-
- 
-
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Récupération d'un utilisateur
@@ -1218,7 +1252,6 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | :id | string | ID de l'utilisateur cible | ✔️ | 
-
 
 ##### Requête réussie
 
@@ -1250,10 +1283,6 @@ npm start
     }
 }
 ```
-
-##### Requête échouée
-
- 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -1414,6 +1443,18 @@ npm start
     "error": true,
     "code": "103158",
     "message": "This email is already used"
+}
+```
+
+**Condition** : Id employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103159",
+    "message": "Invalid employee id"
 }
 ```
 
@@ -1580,6 +1621,18 @@ npm start
 }
 ```
 
+**Condition** : Id employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103209",
+    "message": "Invalid employee id"
+}
+```
+
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Supprimer un client
@@ -1613,7 +1666,7 @@ npm start
 
 ##### Requête échouée
 
- **Condition** : Données importantes manquantes.
+ **Condition** : Champs obligatoires manquants.
  
 **Code** : `400`
 
@@ -1803,7 +1856,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Données importantes manquantes.
+**Condition** : Champs obligatoires manquants.
  
 **Code** : `400`
 
@@ -1908,7 +1961,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Données importantes manquantes.
+**Condition** : Champs obligatoires manquants.
  
 **Code** : `400`
 
