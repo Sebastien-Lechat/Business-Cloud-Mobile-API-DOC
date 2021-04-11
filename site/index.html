@@ -2126,7 +2126,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2180,7 +2179,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2255,12 +2253,6 @@ npm start
 <td>Date limite à laquelle le client peut payer la facture</td>
 <td>✔️</td>
 </tr>
-<tr>
-<td>taxe</td>
-<td>string</td>
-<td>Taxe appliquer sur la facture de manière globale</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
 <h5 id="requete-reussie_22">Requête réussie</h5>
@@ -2276,7 +2268,6 @@ npm start
         &quot;billNum&quot;: &quot;&quot;,
         &quot;articles&quot;: [],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2332,14 +2323,6 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;104156&quot;,
     &quot;message&quot;: &quot;Invalid deadline&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Taxe globale de la facture</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;104157&quot;,
-    &quot;message&quot;: &quot;Invalid taxe rate&quot;
 }
 </code></pre>
 <hr />
@@ -2403,12 +2386,6 @@ npm start
 <td>Date limite à laquelle le client peut payer la facture</td>
 <td>-</td>
 </tr>
-<tr>
-<td>taxe</td>
-<td>string</td>
-<td>Taxe appliquer sur la facture de manière globale</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
 <h5 id="requete-reussie_23">Requête réussie</h5>
@@ -2427,7 +2404,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2487,19 +2463,11 @@ npm start
     &quot;message&quot;: &quot;Invalid deadline&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Taxe globale de la facture</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;104207&quot;,
-    &quot;message&quot;: &quot;Invalid taxe rate&quot;
-}
-</code></pre>
 <p><strong>Condition</strong> : Format de l'article invalide (ID ou quantité manquante)</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;104208&quot;,
+    &quot;code&quot;: &quot;104207&quot;,
     &quot;message&quot;: &quot;Invalid article format&quot;
 }
 </code></pre>
@@ -2507,7 +2475,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;104209&quot;,
+    &quot;code&quot;: &quot;104208&quot;,
     &quot;message&quot;: &quot;Invalid article id&quot;
 }
 </code></pre>
@@ -2606,7 +2574,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2659,7 +2626,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2732,12 +2698,6 @@ npm start
 <td>Date limite à laquelle le client peut accepter le devis</td>
 <td>✔️</td>
 </tr>
-<tr>
-<td>taxe</td>
-<td>string</td>
-<td>Taxe appliquer sur le devis de manière globale</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
 <h5 id="requete-reussie_27">Requête réussie</h5>
@@ -2753,7 +2713,6 @@ npm start
         &quot;estimateNum&quot;: &quot;&quot;,
         &quot;articles&quot;: [],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2809,14 +2768,6 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;105156&quot;,
     &quot;message&quot;: &quot;Invalid deadline&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Taxe globale de la facture</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;105157&quot;,
-    &quot;message&quot;: &quot;Invalid taxe rate&quot;
 }
 </code></pre>
 <hr />
@@ -2880,12 +2831,6 @@ npm start
 <td>Date limite à laquelle le client peut payer le devis</td>
 <td>-</td>
 </tr>
-<tr>
-<td>taxe</td>
-<td>string</td>
-<td>Taxe appliquer sur le devis de manière globale</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
 <h5 id="requete-reussie_28">Requête réussie</h5>
@@ -2904,7 +2849,6 @@ npm start
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
         &quot;currency&quot;: &quot;&quot;,
-        &quot;taxe&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2964,19 +2908,11 @@ npm start
     &quot;message&quot;: &quot;Invalid deadline&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Taxe globale de la facture</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;105207&quot;,
-    &quot;message&quot;: &quot;Invalid taxe rate&quot;
-}
-</code></pre>
 <p><strong>Condition</strong> : Format de l'article invalide (ID ou quantité manquante)</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;105208&quot;,
+    &quot;code&quot;: &quot;105207&quot;,
     &quot;message&quot;: &quot;Invalid article format&quot;
 }
 </code></pre>
@@ -2984,7 +2920,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;105209&quot;,
+    &quot;code&quot;: &quot;105208&quot;,
     &quot;message&quot;: &quot;Invalid article id&quot;
 }
 </code></pre>
@@ -4652,5 +4588,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-11 10:32:36.119823+00:00
+Build Date UTC : 2021-04-11 13:52:52.183477+00:00
 -->

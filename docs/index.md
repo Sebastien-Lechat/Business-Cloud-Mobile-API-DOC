@@ -2039,7 +2039,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2090,7 +2089,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2140,7 +2138,6 @@ npm start
 | billNum | string | Numéro unique de facture | ✔️ | 
 | currency | string | Monnaie avec laquelle la facture sera généré | ✔️ |
 | deadline | date | Date limite à laquelle le client peut payer la facture | ✔️ |
-| taxe | string | Taxe appliquer sur la facture de manière globale | - |
 
 ##### Requête réussie
 
@@ -2158,7 +2155,6 @@ npm start
         "billNum": "",
         "articles": [],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2242,18 +2238,6 @@ npm start
 }
 ```
 
-**Condition** : Taxe globale de la facture
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "104157",
-    "message": "Invalid taxe rate"
-}
-```
-
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modifier une facture
@@ -2279,7 +2263,6 @@ npm start
 | articles | array | Tableaux de l'ensemble des articles de la facture | - | 
 | currency | string | Monnaie avec laquelle la facture sera généré | - |
 | deadline | date | Date limite à laquelle le client peut payer la facture | - |
-| taxe | string | Taxe appliquer sur la facture de manière globale | - |
 
 ##### Requête réussie
 
@@ -2300,7 +2283,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2386,18 +2368,6 @@ npm start
 }
 ```
 
-**Condition** : Taxe globale de la facture
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "104207",
-    "message": "Invalid taxe rate"
-}
-```
-
 **Condition** : Format de l'article invalide (ID ou quantité manquante)
 
 **Code** : `400`
@@ -2405,7 +2375,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104208",
+    "code": "104207",
     "message": "Invalid article format"
 }
 ```
@@ -2417,7 +2387,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104209",
+    "code": "104208",
     "message": "Invalid article id"
 }
 ```
@@ -2519,7 +2489,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2572,7 +2541,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2620,7 +2588,6 @@ npm start
 | estimateNum | string | Numéro unique de devis | ✔️ | 
 | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ |
 | deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |
-| taxe | string | Taxe appliquer sur le devis de manière globale | - |
 
 ##### Requête réussie
 
@@ -2638,7 +2605,6 @@ npm start
         "estimateNum": "",
         "articles": [],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2722,18 +2688,6 @@ npm start
 }
 ```
 
-**Condition** : Taxe globale de la facture
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "105157",
-    "message": "Invalid taxe rate"
-}
-```
-
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modifier un devis
@@ -2759,7 +2713,6 @@ npm start
 | articles | array | Tableaux de l'ensemble des articles du devis | - | 
 | currency | string | Monnaie avec laquelle le devis sera généré | - |
 | deadline | date | Date limite à laquelle le client peut payer le devis | - |
-| taxe | string | Taxe appliquer sur le devis de manière globale | - |
 
 ##### Requête réussie
 
@@ -2780,7 +2733,6 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
-        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2866,18 +2818,6 @@ npm start
 }
 ```
 
-**Condition** : Taxe globale de la facture
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "105207",
-    "message": "Invalid taxe rate"
-}
-```
-
 **Condition** : Format de l'article invalide (ID ou quantité manquante)
 
 **Code** : `400`
@@ -2885,7 +2825,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "105208",
+    "code": "105207",
     "message": "Invalid article format"
 }
 ```
@@ -2897,7 +2837,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "105209",
+    "code": "105208",
     "message": "Invalid article id"
 }
 ```
