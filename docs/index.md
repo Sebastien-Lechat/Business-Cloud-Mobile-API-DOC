@@ -1283,6 +1283,19 @@ npm start
     }
 }
 ```
+##### Requête échouée
+
+**Condition** : Id utilisateur invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104101",
+    "message": "Invalid user id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -1674,7 +1687,7 @@ npm start
 {
     "error": true,
     "code": "103251",
-    "message": "Missing id fields"
+    "message": "Missing id field"
 }
 ```
 
@@ -1969,7 +1982,7 @@ npm start
 {
     "error": true,
     "code": "103401",
-    "message": "Missing id fields"
+    "message": "Missing id field"
 }
 ```
 
@@ -2026,6 +2039,7 @@ npm start
             "quantity": "",
         },{...}],
         "currency": "",
+        "taxe": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2036,10 +2050,6 @@ npm start
     },{...}]
 }
 ```
-
-##### Requête échouée
-
- 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2094,7 +2104,17 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : ID de facture invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104101",
+    "message": "Invalid bill id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2150,7 +2170,53 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104151",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104152",
+    "message": "Invalid bill status"
+}
+```
+
+**Condition** : Id du client invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104153",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : ID de l'entreprise invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104154",
+    "message": "Invalid enterprise id"
+}
+```
 
 **Condition** : Numéro de facture invalide
 
@@ -2159,8 +2225,32 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104151",
+    "code": "104155",
     "message": "Invalid bill number"
+}
+```
+
+**Condition** : Date d'échéance invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104156",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Taxe globale de la facture
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104157",
+    "message": "Invalid taxe rate"
 }
 ```
 
@@ -2224,7 +2314,53 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104201",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104202",
+    "message": "Invalid bill status"
+}
+```
+
+**Condition** : Id du client invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104203",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : ID de l'entreprise invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104204",
+    "message": "Invalid enterprise id"
+}
+```
 
 **Condition** : Numéro de facture invalide
 
@@ -2233,8 +2369,56 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104201",
+    "code": "104205",
     "message": "Invalid bill number"
+}
+```
+
+**Condition** : Date d'échéance invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104206",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Taxe globale de la facture
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104207",
+    "message": "Invalid taxe rate"
+}
+```
+
+**Condition** : Format de l'article invalide (ID ou quantité manquante)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104208",
+    "message": "Invalid article format"
+}
+```
+
+**Condition** : ID d'un article invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104209",
+    "message": "Invalid article id"
 }
 ```
 
@@ -2256,7 +2440,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| :id | string | ID de la à supprimer | ✔️ | 
+| :id | string | ID de la facture à supprimer | ✔️ | 
 
 ##### Requête réussie
 
@@ -2271,10 +2455,31 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104251",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de facture invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104252",
+    "message": "Invalid bill id"
+}
+```
 
 ---
-
 ### Devis
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Liste des devis
@@ -2379,7 +2584,17 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : ID de devis invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105101",
+    "message": "Invalid estimate id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2435,7 +2650,53 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105151",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105152",
+    "message": "Invalid estimate status"
+}
+```
+
+**Condition** : Id du client invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105153",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : ID de l'entreprise invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105154",
+    "message": "Invalid enterprise id"
+}
+```
 
 **Condition** : Numéro de devis invalide
 
@@ -2444,8 +2705,32 @@ npm start
 ```json
 {
     "error": true,
-    "code": "105151",
+    "code": "105155",
     "message": "Invalid estimate number"
+}
+```
+
+**Condition** : Date d'échéance invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105156",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Taxe globale de la facture
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105157",
+    "message": "Invalid taxe rate"
 }
 ```
 
@@ -2509,7 +2794,53 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105201",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105202",
+    "message": "Invalid estimate status"
+}
+```
+
+**Condition** : Id du client invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105203",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : ID de l'entreprise invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105204",
+    "message": "Invalid enterprise id"
+}
+```
 
 **Condition** : Numéro de devis invalide
 
@@ -2518,8 +2849,56 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104201",
+    "code": "105205",
     "message": "Invalid estimate number"
+}
+```
+
+**Condition** : Date d'échéance invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105206",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Taxe globale de la facture
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105207",
+    "message": "Invalid taxe rate"
+}
+```
+
+**Condition** : Format de l'article invalide (ID ou quantité manquante)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105208",
+    "message": "Invalid article format"
+}
+```
+
+**Condition** : ID d'un article invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105209",
+    "message": "Invalid article id"
 }
 ```
 
@@ -2556,7 +2935,29 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105251",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de devis invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105252",
+    "message": "Invalid estimate id"
+}
+```
 
 ---
 
@@ -2589,7 +2990,7 @@ npm start
     "error": false,
     "message": "Successful articles acquisition",
     "articles": [{
-        "id": "",
+        "_id": "",
         "name": "",
         "tva": "",
         "price": "",
@@ -2600,10 +3001,6 @@ npm start
     },{...}]
 }
 ```
-
-##### Requête échouée
-
- 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2638,7 +3035,7 @@ npm start
     "error": false,
     "message": "Article successfully created",
     "article": {
-        "id": "",
+        "_id": "",
         "name": "",
         "tva": "",
         "price": "",
@@ -2653,7 +3050,53 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106101",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Numéro de compte invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106102",
+    "message": "Invalid account number"
+}
+```
+
+**Condition** : Format du prix invalide (Float)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106103",
+    "message": "Invalid price format"
+}
+```
+
+**Condition** : Format de la taxe invalide (Float)
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106104",
+    "message": "Invalid tva format"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -2688,7 +3131,29 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de l'article invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "106152",
+    "message": "Invalid article id"
+}
+```
 
 ---
 
@@ -3469,16 +3934,13 @@ npm start
     "message": "Successful conversation acquisition",
     "conversations": [{
         "id": "",
-        "idUser": "",
-        "idUser1": "",
+        "userId": "",
+        "userId1": "",
         "createdAt": "",
         "updatedAt": "",
     },{...}]
 }
 ```
-
-##### Requête échouée
-
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3498,8 +3960,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| idUser | string | ID du premier utilisateur de la conversation | ✔️ |
-| idUser1 | string | ID du second utilisateur de la conversation | ✔️ | 
+| userId | string | ID de l' utilisateur avec lequel on veut créer une conversation | ✔️ |
 
 ##### Requête réussie
 
@@ -3511,8 +3972,8 @@ npm start
     "message": "Conversation successfully created",
     "conversation": {
         "id": "",
-        "idUser": "",
-        "idUser1": "",
+        "userId": "",
+        "userId1": "",
         "createdAt": "",
         "updatedAt": "",
     }
@@ -3521,6 +3982,40 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112101",
+    "message": "Missing important fields"
+}
+```
+**Condition** : Si l'on créer une conversation avec soit même
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112102",
+    "message": "Can't create conversation with yourself"
+}
+```
+
+**Condition** : ID de l'utilisateur invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112103",
+    "message": "Invalid user id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3549,12 +4044,35 @@ npm start
 ```json
 {
     "error": false,
-    "message": "Chat successfully deleted"
+    "message": "Conversation successfully deleted"
 }
 ```
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la conversation invalide
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112152",
+    "message": "Invalid conversation id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3586,7 +4104,7 @@ npm start
     "message": "Successful messages acquisition",
     "conversations": [{
         "id": "",
-        "idUser": "",
+        "userId": "",
         "idConversation": "",
         "text": "",
         "createdAt": "",
