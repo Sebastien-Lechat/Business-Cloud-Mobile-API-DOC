@@ -2102,7 +2102,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : ID de facture invalide
+**Condition** : ID de facture invalide.
 
 **Code** : `400`
 
@@ -2166,7 +2166,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2178,7 +2178,7 @@ npm start
 }
 ```
 
-**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard)
+**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard).
 
 **Code** : `400`
 
@@ -2190,7 +2190,7 @@ npm start
 }
 ```
 
-**Condition** : Id du client invalide
+**Condition** : Id du client invalide.
 
 **Code** : `400`
 
@@ -2202,7 +2202,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'entreprise invalide
+**Condition** : ID de l'entreprise invalide.
 
 **Code** : `400`
 
@@ -2214,7 +2214,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de facture invalide
+**Condition** : Numéro de facture invalide.
 
 **Code** : `400`
 
@@ -2226,7 +2226,7 @@ npm start
 }
 ```
 
-**Condition** : Date d'échéance invalide
+**Condition** : Date d'échéance invalide.
 
 **Code** : `400`
 
@@ -2296,7 +2296,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2308,7 +2308,7 @@ npm start
 }
 ```
 
-**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard)
+**Condition** : Statut de facture invalide (Non payée, Partiellement payée, Payée, En retard).
 
 **Code** : `400`
 
@@ -2320,7 +2320,7 @@ npm start
 }
 ```
 
-**Condition** : Id du client invalide
+**Condition** : Id du client invalide.
 
 **Code** : `400`
 
@@ -2332,7 +2332,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'entreprise invalide
+**Condition** : ID de l'entreprise invalide.
 
 **Code** : `400`
 
@@ -2344,7 +2344,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de facture invalide
+**Condition** : Numéro de facture invalide.
 
 **Code** : `400`
 
@@ -2356,7 +2356,7 @@ npm start
 }
 ```
 
-**Condition** : Date d'échéance invalide
+**Condition** : Date d'échéance invalide.
 
 **Code** : `400`
 
@@ -2368,7 +2368,7 @@ npm start
 }
 ```
 
-**Condition** : Format de l'article invalide (ID ou quantité manquante)
+**Condition** : Format de l'article invalide (ID ou quantité manquante).
 
 **Code** : `400`
 
@@ -2380,7 +2380,7 @@ npm start
 }
 ```
 
-**Condition** : ID d'un article invalide
+**Condition** : ID d'un article invalide.
 
 **Code** : `400`
 
@@ -2425,7 +2425,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2437,7 +2437,7 @@ npm start
 }
 ```
 
-**Condition** : ID de facture invalide
+**Condition** : ID de facture invalide.
 
 **Code** : `400`
 
@@ -2552,7 +2552,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : ID de devis invalide
+**Condition** : ID de devis invalide.
 
 **Code** : `400`
 
@@ -2616,7 +2616,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2628,7 +2628,7 @@ npm start
 }
 ```
 
-**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard)
+**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard).
 
 **Code** : `400`
 
@@ -2640,7 +2640,7 @@ npm start
 }
 ```
 
-**Condition** : Id du client invalide
+**Condition** : Id du client invalide.
 
 **Code** : `400`
 
@@ -2652,7 +2652,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'entreprise invalide
+**Condition** : ID de l'entreprise invalide.
 
 **Code** : `400`
 
@@ -2664,7 +2664,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de devis invalide
+**Condition** : Numéro de devis invalide.
 
 **Code** : `400`
 
@@ -2676,7 +2676,7 @@ npm start
 }
 ```
 
-**Condition** : Date d'échéance invalide
+**Condition** : Date d'échéance invalide.
 
 **Code** : `400`
 
@@ -2746,7 +2746,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2758,7 +2758,7 @@ npm start
 }
 ```
 
-**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard)
+**Condition** : Statut du devis invalide (En attente, Refusé, Accepté, En retard).
 
 **Code** : `400`
 
@@ -2770,7 +2770,7 @@ npm start
 }
 ```
 
-**Condition** : Id du client invalide
+**Condition** : Id du client invalide.
 
 **Code** : `400`
 
@@ -2782,7 +2782,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'entreprise invalide
+**Condition** : ID de l'entreprise invalide.
 
 **Code** : `400`
 
@@ -2794,7 +2794,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de devis invalide
+**Condition** : Numéro de devis invalide.
 
 **Code** : `400`
 
@@ -2806,7 +2806,7 @@ npm start
 }
 ```
 
-**Condition** : Date d'échéance invalide
+**Condition** : Date d'échéance invalide.
 
 **Code** : `400`
 
@@ -2818,7 +2818,7 @@ npm start
 }
 ```
 
-**Condition** : Format de l'article invalide (ID ou quantité manquante)
+**Condition** : Format de l'article invalide (ID ou quantité manquante).
 
 **Code** : `400`
 
@@ -2830,7 +2830,7 @@ npm start
 }
 ```
 
-**Condition** : ID d'un article invalide
+**Condition** : ID d'un article invalide.
 
 **Code** : `400`
 
@@ -2875,7 +2875,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -2887,7 +2887,7 @@ npm start
 }
 ```
 
-**Condition** : ID de devis invalide
+**Condition** : ID de devis invalide.
 
 **Code** : `400`
 
@@ -2990,7 +2990,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -3002,7 +3002,7 @@ npm start
 }
 ```
 
-**Condition** : Numéro de compte invalide
+**Condition** : Numéro de compte invalide.
 
 **Code** : `400`
 
@@ -3014,7 +3014,7 @@ npm start
 }
 ```
 
-**Condition** : Format du prix invalide (Float)
+**Condition** : Format du prix invalide (Float).
 
 **Code** : `400`
 
@@ -3026,7 +3026,7 @@ npm start
 }
 ```
 
-**Condition** : Format de la taxe invalide (Float)
+**Condition** : Format de la taxe invalide (Float).
 
 **Code** : `400`
 
@@ -3071,7 +3071,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -3083,7 +3083,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'article invalide
+**Condition** : ID de l'article invalide.
 
 **Code** : `400`
 
@@ -3105,7 +3105,7 @@ npm start
 
 **Route de récupération de la liste des notes de frais pour un gérant ou un employé.**
 
-**URL** : `/expense-employee`
+**URL** : `/expenses-employee`
 
 **Methode** : `GET`
 
@@ -3130,6 +3130,7 @@ npm start
         "id": "",
         "price": "",
         "accountNumber": "",
+        "category": "",
         "file": "",
         "description": "",
         "userId": "",
@@ -3138,10 +3139,6 @@ npm start
     },{...}]
 }
 ```
-
-##### Requête échouée
-
- 
 
 ---
 
@@ -3194,7 +3191,65 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107101",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Numéro de note de frais invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107102",
+    "message": "Invalid expense number"
+}
+```
+
+**Condition** : Numéro de compte invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107103",
+    "message": "Invalid account number"
+}
+```
+
+**Condition** : Format du prix invalide (Float).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107104",
+    "message": "Invalid price format"
+}
+```
+
+**Condition** : Id de l'employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107105",
+    "message": "Invalid employee id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3223,13 +3278,35 @@ npm start
 ```json
 {
     "error": false,
-    "message": "Expense employee successfully deleted"
+    "message": "Expense successfully deleted"
 }
 ```
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la note de frais invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107152",
+    "message": "Invalid expense id"
+}
+```
 
 ---
 
@@ -3242,7 +3319,7 @@ npm start
 
 **Route de récupération de la liste des projets pour un employé ou un gérant.**
 
-**URL** : `/project`
+**URL** : `/projects`
 
 **Methode** : `GET`
 
@@ -3452,7 +3529,7 @@ npm start
 
 **Route de récupération de la liste des tâches pour un projet.**
 
-**URL** : `/task`
+**URL** : `/tasks`
 
 **Methode** : `GET`
 
@@ -3473,6 +3550,7 @@ npm start
     "error": false,
     "message": "Successful tasks acquisition",
     "tasks": [{
+        "id": "",
         "name": "",
         "progression": "",
         "description": "",
@@ -3481,13 +3559,13 @@ npm start
         "startDate": "",
         "deadline": "",
         "estimateHour": "",
+        "createdAt": "",
+        "updatedAt": "",
     },{...}]
 }
 ```
 
 ##### Requête échouée
-
- 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3525,6 +3603,7 @@ npm start
     "error": false,
     "message": "Task successfully created", 
     "task": {
+        "id": "",
         "name": "",
         "progression": "",
         "description": "",
@@ -3533,13 +3612,14 @@ npm start
         "startDate": "",
         "deadline": "",
         "estimateHour": "",
+        "createdAt": "",
+        "updatedAt": "",
     },
 }
 ```
 
 ##### Requête échouée
 
- 
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3587,7 +3667,7 @@ npm start
 
 **Route de récupération de la liste des temps enregistrés pour un projet.**
 
-**URL** : `/time`
+**URL** : `/times`
 
 **Methode** : `GET`
 
@@ -3608,11 +3688,14 @@ npm start
     "error": false,
     "message": "Successful times acquisition",
     "times": [{
+        "id": "",
         "userId": "",
         "projectId": "",
         "taskId": "",
         "billable": "",
         "duration": "",
+        "createdAt": "",
+        "updatedAt": "",
     },{...}]
 }
 ```
@@ -3654,11 +3737,14 @@ npm start
     "error": false,
     "message": "Time successfully created", 
     "time": {
+        "id": "",
         "userId": "",
         "taskId": "",
         "projectId": "",
         "billable": "",
         "duration": "",
+        "createdAt": "",
+        "updatedAt": "",
     }
 }
 ```
@@ -3711,7 +3797,7 @@ npm start
 
 **Route de récupération de la liste des dépenses pour un gérant ou un employé.**
 
-**URL** : `/expense`
+**URL** : `/expenses`
 
 **Methode** : `GET`
 
@@ -3759,7 +3845,7 @@ npm start
 
 **Route de création d'une note de frais pour les employés et les gérants.**
 
-**URL** : `/expense-employee`
+**URL** : `/expense`
 
 **Methode** : `POST`
 
@@ -3806,6 +3892,89 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111101",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Numéro de note de frais invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111102",
+    "message": "Invalid expense number"
+}
+```
+
+**Condition** : Numéro de compte invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111103",
+    "message": "Invalid account number"
+}
+```
+
+**Condition** : Format du prix invalide (Float).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111104",
+    "message": "Invalid price format"
+}
+```
+
+**Condition** : Format du champ facturable invalide (booléen).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111105",
+    "message": "Invalid invoiced format"
+}
+```
+
+**Condition** : Id de l'employé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111106",
+    "message": "Invalid employee id"
+}
+```
+
+**Condition** : Id du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111107",
+    "message": "Invalid project id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3840,6 +4009,29 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la dépense invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111152",
+    "message": "Invalid expense id"
+}
+```
 
 ---
 
@@ -3922,7 +4114,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -3945,7 +4137,7 @@ npm start
 }
 ```
 
-**Condition** : ID de l'utilisateur invalide
+**Condition** : ID de l'utilisateur invalide.
 
 **Code** : `400`
 
@@ -3990,7 +4182,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champs obligatoires manquants
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
@@ -4002,7 +4194,7 @@ npm start
 }
 ```
 
-**Condition** : ID de la conversation invalide
+**Condition** : ID de la conversation invalide.
 
 **Code** : `400`
 
@@ -4155,6 +4347,17 @@ npm start
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 ### Erreurs globales
+
+**Condition** : Lors d'une erreur interne au serveur.
+
+**Code** : `500`
+
+```json
+{
+    "error": true,
+    "message": "Unexpected error"
+}
+```
 
 **Condition** : Erreur d'authentification.
 
