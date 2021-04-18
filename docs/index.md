@@ -11,7 +11,7 @@ Vous trouverez ici, l'ensemble de la documentation relative à l'API.
 npm install
 npm start
 ```
-* `Lancement du serveur` - Le serveur est lancé à l'adresse suivante : [http://localhost:3000/](http://localhost:3000/)
+* `Lancement du serveur` - Le serveur est lancé à l'adresse suivante : [http://localhost:8081/](http://localhost:8081/)
 
 ## Ensemble des module nécessaires
 
