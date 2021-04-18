@@ -2388,7 +2388,7 @@ npm start
 {
     "error": true,
     "code": "104208",
-    "message": "Invalid article id"
+    "message": "Some article id are invalid"
 }
 ```
 
@@ -2640,7 +2640,7 @@ npm start
 }
 ```
 
-**Condition** : Id du client invalide.
+**Condition** : ID du client invalide.
 
 **Code** : `400`
 
@@ -2838,7 +2838,7 @@ npm start
 {
     "error": true,
     "code": "105208",
-    "message": "Invalid article id"
+    "message": "Some article id are invalid"
 }
 ```
 
@@ -3357,9 +3357,77 @@ npm start
 
 ```
 
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Récupération d'un projet
+
+---
+
+**Route de récupération d'un projet pour un employé ou un gérant.**
+
+**URL** : `/project/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID du projet à supprimer | ✔️ |
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful project acquisition",
+    "projects": [{
+        "projectNum": "",
+        "id": "",
+        "title": "",
+        "status": "",
+        "clientId": "",
+        "progression": "",
+        "startDate": "",
+        "deadline": "",
+        "employees":  [""],
+        "fixedRate": "",
+        "hourlyRate": "",
+        "estimateHour": "",
+    }]
+}
+
+```
 ##### Requête échouée
 
- 
+ **Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108101",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108102",
+    "message": "Invalid project id"
+}
+```
 
 ---
 
@@ -3419,7 +3487,149 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108151",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Statut du projet invalide (En attente, En cours, Terminé, En retard).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108152",
+    "message": "Invalid project status"
+}
+```
+
+**Condition** : ID du client invalid.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108153",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : Numéro de projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108154",
+    "message": "Invalid project number"
+}
+```
+
+**Condition** : Numéro de progression invalide (0-100).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108155",
+    "message": "Invalid progression number"
+}
+```
+
+**Condition** : Date d'échéance invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108156",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Si un ID employé est invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108157",
+    "message": "Some employee id are invalid"
+}
+```
+
+**Condition** : Si le taux horaire et le taux fixe sont renseigné en même temps.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108158",
+    "message": "You can't have both billing systems active"
+}
+```
+
+**Condition** : Format de taxe fixe invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108159",
+    "message": "Invalid fixed rate"
+}
+```
+
+**Condition** : Format de taxe horaire invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108160",
+    "message": "Invalid hourly rate"
+}
+```
+
+**Condition** : Format du temps estimé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108161",
+    "message": "Invalid estimate hour"
+}
+```
+
+**Condition** : Date de début situé après la date d'échéance.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108162",
+    "message": "Start date can't be set after deadline"
+}
+```
 
 ---
 
@@ -3480,7 +3690,149 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108201",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : Statut du projet invalide (En attente, En cours, Terminé, En retard).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108202",
+    "message": "Invalid project status"
+}
+```
+
+**Condition** : ID du client invalid.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108203",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : Numéro de projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108204",
+    "message": "Invalid project number"
+}
+```
+
+**Condition** : Numéro de progression invalide (0-100).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108205",
+    "message": "Invalid progression number"
+}
+```
+
+**Condition** : Date d'échéance invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108206",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Si un ID employé est invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108207",
+    "message": "Some employee id are invalid"
+}
+```
+
+**Condition** : Si le taux horaire et le taux fixe sont renseigné en même temps.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108208",
+    "message": "You can't have both billing systems active"
+}
+```
+
+**Condition** : Format de taxe fixe invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108209",
+    "message": "Invalid fixed rate"
+}
+```
+
+**Condition** : Format de taxe horaire invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108210",
+    "message": "Invalid hourly rate"
+}
+```
+
+**Condition** : Format du temps estimé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108211",
+    "message": "Invalid estimate hour"
+}
+```
+
+**Condition** : Date de début situé après la date d'échéance.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108212",
+    "message": "Start date can't be set after deadline"
+}
+```
 
 ---
 
@@ -3501,7 +3853,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| :id | string | ID du projet à modifier | ✔️ |
+| :id | string | ID du projet à supprimer | ✔️ |
 
 ##### Requête réussie
 
@@ -3516,7 +3868,29 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108251",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108252",
+    "message": "Invalid project id"
+}
+```
 
 ---
 
@@ -3529,7 +3903,7 @@ npm start
 
 **Route de récupération de la liste des tâches pour un projet.**
 
-**URL** : `/tasks`
+**URL** : `/tasks/:id`
 
 **Methode** : `GET`
 
@@ -3539,7 +3913,8 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| - | - | - | - | 
+| :id | string | ID du projet pour lequel on veut récupérer les tâches | - |
+
 
 ##### Requête réussie
 
@@ -3566,6 +3941,18 @@ npm start
 ```
 
 ##### Requête échouée
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109051",
+    "message": "Invalid project id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3620,6 +4007,89 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109101",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Numéro de progression invalide (0-100).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109102",
+    "message": "Invalid progression number"
+}
+```
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109103",
+    "message": "Invalid project id"
+}
+```
+
+**Condition** : Si un ID employé est invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109104",
+    "message": "Some employee id are invalid"
+}
+```
+
+**Condition** : Format du temps estimé invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109105",
+    "message": "Invalid estimate hour"
+}
+```
+
+**Condition** : Date d'échéance invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109106",
+    "message": "Invalid deadline"
+}
+```
+
+**Condition** : Date de début situé après la date d'échéance.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109107",
+    "message": "Start date can't be set after deadline"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3654,7 +4124,29 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la tâche invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "109152",
+    "message": "Invalid task id"
+}
+```
 
 ---
 
@@ -3677,7 +4169,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| - | - | - | - | 
+| :id | string | ID du projet pour lequel on veut récupérer les temps | - |
 
 ##### Requête réussie
 
@@ -3702,7 +4194,17 @@ npm start
 
 ##### Requête échouée
 
- 
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110051",
+    "message": "Invalid project id"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3751,6 +4253,65 @@ npm start
 
 ##### Requête échouée
 
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110101",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : ID de projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110102",
+    "message": "Invalid project id"
+}
+```
+
+**Condition** : ID de la tâche invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110103",
+    "message": "Invalid task id"
+}
+```
+
+**Condition** : Format du champs facturable invalide (booléen).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110104",
+    "message": "Invalid billable format"
+}
+```
+
+**Condition** : Format de la durée invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110105",
+    "message": "Invalid duration number"
+}
+```
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -3784,6 +4345,30 @@ npm start
 ```
 
 ##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la tâche invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110152",
+    "message": "Invalid time id"
+}
+```
 
 
 ---
@@ -3833,9 +4418,6 @@ npm start
     },{...}]
 }
 ```
-
-##### Requête échouée
-
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -4214,7 +4796,7 @@ npm start
 
 **Route de récupération de la liste des messages pour une conversation.**
 
-**URL** : `/conversation/messages/:id`
+**URL** : `/conversation/:id/messages`
 
 **Methode** : `GET`
 
