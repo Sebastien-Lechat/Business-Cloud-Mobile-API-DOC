@@ -160,7 +160,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;token&quot; : &quot;&quot;,
         &quot;refreshToken&quot; : &quot;&quot;,
@@ -338,7 +337,7 @@ npm start
 </tbody>
 </table>
 <h5 id="requete-reussie_1">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
+<p><strong>Code</strong> : <code>201</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Successfully registred&quot;
@@ -652,12 +651,6 @@ npm start
 </thead>
 <tbody>
 <tr>
-<td>userId</td>
-<td>string</td>
-<td>ID de l'utilisateur</td>
-<td>✔️</td>
-</tr>
-<tr>
 <td>email</td>
 <td>string</td>
 <td>Email de l'utilisateur</td>
@@ -673,12 +666,12 @@ npm start
 }
 </code></pre>
 <h5 id="requete-echouee_5">Requête échouée</h5>
-<p><strong>Condition</strong> : Champ email ou userId manquant.</p>
+<p><strong>Condition</strong> : Champ email manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;101251&quot;,
-    &quot;message&quot;: &quot;Missing email or userId field&quot;
+    &quot;message&quot;: &quot;Missing email&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
@@ -799,7 +792,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -880,7 +872,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -990,7 +981,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -1090,7 +1080,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -1157,14 +1146,10 @@ npm start
 <td>Numéro de RCS de l'entreprise</td>
 <td>-</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle les factures seront générées pour le client</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
+
 <h5 id="requete-reussie_11">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -1180,7 +1165,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -1315,7 +1299,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -1427,20 +1410,10 @@ npm start
 <td>Numéro de RCS de l'entreprise</td>
 <td>-</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle les factures seront générée pour le client</td>
-<td>-</td>
-</tr>
-<tr>
-<td>note</td>
-<td>string</td>
-<td>Annotation sur le client sur le client</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle les factures seront générée pour le client | - | -->
+<p>| note | string | Annotation sur le client sur le client | - |</p>
 <h5 id="requete-reussie_14">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -1457,7 +1430,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -1632,20 +1604,10 @@ npm start
 <td>Numéro de RCS de l'entreprise</td>
 <td>-</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle les factures seront générées pour le client</td>
-<td>-</td>
-</tr>
-<tr>
-<td>note</td>
-<td>string</td>
-<td>Annotation sur le client sur le client</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
+<p>| note | string | Annotation sur le client sur le client | - |</p>
 <h5 id="requete-reussie_15">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -1662,7 +1624,6 @@ npm start
         &quot;address&quot; : &quot;&quot;,
         &quot;zip&quot; : &quot;&quot;,
         &quot;city&quot; : &quot;&quot;,
-        &quot;currency&quot; : &quot;&quot;,
         &quot;country&quot; : &quot;&quot;,
         &quot;activity&quot; : &quot;&quot;,
         &quot;numTVA&quot; : &quot;&quot;,
@@ -2125,7 +2086,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2178,7 +2138,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2241,20 +2200,10 @@ npm start
 <td>Numéro unique de facture</td>
 <td>✔️</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle la facture sera généré</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>deadline</td>
-<td>date</td>
-<td>Date limite à laquelle le client peut payer la facture</td>
-<td>✔️</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle la facture sera généré | ✔️ | -->
+<p>| deadline | date | Date limite à laquelle le client peut payer la facture | ✔️ |</p>
 <h5 id="requete-reussie_22">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -2267,7 +2216,6 @@ npm start
         &quot;entrepriseId&quot;: &quot;&quot;,
         &quot;billNum&quot;: &quot;&quot;,
         &quot;articles&quot;: [],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2374,20 +2322,10 @@ npm start
 <td>Tableaux de l'ensemble des articles de la facture</td>
 <td>-</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle la facture sera généré</td>
-<td>-</td>
-</tr>
-<tr>
-<td>deadline</td>
-<td>date</td>
-<td>Date limite à laquelle le client peut payer la facture</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle la facture sera généré | - | -->
+<p>| deadline | date | Date limite à laquelle le client peut payer la facture | - |</p>
 <h5 id="requete-reussie_23">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -2403,7 +2341,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -2573,7 +2510,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2625,7 +2561,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2686,20 +2621,10 @@ npm start
 <td>Numéro unique de devis</td>
 <td>✔️</td>
 </tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle le devis sera généré</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>deadline</td>
-<td>date</td>
-<td>Date limite à laquelle le client peut accepter le devis</td>
-<td>✔️</td>
-</tr>
 </tbody>
 </table>
+<!-- | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ | -->
+<p>| deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |</p>
 <h5 id="requete-reussie_27">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
@@ -2712,7 +2637,6 @@ npm start
         &quot;entrepriseId&quot;: &quot;&quot;,
         &quot;estimateNum&quot;: &quot;&quot;,
         &quot;articles&quot;: [],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;deadline&quot;: &quot;&quot;,
@@ -2820,12 +2744,6 @@ npm start
 <td>-</td>
 </tr>
 <tr>
-<td>currency</td>
-<td>string</td>
-<td>Monnaie avec laquelle le devis sera généré</td>
-<td>-</td>
-</tr>
-<tr>
 <td>deadline</td>
 <td>date</td>
 <td>Date limite à laquelle le client peut payer le devis</td>
@@ -2848,7 +2766,6 @@ npm start
             &quot;articleId&quot;: &quot;&quot;,
             &quot;quantity&quot;: &quot;&quot;,
         },{...}],
-        &quot;currency&quot;: &quot;&quot;,
         &quot;totalHT&quot;: &quot;&quot;,
         &quot;totalTTC&quot;: &quot;&quot;,
         &quot;amountPaid&quot;: &quot;&quot;,
@@ -3245,12 +3162,6 @@ npm start
 <td>✔️</td>
 </tr>
 <tr>
-<td>userId</td>
-<td>string</td>
-<td>ID de l'employé ou du gérant créant la note de frais</td>
-<td>✔️</td>
-</tr>
-<tr>
 <td>price</td>
 <td>number</td>
 <td>Montant de la note de frais</td>
@@ -3332,14 +3243,6 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;107104&quot;,
     &quot;message&quot;: &quot;Invalid price format&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Id de l'employé invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107105&quot;,
-    &quot;message&quot;: &quot;Invalid employee id&quot;
 }
 </code></pre>
 <hr />
@@ -4487,7 +4390,7 @@ npm start
         &quot;description&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
         &quot;projectId&quot;: &quot;&quot;,
-        &quot;invoiced&quot;: &quot;&quot;,
+        &quot;billable&quot;: &quot;&quot;,
         &quot;createdAt&quot;: &quot;&quot;,
         &quot;updatedAt&quot;: &quot;&quot;,
     },{...}]
@@ -4519,12 +4422,6 @@ npm start
 <td>✔️</td>
 </tr>
 <tr>
-<td>userId</td>
-<td>string</td>
-<td>ID de l'employé ou du gérant créant la dépense</td>
-<td>✔️</td>
-</tr>
-<tr>
 <td>projectId</td>
 <td>string</td>
 <td>ID du projet lié à la dépense</td>
@@ -4549,7 +4446,7 @@ npm start
 <td>✔️</td>
 </tr>
 <tr>
-<td>invoiced</td>
+<td>billable</td>
 <td>boolean</td>
 <td>Booléen pour savoir si la dépense est facturé ou non</td>
 <td>✔️</td>
@@ -4583,7 +4480,7 @@ npm start
         &quot;description&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
         &quot;projectId&quot;: &quot;&quot;,
-        &quot;invoiced&quot;: &quot;&quot;,
+        &quot;billable&quot;: &quot;&quot;,
         &quot;createdAt&quot;: &quot;&quot;,
         &quot;updatedAt&quot;: &quot;&quot;,
     }
@@ -4630,19 +4527,11 @@ npm start
     &quot;message&quot;: &quot;Invalid invoiced format&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Id de l'employé invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;111106&quot;,
-    &quot;message&quot;: &quot;Invalid employee id&quot;
-}
-</code></pre>
 <p><strong>Condition</strong> : Id du projet invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;111107&quot;,
+    &quot;code&quot;: &quot;111106&quot;,
     &quot;message&quot;: &quot;Invalid project id&quot;
 }
 </code></pre>
@@ -5036,7 +4925,7 @@ npm start
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;401001&quot;,
-    &quot;message&quot;: &quot;Not authorized to access this resource&quot;
+    &quot;message&quot;: &quot;Not authorized to access to this resource&quot;
 }
 </code></pre>
 <p><strong>Condition</strong> : Rôle nécessaire pour faire la requête invalide.</p>
@@ -5151,5 +5040,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-18 09:27:24.437764+00:00
+Build Date UTC : 2021-04-21 16:05:06.177030+00:00
 -->

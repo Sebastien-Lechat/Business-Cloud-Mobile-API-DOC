@@ -66,7 +66,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "token" : "",
         "refreshToken" : "",
@@ -222,7 +221,7 @@ npm start
 
 ##### Requête réussie
 
-**Code** : `200`
+**Code** : `201`
 
 ```json
 {
@@ -618,7 +617,6 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| userId | string | ID de l'utilisateur | ✔️ | 
 | email | string | Email de l'utilisateur | ✔️ | 
 
 ##### Requête réussie
@@ -634,7 +632,7 @@ npm start
 
 ##### Requête échouée
 
-**Condition** : Champ email ou userId manquant.
+**Condition** : Champ email manquant.
 
 **Code** : `400`
 
@@ -642,7 +640,7 @@ npm start
 {
     "error": true,
     "code": "101251",
-    "message": "Missing email or userId field"
+    "message": "Missing email"
 }
 ```
 
@@ -782,7 +780,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -840,7 +837,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -958,7 +954,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -1053,7 +1048,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -1105,7 +1099,7 @@ npm start
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
-| currency | string | Monnaie avec laquelle les factures seront générées pour le client | - |
+<!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
 
 ##### Requête réussie
 
@@ -1125,7 +1119,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -1271,7 +1264,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -1327,7 +1319,7 @@ npm start
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
-| currency | string | Monnaie avec laquelle les factures seront générée pour le client | - |
+<!-- | currency | string | Monnaie avec laquelle les factures seront générée pour le client | - | -->
 | note | string | Annotation sur le client sur le client | - |
 
 ##### Requête réussie
@@ -1349,7 +1341,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -1501,7 +1492,7 @@ npm start
 | numTVA | string | Numéro de TVA de l'entreprise | - |
 | numSIRET | string | Numéro de SIRET de l'entreprise | - |
 | numRCS | string | Numéro de RCS de l'entreprise | - |
-| currency | string | Monnaie avec laquelle les factures seront générées pour le client | - |
+<!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
 | note | string | Annotation sur le client sur le client | - |
 
 
@@ -1524,7 +1515,6 @@ npm start
         "address" : "",
         "zip" : "",
         "city" : "",
-        "currency" : "",
         "country" : "",
         "activity" : "",
         "numTVA" : "",
@@ -2038,7 +2028,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2088,7 +2077,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2136,7 +2124,7 @@ npm start
 | clientId | string | ID du client lié à la facture | ✔️ | 
 | entrepriseId | string | ID de l'entreprise du gérant | ✔️ | 
 | billNum | string | Numéro unique de facture | ✔️ | 
-| currency | string | Monnaie avec laquelle la facture sera généré | ✔️ |
+<!-- | currency | string | Monnaie avec laquelle la facture sera généré | ✔️ | -->
 | deadline | date | Date limite à laquelle le client peut payer la facture | ✔️ |
 
 ##### Requête réussie
@@ -2154,7 +2142,6 @@ npm start
         "entrepriseId": "",
         "billNum": "",
         "articles": [],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2261,7 +2248,7 @@ npm start
 | clientId | string | ID du client lié à la facture | - | 
 | billNum | string | Numéro unique de facture | - | 
 | articles | array | Tableaux de l'ensemble des articles de la facture | - | 
-| currency | string | Monnaie avec laquelle la facture sera généré | - |
+<!-- | currency | string | Monnaie avec laquelle la facture sera généré | - | -->
 | deadline | date | Date limite à laquelle le client peut payer la facture | - |
 
 ##### Requête réussie
@@ -2282,7 +2269,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -2488,7 +2474,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2540,7 +2525,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2586,7 +2570,7 @@ npm start
 | clientId | string | ID du client lié au devis | ✔️ | 
 | entrepriseId | string | ID de l'entreprise du gérant | ✔️ | 
 | estimateNum | string | Numéro unique de devis | ✔️ | 
-| currency | string | Monnaie avec laquelle le devis sera généré | ✔️ |
+<!-- | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ | -->
 | deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |
 
 ##### Requête réussie
@@ -2604,7 +2588,6 @@ npm start
         "entrepriseId": "",
         "estimateNum": "",
         "articles": [],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "deadline": "",
@@ -2711,7 +2694,6 @@ npm start
 | clientId | string | ID du client lié au devis | - | 
 | estimateNum | string | Numéro unique de devis | - | 
 | articles | array | Tableaux de l'ensemble des articles du devis | - | 
-| currency | string | Monnaie avec laquelle le devis sera généré | - |
 | deadline | date | Date limite à laquelle le client peut payer le devis | - |
 
 ##### Requête réussie
@@ -2732,7 +2714,6 @@ npm start
             "articleId": "",
             "quantity": "",
         },{...}],
-        "currency": "",
         "totalHT": "",
         "totalTTC": "",
         "amountPaid": "",
@@ -3159,7 +3140,6 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | userExpenseNum | string | Numéro unique de dépense | ✔️ | 
-| userId | string | ID de l'employé ou du gérant créant la note de frais | ✔️ | 
 | price | number | Montant de la note de frais  | ✔️ | 
 | category | string | Category de la note de frais | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la note de frais | ✔️ | 
@@ -3236,18 +3216,6 @@ npm start
     "error": true,
     "code": "107104",
     "message": "Invalid price format"
-}
-```
-
-**Condition** : Id de l'employé invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107105",
-    "message": "Invalid employee id"
 }
 ```
 
@@ -4412,7 +4380,7 @@ npm start
         "description": "",
         "userId": "",
         "projectId": "",
-        "invoiced": "",
+        "billable": "",
         "createdAt": "",
         "updatedAt": "",
     },{...}]
@@ -4438,12 +4406,11 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | expenseNum | string | Numéro unique de dépense | ✔️ | 
-| userId | string | ID de l'employé ou du gérant créant la dépense | ✔️ | 
 | projectId | string | ID du projet lié à la dépense | ✔️ | 
 | price | number | Montant de la dépense  | ✔️ | 
 | accountNumber | number | Numéro de compte comptable de la dépense | ✔️ | 
 | category | string | Category de dépense | ✔️ | 
-| invoiced | boolean | Booléen pour savoir si la dépense est facturé ou non | ✔️ | 
+| billable | boolean | Booléen pour savoir si la dépense est facturé ou non | ✔️ | 
 | file | file | Document de justification de la dépense | - | 
 | description | string | Description de la dépense | - | 
 
@@ -4465,7 +4432,7 @@ npm start
         "description": "",
         "userId": "",
         "projectId": "",
-        "invoiced": "",
+        "billable": "",
         "createdAt": "",
         "updatedAt": "",
     }
@@ -4534,18 +4501,6 @@ npm start
 }
 ```
 
-**Condition** : Id de l'employé invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "111106",
-    "message": "Invalid employee id"
-}
-```
-
 **Condition** : Id du projet invalide.
 
 **Code** : `400`
@@ -4553,7 +4508,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "111107",
+    "code": "111106",
     "message": "Invalid project id"
 }
 ```
@@ -4949,7 +4904,7 @@ npm start
 {
     "error": true,
     "code": "401001",
-    "message": "Not authorized to access this resource"
+    "message": "Not authorized to access to this resource"
 }
 ```
 
