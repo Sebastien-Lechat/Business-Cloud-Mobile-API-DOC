@@ -3138,6 +3138,71 @@ npm start
 }
 </code></pre>
 <hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<h4 id="recuperation-dune-note-de-frais">Récupération d'une note de frais</h4>
+<hr />
+<p><strong>Route de récupération d'une note de frais pour un gérant ou un employé.</strong></p>
+<p><strong>URL</strong> : <code>/expense-employee/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la note de frais que l'on veut récupérer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_34">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful expense acquisition&quot;,
+    &quot;expense&quot;: {
+        &quot;userExpenseNum&quot;: &quot;&quot;,
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;category&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;userId&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echouee_29">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;107051&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la dépense invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;107052&quot;,
+    &quot;message&quot;: &quot;Invalid expense id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="creer-une-note-de-frais">Créer une note de frais</h4>
 <hr />
 <p><strong>Route de création d'une note de frais pour les employés et les gérants.</strong></p>
@@ -3193,7 +3258,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_34">Requête réussie</h5>
+<h5 id="requete-reussie_35">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3212,7 +3277,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_29">Requête échouée</h5>
+<h5 id="requete-echouee_30">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3272,14 +3337,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_35">Requête réussie</h5>
+<h5 id="requete-reussie_36">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Expense successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_30">Requête échouée</h5>
+<h5 id="requete-echouee_31">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3324,7 +3389,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_36">Requête réussie</h5>
+<h5 id="requete-reussie_37">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3373,7 +3438,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_37">Requête réussie</h5>
+<h5 id="requete-reussie_38">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3395,7 +3460,7 @@ npm start
 }
 
 </code></pre>
-<h5 id="requete-echouee_31">Requête échouée</h5>
+<h5 id="requete-echouee_32">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3499,7 +3564,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_38">Requête réussie</h5>
+<h5 id="requete-reussie_39">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3520,7 +3585,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_32">Requête échouée</h5>
+<h5 id="requete-echouee_33">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3710,7 +3775,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_39">Requête réussie</h5>
+<h5 id="requete-reussie_40">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3731,7 +3796,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_33">Requête échouée</h5>
+<h5 id="requete-echouee_34">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3855,14 +3920,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_40">Requête réussie</h5>
+<h5 id="requete-reussie_41">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Project successfully deleted&quot;,
 }
 </code></pre>
-<h5 id="requete-echouee_34">Requête échouée</h5>
+<h5 id="requete-echouee_35">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3907,7 +3972,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_41">Requête réussie</h5>
+<h5 id="requete-reussie_42">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3927,7 +3992,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_35">Requête échouée</h5>
+<h5 id="requete-echouee_36">Requête échouée</h5>
 <p><strong>Condition</strong> : ID du projet invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4005,7 +4070,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_42">Requête réussie</h5>
+<h5 id="requete-reussie_43">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4025,7 +4090,7 @@ npm start
     },
 }
 </code></pre>
-<h5 id="requete-echouee_36">Requête échouée</h5>
+<h5 id="requete-echouee_37">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4109,14 +4174,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_43">Requête réussie</h5>
+<h5 id="requete-reussie_44">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Task successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_37">Requête échouée</h5>
+<h5 id="requete-echouee_38">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4161,7 +4226,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_44">Requête réussie</h5>
+<h5 id="requete-reussie_45">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4178,7 +4243,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_38">Requête échouée</h5>
+<h5 id="requete-echouee_39">Requête échouée</h5>
 <p><strong>Condition</strong> : ID du projet invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4238,7 +4303,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_45">Requête réussie</h5>
+<h5 id="requete-reussie_46">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4255,7 +4320,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_39">Requête échouée</h5>
+<h5 id="requete-echouee_40">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4323,14 +4388,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_46">Requête réussie</h5>
+<h5 id="requete-reussie_47">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Time successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_40">Requête échouée</h5>
+<h5 id="requete-echouee_41">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4353,7 +4418,7 @@ npm start
 <h4 id="liste-des-depenses">Liste des dépenses</h4>
 <hr />
 <p><strong>Route de récupération de la liste des dépenses pour un gérant ou un employé.</strong></p>
-<p><strong>URL</strong> : <code>/expenses</code></p>
+<p><strong>URL</strong> : <code>/expenses/:id</code></p>
 <p><strong>Methode</strong> : <code>GET</code></p>
 <p><strong>Token requis</strong> : <code>OUI</code></p>
 <p><strong>Paramètres de la requête</strong></p>
@@ -4368,14 +4433,14 @@ npm start
 </thead>
 <tbody>
 <tr>
-<td>-</td>
-<td>-</td>
-<td>-</td>
+<td>:id</td>
+<td>string</td>
+<td>ID du projet pour lequel on veut récupérer les dépenses</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_47">Requête réussie</h5>
+<h5 id="requete-reussie_48">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4396,8 +4461,83 @@ npm start
     },{...}]
 }
 </code></pre>
+<h5 id="requete-echouee_42">Requête échouée</h5>
+<p><strong>Condition</strong> : ID du projet invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;111001&quot;,
+    &quot;message&quot;: &quot;Invalid project id&quot;
+}
+</code></pre>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-dune-depense">Récupération d'une dépense</h4>
+<hr />
+<p><strong>Route de récupération d'une dépense pour un gérant ou un employé.</strong></p>
+<p><strong>URL</strong> : <code>/expense/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la dépense que l'on veut récupérer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_49">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful expense acquisition&quot;,
+    &quot;expense&quot;: {
+        &quot;expenseNum&quot;: &quot;&quot;,
+        &quot;id&quot;: &quot;&quot;,
+        &quot;price&quot;: &quot;&quot;,
+        &quot;accountNumber&quot;: &quot;&quot;,
+        &quot;category&quot;: &quot;&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;userId&quot;: &quot;&quot;,
+        &quot;projectId&quot;: &quot;&quot;,
+        &quot;billable&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echouee_43">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;111051&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la dépense invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;111052&quot;,
+    &quot;message&quot;: &quot;Invalid expense id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 <h4 id="creer-une-depense">Créer une dépense</h4>
 <hr />
 <p><strong>Route de création d'une note de frais pour les employés et les gérants.</strong></p>
@@ -4465,7 +4605,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_48">Requête réussie</h5>
+<h5 id="requete-reussie_50">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4486,7 +4626,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_41">Requête échouée</h5>
+<h5 id="requete-echouee_44">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4562,14 +4702,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_49">Requête réussie</h5>
+<h5 id="requete-reussie_51">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Expense successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_42">Requête échouée</h5>
+<h5 id="requete-echouee_45">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4614,7 +4754,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_50">Requête réussie</h5>
+<h5 id="requete-reussie_52">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4655,7 +4795,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_51">Requête réussie</h5>
+<h5 id="requete-reussie_53">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4669,7 +4809,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_43">Requête échouée</h5>
+<h5 id="requete-echouee_46">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4721,14 +4861,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_52">Requête réussie</h5>
+<h5 id="requete-reussie_54">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Conversation successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_44">Requête échouée</h5>
+<h5 id="requete-echouee_47">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4772,7 +4912,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_53">Requête réussie</h5>
+<h5 id="requete-reussie_55">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4787,7 +4927,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_45">Requête échouée</h5>
+<h5 id="requete-echouee_48">Requête échouée</h5>
 <h3 id="paiement">Paiement</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="effectuer-un-paiement">Effectuer un paiement</h4>
@@ -4833,13 +4973,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_54">Requête réussie</h5>
+<h5 id="requete-reussie_56">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_46">Requête échouée</h5>
+<h5 id="requete-echouee_49">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4894,13 +5034,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_55">Requête réussie</h5>
+<h5 id="requete-reussie_57">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_47">Requête échouée</h5>
+<h5 id="requete-echouee_50">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5040,5 +5180,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-21 16:05:06.177030+00:00
+Build Date UTC : 2021-04-22 10:58:04.031056+00:00
 -->

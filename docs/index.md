@@ -3122,7 +3122,77 @@ npm start
 ```
 
 ---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
+#### Récupération d'une note de frais
+
+---
+
+**Route de récupération d'une note de frais pour un gérant ou un employé.**
+
+**URL** : `/expense-employee/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID de la note de frais que l'on veut récupérer | ✔️ |
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful expense acquisition",
+    "expense": {
+        "userExpenseNum": "",
+        "id": "",
+        "price": "",
+        "accountNumber": "",
+        "category": "",
+        "file": "",
+        "description": "",
+        "userId": "",
+        "createdAt": "",
+        "updatedAt": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107051",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la dépense invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "107052",
+    "message": "Invalid expense id"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Créer une note de frais
 
 ---
@@ -4350,7 +4420,7 @@ npm start
 
 **Route de récupération de la liste des dépenses pour un gérant ou un employé.**
 
-**URL** : `/expenses`
+**URL** : `/expenses/:id`
 
 **Methode** : `GET`
 
@@ -4360,7 +4430,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| - | - | - | - | 
+| :id | string | ID du projet pour lequel on veut récupérer les dépenses | - |
 
 ##### Requête réussie
 
@@ -4387,8 +4457,94 @@ npm start
 }
 ```
 
+##### Requête échouée
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111001",
+    "message": "Invalid project id"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Récupération d'une dépense
+
+---
+
+**Route de récupération d'une dépense pour un gérant ou un employé.**
+
+**URL** : `/expense/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID de la dépense que l'on veut récupérer | ✔️ |
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful expense acquisition",
+    "expense": {
+        "expenseNum": "",
+        "id": "",
+        "price": "",
+        "accountNumber": "",
+        "category": "",
+        "file": "",
+        "description": "",
+        "userId": "",
+        "projectId": "",
+        "billable": "",
+        "createdAt": "",
+        "updatedAt": "",
+    }
+}
+```
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111051",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la dépense invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111052",
+    "message": "Invalid expense id"
+}
+```
+
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
 #### Créer une dépense
 
 ---
