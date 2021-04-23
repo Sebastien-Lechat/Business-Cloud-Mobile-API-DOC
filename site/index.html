@@ -79,6 +79,7 @@
                 <li class="third-level"><a href="#temps">Temps</a></li>
                 <li class="third-level"><a href="#depenses">Dépenses</a></li>
                 <li class="third-level"><a href="#conversations">Conversations</a></li>
+                <li class="third-level"><a href="#notifications">Notifications</a></li>
                 <li class="third-level"><a href="#paiement">Paiement</a></li>
                 <li class="third-level"><a href="#statistiques">Statistiques</a></li>
                 <li class="third-level"><a href="#erreurs-globales">Erreurs globales</a></li>
@@ -4928,6 +4929,102 @@ npm start
 }
 </code></pre>
 <h5 id="requete-echouee_48">Requête échouée</h5>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h3 id="notifications">Notifications</h3>
+<h4 id="liste-des-notifications">Liste des notifications</h4>
+<hr />
+<p><strong>Route de récupération de la liste des notifications d'un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/notifications</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_56">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful notifications acquisition&quot;,
+    &quot;conversations&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;title&quot;: &quot;&quot;,
+        &quot;message&quot;: &quot;&quot;,
+        &quot;catergory&quot;: &quot;&quot;,
+        &quot;userId&quot;: &quot;&quot;,
+        &quot;seen&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="supprimer-une-notification">Supprimer une notification</h4>
+<hr />
+<p><strong>Route de suppression d'une notification par un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/notification/:id</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:id</td>
+<td>string</td>
+<td>ID de la notification à supprimer</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_57">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Notification successfully deleted&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_49">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;113101&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la notification invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;113102&quot;,
+    &quot;message&quot;: &quot;Invalid notification id&quot;
+}
+</code></pre>
+<hr />
 <h3 id="paiement">Paiement</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="effectuer-un-paiement">Effectuer un paiement</h4>
@@ -4973,13 +5070,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_56">Requête réussie</h5>
+<h5 id="requete-reussie_58">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_49">Requête échouée</h5>
+<h5 id="requete-echouee_50">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5034,13 +5131,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_57">Requête réussie</h5>
+<h5 id="requete-reussie_59">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_50">Requête échouée</h5>
+<h5 id="requete-echouee_51">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5180,5 +5277,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-22 10:58:04.031056+00:00
+Build Date UTC : 2021-04-23 17:18:23.941765+00:00
 -->

@@ -4941,6 +4941,107 @@ npm start
 ##### Requête échouée
 
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+### Notifications
+
+#### Liste des notifications
+
+---
+
+**Route de récupération de la liste des notifications d'un utilisateur.**
+
+**URL** : `/notifications`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful notifications acquisition",
+    "conversations": [{
+        "id": "",
+        "title": "",
+        "message": "",
+        "catergory": "",
+        "userId": "",
+        "seen": "",
+        "createdAt": "",
+        "updatedAt": "",
+    },{...}]
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Supprimer une notification
+
+---
+
+**Route de suppression d'une notification par un utilisateur.**
+
+**URL** : `/notification/:id`
+
+**Methode** : `DELETE`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID de la notification à supprimer | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Notification successfully deleted"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "113101",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la notification invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "113102",
+    "message": "Invalid notification id"
+}
+```
+
+---
+
 ### Paiement
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Effectuer un paiement
