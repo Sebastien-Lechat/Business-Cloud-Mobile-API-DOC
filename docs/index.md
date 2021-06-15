@@ -1277,6 +1277,18 @@ npm start
 ```
 ##### Requête échouée
 
+**Condition** : Id utilisateur manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103101",
+    "message": "Missing id field"
+}
+```
+
 **Condition** : Id utilisateur invalide.
 
 **Code** : `400`
@@ -1284,7 +1296,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "104101",
+    "code": "103102",
     "message": "Invalid user id"
 }
 ```
@@ -4353,6 +4365,86 @@ npm start
 
 ---
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Modifier un enregistrement de temps
+
+---
+
+**Route de modification d'un enregistrement de temps par un employé ou un gérant.**
+
+**URL** : `/time`
+
+**Methode** : `PUT`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID du temps enregistré | ✔️ | 
+| billable | boolean | Booléen pour savoir si le temps est factirable ou non | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Time successfully updated", 
+    "time": {
+        "id": "",
+        "userId": "",
+        "taskId": "",
+        "projectId": "",
+        "billable": "",
+        "duration": "",
+        "createdAt": "",
+        "updatedAt": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110151",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : ID du temps invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110152",
+    "message": "Invalid time id"
+}
+```
+
+**Condition** : Format du champs facturable invalide (booléen).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "110153",
+    "message": "Invalid billable format"
+}
+```
+
+---
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Supprimer un enregistrement de temps
 
 ---
@@ -4391,19 +4483,19 @@ npm start
 ```json
 {
     "error": true,
-    "code": "110151",
+    "code": "110201",
     "message": "Missing id field"
 }
 ```
 
-**Condition** : ID de la tâche invalide.
+**Condition** : ID du temps invalide.
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "110152",
+    "code": "110202",
     "message": "Invalid time id"
 }
 ```
@@ -4975,6 +5067,7 @@ npm start
         "title": "",
         "message": "",
         "catergory": "",
+        "targetId": "",
         "userId": "",
         "seen": "",
         "createdAt": "",
