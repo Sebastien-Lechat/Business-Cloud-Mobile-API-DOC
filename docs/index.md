@@ -189,6 +189,120 @@ npm start
 ---
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Connexion à une API extérieur
+
+---
+
+**Route de connexion pour n'importe quel type d'utilisateur via une API externe.**
+
+**URL** : `/auth/external/login`
+
+**Methode** : `POST`
+
+**Token requis** : `NON`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID du compte externe | ✔️ |
+| type | string | Nom de l'API externe utilisé (facebook, google) | ✔️ |
+| email | string | Email de l'utilisateur | ✔️ |
+| token | string | Token fourni par l'API externe | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message" : "Successfully connected",
+    "user" : {
+        "id":"",
+        "avatar" : "",
+        "name" : "",
+        "email" : "",
+        "phone" : "",
+        "type" : "",
+        "address" : "",
+        "zip" : "",
+        "city" : "",
+        "country" : "",
+        "token" : "",
+        "refreshToken" : "",
+        "createdAt" : "",
+        "updatedAt" : "",
+        "userId": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101401",
+    "message": "Missing email or password field"
+}
+```
+
+**Condition** : Adresse email invalide (format invalide).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101402",
+    "message": "Invalid email addresse"
+}
+```
+
+**Condition** : Aucun compte lié valide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101403",
+    "message": "No account linked to this email"
+}
+```
+
+**Condition** : Le type ne correspond à aucun type valide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101404",
+    "message": "Invalid type"
+}
+```
+
+**Condition** : ID de compte extérieur invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "101405",
+    "message": "Invalid external account ID"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 #### Inscription
 
@@ -209,15 +323,14 @@ npm start
 | name | string | Nom et prénom du client ou de l'entreprise | ✔️ | 
 | email | string | Email du client ou de l'entreprise | ✔️ | 
 | phone | string | Téléphone du client ou de l'entreprise | - |
-| birthdayDate | date | Date de naisse du client | - |
 | password | string | Mot de passe du client ou de l'entreprise | ✔️ | 
-| address | string | Adresse du client ou de l'entreprise | - |
-| zip | string | Code postal du client ou de l'entreprise | - |
-| city | string | Ville du client ou de l'entreprise | - |
-| country | string | Pays du client ou de l'entreprise | - |
-| numTVA | string | Numéro de TVA de l'entreprise | - |
-| numSIRET | string | Numéro de SIRET de l'entreprise | - |
-| numRCS | string | Numéro de RCS de l'entreprise | - |
+| address | string | Adresse du client ou de l'entreprise | ✔️ |
+| zip | string | Code postal du client ou de l'entreprise | ✔️ |
+| city | string | Ville du client ou de l'entreprise | ✔️ |
+| country | string | Pays du client ou de l'entreprise | ✔️ |
+| numTVA | string | Numéro de TVA de l'entreprise | ✔️ |
+| numSIRET | string | Numéro de SIRET de l'entreprise | ✔️ |
+| numRCS | string | Numéro de RCS de l'entreprise | ✔️ |
 
 ##### Requête réussie
 
@@ -316,18 +429,6 @@ npm start
 }
 ```
 
-**Condition** : Date de naisseance invalide (DD-MM-YYY).
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "101058",
-    "message": "Invalid date format"
-}
-```
-
 **Condition** : L'email est déjà utilisé par un autre utilisateur.
 
 **Code** : `400`
@@ -335,7 +436,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "101059",
+    "code": "101058",
     "message": "This email is already used"
 }
 ```
@@ -738,7 +839,37 @@ npm start
 }
 ```
 
- 
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Déconnexion
+
+---
+
+**Route de déconnexion pour n'importe quel type d'utilisateur.**
+
+**URL** : `/auth/disconnect`
+
+**Methode** : `DELETE`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successfully logout"
+}
+```
 
 ---
 
@@ -796,12 +927,13 @@ npm start
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modification des informations personnelles
 
 ---
 
-**Route de modification des informations personnelles, des informations de contact et deavatar de l'utilisateur.**
+**Route de modification des informations personnelles, des informations de contact.**
 
 **URL** : `/account/information`
 
@@ -813,11 +945,9 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| avatar | file | Avatar de l'utilisateur | - | 
 | name | string | Nom et prénom de l'utilisateur ou de l'entreprise | - | 
 | email | string | Email de l'utilisateur ou de l'entreprise | - | 
 | phone | string | Téléphone de l'utilisateur ou de l'entreprise | - |
-| birthdayDate | date | Date de naisse de l'utilisateur | - |
 
 ##### Requête réussie
 
@@ -902,19 +1032,54 @@ npm start
 }
 ```
 
-**Condition** : Erreur lors de l'enregistrement de l'avatar.
+---
 
-**Code** : `500`
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Modification de l'avatar
+
+---
+
+**Route de modification de l'avatar de l'utilisateur.**
+
+**URL** : `/account/avatar`
+
+**Methode** : `PUT`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| avatarPath | string | nom du fichier pour la récupération sur firecloud storage | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Profile successfully updated",
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "500004",
-    "message": "Internal server error, avatar can not be saved"
+    "code": "102301",
+    "message": "Missing important fields"
 }
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modification du mot de passe
 
@@ -1015,7 +1180,7 @@ npm start
 
 **Route de modification des information de location de l'utilisateur.**
 
-**URL** : `account/address`
+**URL** : `/account/address`
 
 **Methode** : `PUT`
 
@@ -1185,6 +1350,55 @@ npm start
 ```
 ---
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+#### Enregistrement d'un appareil
+
+---
+
+**Route d'enregistrement pour l'envoi de notification avec firebase**
+
+**URL** : `/account/register-fcm`
+
+**Methode** : `PUT`
+
+**Token requis** : `NON`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| deviceId | string | ID de l'appareil | ✔️ | 
+| token | string | Token d'authentification pour l'enregistrement donné par firebase | ✔️ | 
+
+
+##### Requête réussie
+
+**Code** : `201`
+
+```json
+{
+    "error": false,
+    "message": "Device successfully added"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "102251",
+    "message": "Missing important fields"
+}
+```
+
+---
+
 ### Utilisateurs
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Liste des utilisateurs
@@ -1302,6 +1516,76 @@ npm start
 ```
 
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Récupération de l'historique
+
+---
+
+**Route de récupération de l'historique d'un utilisateur.**
+
+**URL** : `/user/history/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID de l'utilisateur ciblé | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful history acquisition",
+    "history" : [{
+        "_id":"",
+        "action": {
+            "method": "",
+            "route": "",
+        },
+        "userEmail": "",
+        "success": "",
+        "createdAt": "",
+        "updatedAt": "",
+    },{...}]
+}
+```
+
+##### Requête échouée
+
+**Condition** : Id utilisateur manquant.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103451",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : Id utilisateur invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "103452",
+    "message": "Invalid user id"
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Créer un client
 
@@ -2115,6 +2399,7 @@ npm start
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Créer une facture
 
@@ -2238,6 +2523,7 @@ npm start
 ```
 
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Modifier une facture
 
@@ -2448,6 +2734,78 @@ npm start
 ```
 
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Relancer un client sur une facture
+
+---
+
+**Route d'envoi d'un email et d'une notification pour la relance sur le payement d'une facture.**
+
+**URL** : `/bill/:billId/customer/:clientId/mail`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| billId | string | ID de la facture | ✔️ | 
+| clientId | string | ID du client lié à la facture | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Mail successfully send"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104301",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Id de la facture invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104302",
+    "message": "Invalid bill id"
+}
+```
+
+**Condition** : Id du client invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104153",
+    "message": "Invalid customer id"
+}
+```
+
+---
+
 ### Devis
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Liste des devis
@@ -2894,6 +3252,160 @@ npm start
 
 ---
 
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Relancer un client sur un devis
+
+---
+
+**Route d'envoi d'un email et d'une notification pour la relance de l'acceptation d'un devis.**
+
+**URL** : `/estimate/:estimateId/customer/:clientId/mail`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| estimateId | string | ID du devis | ✔️ | 
+| clientId | string | ID du client lié au devis | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Mail successfully send"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105301",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Id du devis invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105302",
+    "message": "Invalid estimate id"
+}
+```
+
+**Condition** : Id du client invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105303",
+    "message": "Invalid customer id"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Transformer un devis en facture
+
+---
+
+**Route de transformation d'un devis en une facture en respectant les articles.**
+
+**URL** : `/estimate/:estimateId/customer/:clientId/mail`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| estimateId | string | ID du devis | ✔️ | 
+| clientId | string | ID du client lié au devis | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Mail successfully send"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105351",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Id du devis invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105352",
+    "message": "Invalid estimate id"
+}
+```
+
+**Condition** : Id du client invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105353",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : Statut du devis invalide (déjà accepté).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "105354",
+    "message": "Invalid estimate status"
+}
+```
+
+---
+
 ### Articles
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Liste des articles
@@ -3085,276 +3597,6 @@ npm start
     "error": true,
     "code": "106152",
     "message": "Invalid article id"
-}
-```
-
----
-
-### Notes de frais
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Liste des notes de frais
-
----
-
-**Route de récupération de la liste des notes de frais pour un gérant ou un employé.**
-
-**URL** : `/expenses-employee`
-
-**Methode** : `GET`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| - | - | - | - | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Successful expenses acquisition",
-    "expenses": [{
-        "userExpenseNum": "",
-        "id": "",
-        "price": "",
-        "accountNumber": "",
-        "category": "",
-        "file": "",
-        "description": "",
-        "userId": "",
-        "createdAt": "",
-        "updatedAt": "",
-    },{...}]
-}
-```
-
----
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-#### Récupération d'une note de frais
-
----
-
-**Route de récupération d'une note de frais pour un gérant ou un employé.**
-
-**URL** : `/expense-employee/:id`
-
-**Methode** : `GET`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| :id | string | ID de la note de frais que l'on veut récupérer | ✔️ |
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Successful expense acquisition",
-    "expense": {
-        "userExpenseNum": "",
-        "id": "",
-        "price": "",
-        "accountNumber": "",
-        "category": "",
-        "file": "",
-        "description": "",
-        "userId": "",
-        "createdAt": "",
-        "updatedAt": "",
-    }
-}
-```
-
-##### Requête échouée
-
-**Condition** : Champs obligatoires manquants.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107051",
-    "message": "Missing id field"
-}
-```
-
-**Condition** : ID de la dépense invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107052",
-    "message": "Invalid expense id"
-}
-```
-
----
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Créer une note de frais
-
----
-
-**Route de création d'une note de frais pour les employés et les gérants.**
-
-**URL** : `/expense-employee`
-
-**Methode** : `POST`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| userExpenseNum | string | Numéro unique de dépense | ✔️ | 
-| price | number | Montant de la note de frais  | ✔️ | 
-| category | string | Category de la note de frais | ✔️ | 
-| accountNumber | number | Numéro de compte comptable de la note de frais | ✔️ | 
-| file | file | Document de justification de la note de frais | - | 
-| description | string | Description de la note de frais | - | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Expense successfully created", 
-    "expense": {
-        "userExpenseNum": "",
-        "id": "",
-        "price": "",
-        "accountNumber": "",
-        "category": "",
-        "file": "",
-        "description": "",
-        "userId": "",
-        "createdAt": "",
-        "updatedAt": "",
-    }
-}
-```
-
-##### Requête échouée
-
-**Condition** : Champs obligatoires manquants.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107101",
-    "message": "Missing important fields"
-}
-```
-
-**Condition** : Numéro de note de frais invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107102",
-    "message": "Invalid expense number"
-}
-```
-
-**Condition** : Numéro de compte invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107103",
-    "message": "Invalid account number"
-}
-```
-
-**Condition** : Format du prix invalide (Float).
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107104",
-    "message": "Invalid price format"
-}
-```
-
----
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Supprimer une note de frais
-
----
-
-**Route de suppression d'une note de frais par un employé ou un gérant.**
-
-**URL** : `/expense-employee/:id`
-
-**Methode** : `DELETE`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| :id | string | ID de la note de frais à supprimer | ✔️ | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Expense successfully deleted"
-}
-```
-
-##### Requête échouée
-
-**Condition** : Champs obligatoires manquants.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107151",
-    "message": "Missing id field"
-}
-```
-
-**Condition** : ID de la note de frais invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "107152",
-    "message": "Invalid expense id"
 }
 ```
 
@@ -3945,262 +4187,6 @@ npm start
 ---
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-### Tâches
-
-#### Liste des tâches
-
----
-
-**Route de récupération de la liste des tâches pour un projet.**
-
-**URL** : `/tasks/:id`
-
-**Methode** : `GET`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| :id | string | ID du projet pour lequel on veut récupérer les tâches | - |
-
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Successful tasks acquisition",
-    "tasks": [{
-        "id": "",
-        "name": "",
-        "progression": "",
-        "description": "",
-        "projectId": "",
-        "employees": [""],
-        "startDate": "",
-        "deadline": "",
-        "estimateHour": "",
-        "createdAt": "",
-        "updatedAt": "",
-    },{...}]
-}
-```
-
-##### Requête échouée
-
-**Condition** : ID du projet invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109051",
-    "message": "Invalid project id"
-}
-```
-
----
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Créer une tâche
-
----
-
-**Route de création d'une tâche par un employé ou un gérant.**
-
-**URL** : `/task`
-
-**Methode** : `POST`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| name | string | Nom de la tâche | ✔️ | 
-| progression | number | Progression de la tâche | ✔️ | 
-| description | string | Description de la tâche | - | 
-| projectId | string | ID du projet lié à la tâche | ✔️ | 
-| employees | array | Liste des employés liés à la tâche | ✔️ | 
-| startDate | date | Date de début de la tâche | ✔️ | 
-| deadline | date | Date de fin de la tâche | ✔️ | 
-| estimateHour | number | Nombre d'heures estimées | - | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Task successfully created", 
-    "task": {
-        "id": "",
-        "name": "",
-        "progression": "",
-        "description": "",
-        "projectId": "",
-        "employees": [""],
-        "startDate": "",
-        "deadline": "",
-        "estimateHour": "",
-        "createdAt": "",
-        "updatedAt": "",
-    },
-}
-```
-
-##### Requête échouée
-
-**Condition** : Champs obligatoires manquants.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109101",
-    "message": "Missing important fields"
-}
-```
-
-**Condition** : Numéro de progression invalide (0-100).
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109102",
-    "message": "Invalid progression number"
-}
-```
-
-**Condition** : ID du projet invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109103",
-    "message": "Invalid project id"
-}
-```
-
-**Condition** : Si un ID employé est invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109104",
-    "message": "Some employee id are invalid"
-}
-```
-
-**Condition** : Format du temps estimé invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109105",
-    "message": "Invalid estimate hour"
-}
-```
-
-**Condition** : Date d'échéance invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109106",
-    "message": "Invalid deadline"
-}
-```
-
-**Condition** : Date de début situé après la date d'échéance.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109107",
-    "message": "Start date can't be set after deadline"
-}
-```
-
----
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Supprimer une tâche
-
----
-
-**Route de suppression d'une tâche par un employé ou un gérant.**
-
-**URL** : `/task/:id`
-
-**Methode** : `DELETE`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| :id | string | ID de la tâche à supprimer | ✔️ | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Task successfully deleted"
-}
-```
-
-##### Requête échouée
-
-**Condition** : Champs obligatoires manquants.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109151",
-    "message": "Missing id field"
-}
-```
-
-**Condition** : ID de la tâche invalide.
-
-**Code** : `400`
-
-```json
-{
-    "error": true,
-    "code": "109152",
-    "message": "Invalid task id"
-}
-```
-
----
-
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 ### Temps
 
 #### Liste des temps enregistrés
@@ -4233,7 +4219,7 @@ npm start
         "id": "",
         "userId": "",
         "projectId": "",
-        "taskId": "",
+        "taskName": "",
         "billable": "",
         "duration": "",
         "createdAt": "",
@@ -4275,7 +4261,7 @@ npm start
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
 | userId | string | ID de l'employé ou le gérant enregistrant le temps | ✔️ | 
-| taskId | string | ID de la tâche lié au temps enregistré | - | 
+| taskName | string | Nom de la tâche liée au temps | - | 
 | projectId | string | ID du projet lié au temps enregistré | ✔️ | 
 | billable | boolean | Booléen pour savoir si le temps est factirable ou non | ✔️ | 
 | duration | number | Durée estimé de la tâche en heure | ✔️ | 
@@ -4291,7 +4277,7 @@ npm start
     "time": {
         "id": "",
         "userId": "",
-        "taskId": "",
+        "taskName": "",
         "projectId": "",
         "billable": "",
         "duration": "",
@@ -4395,7 +4381,7 @@ npm start
     "time": {
         "id": "",
         "userId": "",
-        "taskId": "",
+        "taskName": "",
         "projectId": "",
         "billable": "",
         "duration": "",
@@ -4512,7 +4498,7 @@ npm start
 
 **Route de récupération de la liste des dépenses pour un gérant ou un employé.**
 
-**URL** : `/expenses/:id`
+**URL** : `/expenses/:projectId`
 
 **Methode** : `GET`
 
@@ -4522,7 +4508,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| :id | string | ID du projet pour lequel on veut récupérer les dépenses | - |
+| projectId | string | ID du projet pour lequel on veut récupérer les dépenses | - |
 
 ##### Requête réussie
 
@@ -4762,6 +4748,66 @@ npm start
 ```
 
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Modifier une dépense
+
+---
+
+**Route de modification d'une dépense par un employé ou un gérant.**
+
+**URL** : `/expense`
+
+**Methode** : `PUT`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID de la dépense à modifier | ✔️ | 
+| billable | boolean | Booléen pour savoir si la dépense est facturé ou non | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Expense successfully updated"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111151",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la dépense invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "111152",
+    "message": "Invalid expense id"
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Supprimer une dépense
 
@@ -4801,7 +4847,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "111151",
+    "code": "111201",
     "message": "Missing id field"
 }
 ```
@@ -4813,7 +4859,7 @@ npm start
 ```json
 {
     "error": true,
-    "code": "111152",
+    "code": "111202",
     "message": "Invalid expense id"
 }
 ```
@@ -4848,18 +4894,151 @@ npm start
 ```json
 {
     "error": false,
-    "message": "Successful conversation acquisition",
+    "message": "Successful conversations acquisition",
     "conversations": [{
         "id": "",
+        "member1": "",
+        "member2": "",
+        "createdAt": "",
+        "updatedAt": "",
+        "lastMessage": "",
+    },{...}]
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Récupération d'une conversation
+
+---
+
+**Route de récupération d'une conversation avec un autre utilisateur.**
+
+**URL** : `/conversation/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID de la conversation | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful conversation acquisition",
+    "conversation": {
+        "id": "",
+        "member1": "",
+        "member2": "",
+        "createdAt": "",
+        "updatedAt": "",
+        "lastMessage": "",
+    }
+}
+```
+
+##### Requête échouée
+
+**Condition** : ID de la conversation manquante.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112201",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la conversation invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112202",
+    "message": "Invalid conversation id"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Récupération des messages d'une conversation
+
+---
+
+**Route de récupération des messages d'une conversation avec un autre utilisateur.**
+
+**URL** : `/conversation/:id/messages`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| id | string | ID de la conversation | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful conversation messages acquisition",
+    "messages": [{
+        "conversationId": "",
         "userId": "",
-        "userId1": "",
+        "text": "",
         "createdAt": "",
         "updatedAt": "",
     },{...}]
 }
 ```
 
+##### Requête échouée
+
+**Condition** : ID de la conversation manquante.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112251",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID de la conversation invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "112252",
+    "message": "Invalid conversation id"
+}
+```
+
 ---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Créer une conversation
 
@@ -4889,10 +5068,11 @@ npm start
     "message": "Conversation successfully created",
     "conversation": {
         "id": "",
-        "userId": "",
-        "userId1": "",
+        "member1": "",
+        "member2": "",
         "createdAt": "",
         "updatedAt": "",
+        "lastMessage": "",
     }
 }
 ```
@@ -4910,6 +5090,7 @@ npm start
     "message": "Missing important fields"
 }
 ```
+
 **Condition** : Si l'on créer une conversation avec soit même
 
 **Code** : `400`

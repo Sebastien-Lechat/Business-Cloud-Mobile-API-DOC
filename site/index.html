@@ -73,9 +73,7 @@
                 <li class="third-level"><a href="#factures">Factures</a></li>
                 <li class="third-level"><a href="#devis">Devis</a></li>
                 <li class="third-level"><a href="#articles">Articles</a></li>
-                <li class="third-level"><a href="#notes-de-frais">Notes de frais</a></li>
                 <li class="third-level"><a href="#projets">Projets</a></li>
-                <li class="third-level"><a href="#taches">Tâches</a></li>
                 <li class="third-level"><a href="#temps">Temps</a></li>
                 <li class="third-level"><a href="#depenses">Dépenses</a></li>
                 <li class="third-level"><a href="#conversations">Conversations</a></li>
@@ -245,6 +243,116 @@ npm start
 </code></pre>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="connexion-a-une-api-exterieur">Connexion à une API extérieur</h4>
+<hr />
+<p><strong>Route de connexion pour n'importe quel type d'utilisateur via une API externe.</strong></p>
+<p><strong>URL</strong> : <code>/auth/external/login</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID du compte externe</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Nom de l'API externe utilisé (facebook, google)</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email de l'utilisateur</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token fourni par l'API externe</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_1">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot; : &quot;Successfully connected&quot;,
+    &quot;user&quot; : {
+        &quot;id&quot;:&quot;&quot;,
+        &quot;avatar&quot; : &quot;&quot;,
+        &quot;name&quot; : &quot;&quot;,
+        &quot;email&quot; : &quot;&quot;,
+        &quot;phone&quot; : &quot;&quot;,
+        &quot;type&quot; : &quot;&quot;,
+        &quot;address&quot; : &quot;&quot;,
+        &quot;zip&quot; : &quot;&quot;,
+        &quot;city&quot; : &quot;&quot;,
+        &quot;country&quot; : &quot;&quot;,
+        &quot;token&quot; : &quot;&quot;,
+        &quot;refreshToken&quot; : &quot;&quot;,
+        &quot;createdAt&quot; : &quot;&quot;,
+        &quot;updatedAt&quot; : &quot;&quot;,
+        &quot;userId&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echouee_1">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101401&quot;,
+    &quot;message&quot;: &quot;Missing email or password field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101402&quot;,
+    &quot;message&quot;: &quot;Invalid email addresse&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Aucun compte lié valide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101403&quot;,
+    &quot;message&quot;: &quot;No account linked to this email&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Le type ne correspond à aucun type valide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101404&quot;,
+    &quot;message&quot;: &quot;Invalid type&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de compte extérieur invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;101405&quot;,
+    &quot;message&quot;: &quot;Invalid external account ID&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 <h4 id="inscription">Inscription</h4>
 <hr />
@@ -282,12 +390,6 @@ npm start
 <td>-</td>
 </tr>
 <tr>
-<td>birthdayDate</td>
-<td>date</td>
-<td>Date de naisse du client</td>
-<td>-</td>
-</tr>
-<tr>
 <td>password</td>
 <td>string</td>
 <td>Mot de passe du client ou de l'entreprise</td>
@@ -297,54 +399,54 @@ npm start
 <td>address</td>
 <td>string</td>
 <td>Adresse du client ou de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>zip</td>
 <td>string</td>
 <td>Code postal du client ou de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>city</td>
 <td>string</td>
 <td>Ville du client ou de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>country</td>
 <td>string</td>
 <td>Pays du client ou de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>numTVA</td>
 <td>string</td>
 <td>Numéro de TVA de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>numSIRET</td>
 <td>string</td>
 <td>Numéro de SIRET de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 <tr>
 <td>numRCS</td>
 <td>string</td>
 <td>Numéro de RCS de l'entreprise</td>
-<td>-</td>
+<td>✔️</td>
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_1">Requête réussie</h5>
+<h5 id="requete-reussie_2">Requête réussie</h5>
 <p><strong>Code</strong> : <code>201</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Successfully registred&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_1">Requête échouée</h5>
+<h5 id="requete-echouee_2">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -401,19 +503,11 @@ npm start
     &quot;message&quot;: &quot;Invalid RCS number&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Date de naisseance invalide (DD-MM-YYY).</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101058&quot;,
-    &quot;message&quot;: &quot;Invalid date format&quot;
-}
-</code></pre>
 <p><strong>Condition</strong> : L'email est déjà utilisé par un autre utilisateur.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;101059&quot;,
+    &quot;code&quot;: &quot;101058&quot;,
     &quot;message&quot;: &quot;This email is already used&quot;
 }
 </code></pre>
@@ -444,14 +538,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_2">Requête réussie</h5>
+<h5 id="requete-reussie_3">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Email successfully send&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_2">Requête échouée</h5>
+<h5 id="requete-echouee_3">Requête échouée</h5>
 <p><strong>Condition</strong> : Champ email manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -503,14 +597,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_3">Requête réussie</h5>
+<h5 id="requete-reussie_4">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Email successfully send&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_3">Requête échouée</h5>
+<h5 id="requete-echouee_4">Requête échouée</h5>
 <p><strong>Condition</strong> : Champ email manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -576,14 +670,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_4">Requête réussie</h5>
+<h5 id="requete-reussie_5">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Successful verification&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_4">Requête échouée</h5>
+<h5 id="requete-echouee_5">Requête échouée</h5>
 <p><strong>Condition</strong> : Champ email ou code manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -659,14 +753,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_5">Requête réussie</h5>
+<h5 id="requete-reussie_6">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Email successfully send&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_5">Requête échouée</h5>
+<h5 id="requete-echouee_6">Requête échouée</h5>
 <p><strong>Condition</strong> : Champ email manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -734,20 +828,54 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_6">Requête réussie</h5>
+<h5 id="requete-reussie_7">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Double authentification successfully updated&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_6">Requête échouée</h5>
+<h5 id="requete-echouee_7">Requête échouée</h5>
 <p><strong>Condition</strong> : Champ isActive manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;101301&quot;,
     &quot;message&quot;: &quot;Missing isActive field&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="deconnexion">Déconnexion</h4>
+<hr />
+<p><strong>Route de déconnexion pour n'importe quel type d'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/auth/disconnect</code></p>
+<p><strong>Methode</strong> : <code>DELETE</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_8">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successfully logout&quot;
 }
 </code></pre>
 <hr />
@@ -778,7 +906,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_7">Requête réussie</h5>
+<h5 id="requete-reussie_9">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -811,7 +939,7 @@ npm start
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="modification-des-informations-personnelles">Modification des informations personnelles</h4>
 <hr />
-<p><strong>Route de modification des informations personnelles, des informations de contact et deavatar de l'utilisateur.</strong></p>
+<p><strong>Route de modification des informations personnelles, des informations de contact.</strong></p>
 <p><strong>URL</strong> : <code>/account/information</code></p>
 <p><strong>Methode</strong> : <code>PUT</code></p>
 <p><strong>Token requis</strong> : <code>OUI</code></p>
@@ -826,12 +954,6 @@ npm start
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>avatar</td>
-<td>file</td>
-<td>Avatar de l'utilisateur</td>
-<td>-</td>
-</tr>
 <tr>
 <td>name</td>
 <td>string</td>
@@ -850,15 +972,9 @@ npm start
 <td>Téléphone de l'utilisateur ou de l'entreprise</td>
 <td>-</td>
 </tr>
-<tr>
-<td>birthdayDate</td>
-<td>date</td>
-<td>Date de naisse de l'utilisateur</td>
-<td>-</td>
-</tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_8">Requête réussie</h5>
+<h5 id="requete-reussie_10">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -887,7 +1003,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_7">Requête échouée</h5>
+<h5 id="requete-echouee_8">Requête échouée</h5>
 <p><strong>Condition</strong> : Adresse email invalide (format invalide).</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -920,12 +1036,47 @@ npm start
     &quot;message&quot;: &quot;This email is already used&quot;
 }
 </code></pre>
-<p><strong>Condition</strong> : Erreur lors de l'enregistrement de l'avatar.</p>
-<p><strong>Code</strong> : <code>500</code></p>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modification-de-lavatar">Modification de l'avatar</h4>
+<hr />
+<p><strong>Route de modification de l'avatar de l'utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/account/avatar</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>avatarPath</td>
+<td>string</td>
+<td>nom du fichier pour la récupération sur firecloud storage</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_11">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Profile successfully updated&quot;,
+}
+</code></pre>
+<h5 id="requete-echouee_9">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;500004&quot;,
-    &quot;message&quot;: &quot;Internal server error, avatar can not be saved&quot;
+    &quot;code&quot;: &quot;102301&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
 }
 </code></pre>
 <hr />
@@ -967,7 +1118,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_9">Requête réussie</h5>
+<h5 id="requete-reussie_12">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -996,7 +1147,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_8">Requête échouée</h5>
+<h5 id="requete-echouee_10">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1026,7 +1177,7 @@ npm start
 <h4 id="modification-de-ladresse">Modification de l'adresse</h4>
 <hr />
 <p><strong>Route de modification des information de location de l'utilisateur.</strong></p>
-<p><strong>URL</strong> : <code>account/address</code></p>
+<p><strong>URL</strong> : <code>/account/address</code></p>
 <p><strong>Methode</strong> : <code>PUT</code></p>
 <p><strong>Token requis</strong> : <code>OUI</code></p>
 <p><strong>Paramètres de la requête</strong></p>
@@ -1066,7 +1217,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_10">Requête réussie</h5>
+<h5 id="requete-reussie_13">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1095,7 +1246,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_9">Requête échouée</h5>
+<h5 id="requete-echouee_11">Requête échouée</h5>
 <p><strong>Condition</strong> : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1151,7 +1302,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
 
-<h5 id="requete-reussie_11">Requête réussie</h5>
+<h5 id="requete-reussie_14">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1180,7 +1331,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_10">Requête échouée</h5>
+<h5 id="requete-echouee_12">Requête échouée</h5>
 <p><strong>Condition</strong> : Si l'utilisateur faisant la requête n'est ni gérant, ni un client.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1214,6 +1365,56 @@ npm start
 }
 </code></pre>
 <hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<h4 id="enregistrement-dun-appareil">Enregistrement d'un appareil</h4>
+<hr />
+<p><strong>Route d'enregistrement pour l'envoi de notification avec firebase</strong></p>
+<p><strong>URL</strong> : <code>/account/register-fcm</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>NON</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>deviceId</td>
+<td>string</td>
+<td>ID de l'appareil</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Token d'authentification pour l'enregistrement donné par firebase</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_15">Requête réussie</h5>
+<p><strong>Code</strong> : <code>201</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Device successfully added&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_13">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;102251&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<hr />
 <h3 id="utilisateurs">Utilisateurs</h3>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="liste-des-utilisateurs">Liste des utilisateurs</h4>
@@ -1241,7 +1442,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_12">Requête réussie</h5>
+<h5 id="requete-reussie_16">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1285,7 +1486,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_13">Requête réussie</h5>
+<h5 id="requete-reussie_17">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1311,7 +1512,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_11">Requête échouée</h5>
+<h5 id="requete-echouee_14">Requête échouée</h5>
 <p><strong>Condition</strong> : Id utilisateur manquant.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1325,6 +1526,68 @@ npm start
 <pre><code class="language-json">{
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;103102&quot;,
+    &quot;message&quot;: &quot;Invalid user id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-de-lhistorique">Récupération de l'historique</h4>
+<hr />
+<p><strong>Route de récupération de l'historique d'un utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/user/history/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de l'utilisateur ciblé</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_18">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful history acquisition&quot;,
+    &quot;history&quot; : [{
+        &quot;_id&quot;:&quot;&quot;,
+        &quot;action&quot;: {
+            &quot;method&quot;: &quot;&quot;,
+            &quot;route&quot;: &quot;&quot;,
+        },
+        &quot;userEmail&quot;: &quot;&quot;,
+        &quot;success&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<h5 id="requete-echouee_15">Requête échouée</h5>
+<p><strong>Condition</strong> : Id utilisateur manquant.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103451&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id utilisateur invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;103452&quot;,
     &quot;message&quot;: &quot;Invalid user id&quot;
 }
 </code></pre>
@@ -1423,7 +1686,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle les factures seront générée pour le client | - | -->
 <p>| note | string | Annotation sur le client sur le client | - |</p>
-<h5 id="requete-reussie_14">Requête réussie</h5>
+<h5 id="requete-reussie_19">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1449,7 +1712,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_12">Requête échouée</h5>
+<h5 id="requete-echouee_16">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1617,7 +1880,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle les factures seront générées pour le client | - | -->
 <p>| note | string | Annotation sur le client sur le client | - |</p>
-<h5 id="requete-reussie_15">Requête réussie</h5>
+<h5 id="requete-reussie_20">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1643,7 +1906,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_13">Requête échouée</h5>
+<h5 id="requete-echouee_17">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1743,14 +2006,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_16">Requête réussie</h5>
+<h5 id="requete-reussie_21">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Customer successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_14">Requête échouée</h5>
+<h5 id="requete-echouee_18">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1818,7 +2081,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_17">Requête réussie</h5>
+<h5 id="requete-reussie_22">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1835,7 +2098,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_15">Requête échouée</h5>
+<h5 id="requete-echouee_19">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -1935,7 +2198,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_18">Requête réussie</h5>
+<h5 id="requete-reussie_23">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -1952,7 +2215,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_16">Requête échouée</h5>
+<h5 id="requete-echouee_20">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2028,14 +2291,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_19">Requête réussie</h5>
+<h5 id="requete-reussie_24">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Employee successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_17">Requête échouée</h5>
+<h5 id="requete-echouee_21">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2080,7 +2343,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_20">Requête réussie</h5>
+<h5 id="requete-reussie_25">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2132,7 +2395,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_21">Requête réussie</h5>
+<h5 id="requete-reussie_26">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2157,7 +2420,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_18">Requête échouée</h5>
+<h5 id="requete-echouee_22">Requête échouée</h5>
 <p><strong>Condition</strong> : ID de facture invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2213,7 +2476,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle la facture sera généré | ✔️ | -->
 <p>| deadline | date | Date limite à laquelle le client peut payer la facture | ✔️ |</p>
-<h5 id="requete-reussie_22">Requête réussie</h5>
+<h5 id="requete-reussie_27">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2233,7 +2496,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_19">Requête échouée</h5>
+<h5 id="requete-echouee_23">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2335,7 +2598,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle la facture sera généré | - | -->
 <p>| deadline | date | Date limite à laquelle le client peut payer la facture | - |</p>
-<h5 id="requete-reussie_23">Requête réussie</h5>
+<h5 id="requete-reussie_28">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2360,7 +2623,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_20">Requête échouée</h5>
+<h5 id="requete-echouee_24">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2452,14 +2715,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_24">Requête réussie</h5>
+<h5 id="requete-reussie_29">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Bill successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_21">Requête échouée</h5>
+<h5 id="requete-echouee_25">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2474,6 +2737,71 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;104252&quot;,
     &quot;message&quot;: &quot;Invalid bill id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="relancer-un-client-sur-une-facture">Relancer un client sur une facture</h4>
+<hr />
+<p><strong>Route d'envoi d'un email et d'une notification pour la relance sur le payement d'une facture.</strong></p>
+<p><strong>URL</strong> : <code>/bill/:billId/customer/:clientId/mail</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>billId</td>
+<td>string</td>
+<td>ID de la facture</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>ID du client lié à la facture</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_30">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Mail successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_26">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104301&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id de la facture invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104302&quot;,
+    &quot;message&quot;: &quot;Invalid bill id&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id du client invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;104153&quot;,
+    &quot;message&quot;: &quot;Invalid customer id&quot;
 }
 </code></pre>
 <hr />
@@ -2504,7 +2832,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_25">Requête réussie</h5>
+<h5 id="requete-reussie_31">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2527,7 +2855,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_22">Requête échouée</h5>
+<h5 id="requete-echouee_27">Requête échouée</h5>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="recuperation-dun-devis">Récupération d'un devis</h4>
@@ -2555,7 +2883,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_26">Requête réussie</h5>
+<h5 id="requete-reussie_32">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2578,7 +2906,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_23">Requête échouée</h5>
+<h5 id="requete-echouee_28">Requête échouée</h5>
 <p><strong>Condition</strong> : ID de devis invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2634,7 +2962,7 @@ npm start
 </table>
 <!-- | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ | -->
 <p>| deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |</p>
-<h5 id="requete-reussie_27">Requête réussie</h5>
+<h5 id="requete-reussie_33">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2654,7 +2982,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_24">Requête échouée</h5>
+<h5 id="requete-echouee_29">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2760,7 +3088,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_28">Requête réussie</h5>
+<h5 id="requete-reussie_34">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2785,7 +3113,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_25">Requête échouée</h5>
+<h5 id="requete-echouee_30">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2877,14 +3205,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_29">Requête réussie</h5>
+<h5 id="requete-reussie_35">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Estimate successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_26">Requête échouée</h5>
+<h5 id="requete-echouee_31">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -2899,6 +3227,144 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;105252&quot;,
     &quot;message&quot;: &quot;Invalid estimate id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="relancer-un-client-sur-un-devis">Relancer un client sur un devis</h4>
+<hr />
+<p><strong>Route d'envoi d'un email et d'une notification pour la relance de l'acceptation d'un devis.</strong></p>
+<p><strong>URL</strong> : <code>/estimate/:estimateId/customer/:clientId/mail</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>estimateId</td>
+<td>string</td>
+<td>ID du devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>ID du client lié au devis</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_36">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Mail successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_32">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105301&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id du devis invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105302&quot;,
+    &quot;message&quot;: &quot;Invalid estimate id&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id du client invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105303&quot;,
+    &quot;message&quot;: &quot;Invalid customer id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="transformer-un-devis-en-facture">Transformer un devis en facture</h4>
+<hr />
+<p><strong>Route de transformation d'un devis en une facture en respectant les articles.</strong></p>
+<p><strong>URL</strong> : <code>/estimate/:estimateId/customer/:clientId/mail</code></p>
+<p><strong>Methode</strong> : <code>POST</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>estimateId</td>
+<td>string</td>
+<td>ID du devis</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>ID du client lié au devis</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_37">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Mail successfully send&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_33">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105351&quot;,
+    &quot;message&quot;: &quot;Missing important fields&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id du devis invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105352&quot;,
+    &quot;message&quot;: &quot;Invalid estimate id&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Id du client invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105353&quot;,
+    &quot;message&quot;: &quot;Invalid customer id&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : Statut du devis invalide (déjà accepté).</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;105354&quot;,
+    &quot;message&quot;: &quot;Invalid estimate status&quot;
 }
 </code></pre>
 <hr />
@@ -2929,7 +3395,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_30">Requête réussie</h5>
+<h5 id="requete-reussie_38">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -2997,7 +3463,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_31">Requête réussie</h5>
+<h5 id="requete-reussie_39">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3015,7 +3481,7 @@ npm start
 
 }
 </code></pre>
-<h5 id="requete-echouee_27">Requête échouée</h5>
+<h5 id="requete-echouee_34">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3075,14 +3541,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_32">Requête réussie</h5>
+<h5 id="requete-reussie_40">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Article successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_28">Requête échouée</h5>
+<h5 id="requete-echouee_35">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3097,277 +3563,6 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;106152&quot;,
     &quot;message&quot;: &quot;Invalid article id&quot;
-}
-</code></pre>
-<hr />
-<h3 id="notes-de-frais">Notes de frais</h3>
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h4 id="liste-des-notes-de-frais">Liste des notes de frais</h4>
-<hr />
-<p><strong>Route de récupération de la liste des notes de frais pour un gérant ou un employé.</strong></p>
-<p><strong>URL</strong> : <code>/expenses-employee</code></p>
-<p><strong>Methode</strong> : <code>GET</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_33">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Successful expenses acquisition&quot;,
-    &quot;expenses&quot;: [{
-        &quot;userExpenseNum&quot;: &quot;&quot;,
-        &quot;id&quot;: &quot;&quot;,
-        &quot;price&quot;: &quot;&quot;,
-        &quot;accountNumber&quot;: &quot;&quot;,
-        &quot;category&quot;: &quot;&quot;,
-        &quot;file&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;&quot;,
-        &quot;userId&quot;: &quot;&quot;,
-        &quot;createdAt&quot;: &quot;&quot;,
-        &quot;updatedAt&quot;: &quot;&quot;,
-    },{...}]
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-<h4 id="recuperation-dune-note-de-frais">Récupération d'une note de frais</h4>
-<hr />
-<p><strong>Route de récupération d'une note de frais pour un gérant ou un employé.</strong></p>
-<p><strong>URL</strong> : <code>/expense-employee/:id</code></p>
-<p><strong>Methode</strong> : <code>GET</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>:id</td>
-<td>string</td>
-<td>ID de la note de frais que l'on veut récupérer</td>
-<td>✔️</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_34">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Successful expense acquisition&quot;,
-    &quot;expense&quot;: {
-        &quot;userExpenseNum&quot;: &quot;&quot;,
-        &quot;id&quot;: &quot;&quot;,
-        &quot;price&quot;: &quot;&quot;,
-        &quot;accountNumber&quot;: &quot;&quot;,
-        &quot;category&quot;: &quot;&quot;,
-        &quot;file&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;&quot;,
-        &quot;userId&quot;: &quot;&quot;,
-        &quot;createdAt&quot;: &quot;&quot;,
-        &quot;updatedAt&quot;: &quot;&quot;,
-    }
-}
-</code></pre>
-<h5 id="requete-echouee_29">Requête échouée</h5>
-<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107051&quot;,
-    &quot;message&quot;: &quot;Missing id field&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : ID de la dépense invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107052&quot;,
-    &quot;message&quot;: &quot;Invalid expense id&quot;
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h4 id="creer-une-note-de-frais">Créer une note de frais</h4>
-<hr />
-<p><strong>Route de création d'une note de frais pour les employés et les gérants.</strong></p>
-<p><strong>URL</strong> : <code>/expense-employee</code></p>
-<p><strong>Methode</strong> : <code>POST</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>userExpenseNum</td>
-<td>string</td>
-<td>Numéro unique de dépense</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>price</td>
-<td>number</td>
-<td>Montant de la note de frais</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>category</td>
-<td>string</td>
-<td>Category de la note de frais</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>accountNumber</td>
-<td>number</td>
-<td>Numéro de compte comptable de la note de frais</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>file</td>
-<td>file</td>
-<td>Document de justification de la note de frais</td>
-<td>-</td>
-</tr>
-<tr>
-<td>description</td>
-<td>string</td>
-<td>Description de la note de frais</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_35">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Expense successfully created&quot;, 
-    &quot;expense&quot;: {
-        &quot;userExpenseNum&quot;: &quot;&quot;,
-        &quot;id&quot;: &quot;&quot;,
-        &quot;price&quot;: &quot;&quot;,
-        &quot;accountNumber&quot;: &quot;&quot;,
-        &quot;category&quot;: &quot;&quot;,
-        &quot;file&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;&quot;,
-        &quot;userId&quot;: &quot;&quot;,
-        &quot;createdAt&quot;: &quot;&quot;,
-        &quot;updatedAt&quot;: &quot;&quot;,
-    }
-}
-</code></pre>
-<h5 id="requete-echouee_30">Requête échouée</h5>
-<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107101&quot;,
-    &quot;message&quot;: &quot;Missing important fields&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Numéro de note de frais invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107102&quot;,
-    &quot;message&quot;: &quot;Invalid expense number&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Numéro de compte invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107103&quot;,
-    &quot;message&quot;: &quot;Invalid account number&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Format du prix invalide (Float).</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107104&quot;,
-    &quot;message&quot;: &quot;Invalid price format&quot;
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h4 id="supprimer-une-note-de-frais">Supprimer une note de frais</h4>
-<hr />
-<p><strong>Route de suppression d'une note de frais par un employé ou un gérant.</strong></p>
-<p><strong>URL</strong> : <code>/expense-employee/:id</code></p>
-<p><strong>Methode</strong> : <code>DELETE</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>:id</td>
-<td>string</td>
-<td>ID de la note de frais à supprimer</td>
-<td>✔️</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_36">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Expense successfully deleted&quot;
-}
-</code></pre>
-<h5 id="requete-echouee_31">Requête échouée</h5>
-<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107151&quot;,
-    &quot;message&quot;: &quot;Missing id field&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : ID de la note de frais invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;107152&quot;,
-    &quot;message&quot;: &quot;Invalid expense id&quot;
 }
 </code></pre>
 <hr />
@@ -3398,7 +3593,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_37">Requête réussie</h5>
+<h5 id="requete-reussie_41">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3447,7 +3642,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_38">Requête réussie</h5>
+<h5 id="requete-reussie_42">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3469,7 +3664,7 @@ npm start
 }
 
 </code></pre>
-<h5 id="requete-echouee_32">Requête échouée</h5>
+<h5 id="requete-echouee_36">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3573,7 +3768,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_39">Requête réussie</h5>
+<h5 id="requete-reussie_43">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3594,7 +3789,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_33">Requête échouée</h5>
+<h5 id="requete-echouee_37">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3784,7 +3979,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_40">Requête réussie</h5>
+<h5 id="requete-reussie_44">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -3805,7 +4000,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_34">Requête échouée</h5>
+<h5 id="requete-echouee_38">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3929,14 +4124,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_41">Requête réussie</h5>
+<h5 id="requete-reussie_45">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Project successfully deleted&quot;,
 }
 </code></pre>
-<h5 id="requete-echouee_35">Requête échouée</h5>
+<h5 id="requete-echouee_39">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -3951,260 +4146,6 @@ npm start
     &quot;error&quot;: true,
     &quot;code&quot;: &quot;108252&quot;,
     &quot;message&quot;: &quot;Invalid project id&quot;
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h3 id="taches">Tâches</h3>
-<h4 id="liste-des-taches">Liste des tâches</h4>
-<hr />
-<p><strong>Route de récupération de la liste des tâches pour un projet.</strong></p>
-<p><strong>URL</strong> : <code>/tasks/:id</code></p>
-<p><strong>Methode</strong> : <code>GET</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>:id</td>
-<td>string</td>
-<td>ID du projet pour lequel on veut récupérer les tâches</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_42">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Successful tasks acquisition&quot;,
-    &quot;tasks&quot;: [{
-        &quot;id&quot;: &quot;&quot;,
-        &quot;name&quot;: &quot;&quot;,
-        &quot;progression&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;&quot;,
-        &quot;projectId&quot;: &quot;&quot;,
-        &quot;employees&quot;: [&quot;&quot;],
-        &quot;startDate&quot;: &quot;&quot;,
-        &quot;deadline&quot;: &quot;&quot;,
-        &quot;estimateHour&quot;: &quot;&quot;,
-        &quot;createdAt&quot;: &quot;&quot;,
-        &quot;updatedAt&quot;: &quot;&quot;,
-    },{...}]
-}
-</code></pre>
-<h5 id="requete-echouee_36">Requête échouée</h5>
-<p><strong>Condition</strong> : ID du projet invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109051&quot;,
-    &quot;message&quot;: &quot;Invalid project id&quot;
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h4 id="creer-une-tache">Créer une tâche</h4>
-<hr />
-<p><strong>Route de création d'une tâche par un employé ou un gérant.</strong></p>
-<p><strong>URL</strong> : <code>/task</code></p>
-<p><strong>Methode</strong> : <code>POST</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>Nom de la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>progression</td>
-<td>number</td>
-<td>Progression de la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>description</td>
-<td>string</td>
-<td>Description de la tâche</td>
-<td>-</td>
-</tr>
-<tr>
-<td>projectId</td>
-<td>string</td>
-<td>ID du projet lié à la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>employees</td>
-<td>array</td>
-<td>Liste des employés liés à la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>startDate</td>
-<td>date</td>
-<td>Date de début de la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>deadline</td>
-<td>date</td>
-<td>Date de fin de la tâche</td>
-<td>✔️</td>
-</tr>
-<tr>
-<td>estimateHour</td>
-<td>number</td>
-<td>Nombre d'heures estimées</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_43">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Task successfully created&quot;, 
-    &quot;task&quot;: {
-        &quot;id&quot;: &quot;&quot;,
-        &quot;name&quot;: &quot;&quot;,
-        &quot;progression&quot;: &quot;&quot;,
-        &quot;description&quot;: &quot;&quot;,
-        &quot;projectId&quot;: &quot;&quot;,
-        &quot;employees&quot;: [&quot;&quot;],
-        &quot;startDate&quot;: &quot;&quot;,
-        &quot;deadline&quot;: &quot;&quot;,
-        &quot;estimateHour&quot;: &quot;&quot;,
-        &quot;createdAt&quot;: &quot;&quot;,
-        &quot;updatedAt&quot;: &quot;&quot;,
-    },
-}
-</code></pre>
-<h5 id="requete-echouee_37">Requête échouée</h5>
-<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109101&quot;,
-    &quot;message&quot;: &quot;Missing important fields&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Numéro de progression invalide (0-100).</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109102&quot;,
-    &quot;message&quot;: &quot;Invalid progression number&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : ID du projet invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109103&quot;,
-    &quot;message&quot;: &quot;Invalid project id&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Si un ID employé est invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109104&quot;,
-    &quot;message&quot;: &quot;Some employee id are invalid&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Format du temps estimé invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109105&quot;,
-    &quot;message&quot;: &quot;Invalid estimate hour&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Date d'échéance invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109106&quot;,
-    &quot;message&quot;: &quot;Invalid deadline&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : Date de début situé après la date d'échéance.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109107&quot;,
-    &quot;message&quot;: &quot;Start date can't be set after deadline&quot;
-}
-</code></pre>
-<hr />
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-<h4 id="supprimer-une-tache">Supprimer une tâche</h4>
-<hr />
-<p><strong>Route de suppression d'une tâche par un employé ou un gérant.</strong></p>
-<p><strong>URL</strong> : <code>/task/:id</code></p>
-<p><strong>Methode</strong> : <code>DELETE</code></p>
-<p><strong>Token requis</strong> : <code>OUI</code></p>
-<p><strong>Paramètres de la requête</strong></p>
-<table>
-<thead>
-<tr>
-<th>Paramètres</th>
-<th>Type</th>
-<th>Description</th>
-<th>Obligatoire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>:id</td>
-<td>string</td>
-<td>ID de la tâche à supprimer</td>
-<td>✔️</td>
-</tr>
-</tbody>
-</table>
-<h5 id="requete-reussie_44">Requête réussie</h5>
-<p><strong>Code</strong> : <code>200</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: false,
-    &quot;message&quot;: &quot;Task successfully deleted&quot;
-}
-</code></pre>
-<h5 id="requete-echouee_38">Requête échouée</h5>
-<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109151&quot;,
-    &quot;message&quot;: &quot;Missing id field&quot;
-}
-</code></pre>
-<p><strong>Condition</strong> : ID de la tâche invalide.</p>
-<p><strong>Code</strong> : <code>400</code></p>
-<pre><code class="language-json">{
-    &quot;error&quot;: true,
-    &quot;code&quot;: &quot;109152&quot;,
-    &quot;message&quot;: &quot;Invalid task id&quot;
 }
 </code></pre>
 <hr />
@@ -4235,7 +4176,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_45">Requête réussie</h5>
+<h5 id="requete-reussie_46">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4244,7 +4185,7 @@ npm start
         &quot;id&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
         &quot;projectId&quot;: &quot;&quot;,
-        &quot;taskId&quot;: &quot;&quot;,
+        &quot;taskName&quot;: &quot;&quot;,
         &quot;billable&quot;: &quot;&quot;,
         &quot;duration&quot;: &quot;&quot;,
         &quot;createdAt&quot;: &quot;&quot;,
@@ -4252,7 +4193,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_39">Requête échouée</h5>
+<h5 id="requete-echouee_40">Requête échouée</h5>
 <p><strong>Condition</strong> : ID du projet invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4287,9 +4228,9 @@ npm start
 <td>✔️</td>
 </tr>
 <tr>
-<td>taskId</td>
+<td>taskName</td>
 <td>string</td>
-<td>ID de la tâche lié au temps enregistré</td>
+<td>Nom de la tâche liée au temps</td>
 <td>-</td>
 </tr>
 <tr>
@@ -4312,7 +4253,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_46">Requête réussie</h5>
+<h5 id="requete-reussie_47">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4320,7 +4261,7 @@ npm start
     &quot;time&quot;: {
         &quot;id&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;taskId&quot;: &quot;&quot;,
+        &quot;taskName&quot;: &quot;&quot;,
         &quot;projectId&quot;: &quot;&quot;,
         &quot;billable&quot;: &quot;&quot;,
         &quot;duration&quot;: &quot;&quot;,
@@ -4329,7 +4270,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_40">Requête échouée</h5>
+<h5 id="requete-echouee_41">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4403,7 +4344,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_47">Requête réussie</h5>
+<h5 id="requete-reussie_48">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4411,7 +4352,7 @@ npm start
     &quot;time&quot;: {
         &quot;id&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;taskId&quot;: &quot;&quot;,
+        &quot;taskName&quot;: &quot;&quot;,
         &quot;projectId&quot;: &quot;&quot;,
         &quot;billable&quot;: &quot;&quot;,
         &quot;duration&quot;: &quot;&quot;,
@@ -4420,7 +4361,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_41">Requête échouée</h5>
+<h5 id="requete-echouee_42">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4472,14 +4413,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_48">Requête réussie</h5>
+<h5 id="requete-reussie_49">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Time successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_42">Requête échouée</h5>
+<h5 id="requete-echouee_43">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4502,7 +4443,7 @@ npm start
 <h4 id="liste-des-depenses">Liste des dépenses</h4>
 <hr />
 <p><strong>Route de récupération de la liste des dépenses pour un gérant ou un employé.</strong></p>
-<p><strong>URL</strong> : <code>/expenses/:id</code></p>
+<p><strong>URL</strong> : <code>/expenses/:projectId</code></p>
 <p><strong>Methode</strong> : <code>GET</code></p>
 <p><strong>Token requis</strong> : <code>OUI</code></p>
 <p><strong>Paramètres de la requête</strong></p>
@@ -4517,14 +4458,14 @@ npm start
 </thead>
 <tbody>
 <tr>
-<td>:id</td>
+<td>projectId</td>
 <td>string</td>
 <td>ID du projet pour lequel on veut récupérer les dépenses</td>
 <td>-</td>
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_49">Requête réussie</h5>
+<h5 id="requete-reussie_50">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4545,7 +4486,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_43">Requête échouée</h5>
+<h5 id="requete-echouee_44">Requête échouée</h5>
 <p><strong>Condition</strong> : ID du projet invalide.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4581,7 +4522,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_50">Requête réussie</h5>
+<h5 id="requete-reussie_51">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4602,7 +4543,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_44">Requête échouée</h5>
+<h5 id="requete-echouee_45">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4689,7 +4630,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_51">Requête réussie</h5>
+<h5 id="requete-reussie_52">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -4710,7 +4651,7 @@ npm start
     }
 }
 </code></pre>
-<h5 id="requete-echouee_45">Requête échouée</h5>
+<h5 id="requete-echouee_46">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4761,6 +4702,63 @@ npm start
 </code></pre>
 <hr />
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="modifier-une-depense">Modifier une dépense</h4>
+<hr />
+<p><strong>Route de modification d'une dépense par un employé ou un gérant.</strong></p>
+<p><strong>URL</strong> : <code>/expense</code></p>
+<p><strong>Methode</strong> : <code>PUT</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de la dépense à modifier</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>billable</td>
+<td>boolean</td>
+<td>Booléen pour savoir si la dépense est facturé ou non</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_53">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Expense successfully updated&quot;
+}
+</code></pre>
+<h5 id="requete-echouee_47">Requête échouée</h5>
+<p><strong>Condition</strong> : Champs obligatoires manquants.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;111151&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la dépense invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;111152&quot;,
+    &quot;message&quot;: &quot;Invalid expense id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h4 id="supprimer-une-depense">Supprimer une dépense</h4>
 <hr />
 <p><strong>Route de suppression d'une dépense par un employé ou un gérant.</strong></p>
@@ -4786,19 +4784,19 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_52">Requête réussie</h5>
+<h5 id="requete-reussie_54">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Expense successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_46">Requête échouée</h5>
+<h5 id="requete-echouee_48">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;111151&quot;,
+    &quot;code&quot;: &quot;111201&quot;,
     &quot;message&quot;: &quot;Missing id field&quot;
 }
 </code></pre>
@@ -4806,7 +4804,7 @@ npm start
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: true,
-    &quot;code&quot;: &quot;111152&quot;,
+    &quot;code&quot;: &quot;111202&quot;,
     &quot;message&quot;: &quot;Invalid expense id&quot;
 }
 </code></pre>
@@ -4838,18 +4836,136 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_53">Requête réussie</h5>
+<h5 id="requete-reussie_55">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful conversations acquisition&quot;,
+    &quot;conversations&quot;: [{
+        &quot;id&quot;: &quot;&quot;,
+        &quot;member1&quot;: &quot;&quot;,
+        &quot;member2&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;lastMessage&quot;: &quot;&quot;,
+    },{...}]
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-dune-conversation">Récupération d'une conversation</h4>
+<hr />
+<p><strong>Route de récupération d'une conversation avec un autre utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/conversation/:id</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de la conversation</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_56">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Successful conversation acquisition&quot;,
-    &quot;conversations&quot;: [{
+    &quot;conversation&quot;: {
         &quot;id&quot;: &quot;&quot;,
+        &quot;member1&quot;: &quot;&quot;,
+        &quot;member2&quot;: &quot;&quot;,
+        &quot;createdAt&quot;: &quot;&quot;,
+        &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;lastMessage&quot;: &quot;&quot;,
+    }
+}
+</code></pre>
+<h5 id="requete-echouee_49">Requête échouée</h5>
+<p><strong>Condition</strong> : ID de la conversation manquante.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;112201&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la conversation invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;112202&quot;,
+    &quot;message&quot;: &quot;Invalid conversation id&quot;
+}
+</code></pre>
+<hr />
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+<h4 id="recuperation-des-messages-dune-conversation">Récupération des messages d'une conversation</h4>
+<hr />
+<p><strong>Route de récupération des messages d'une conversation avec un autre utilisateur.</strong></p>
+<p><strong>URL</strong> : <code>/conversation/:id/messages</code></p>
+<p><strong>Methode</strong> : <code>GET</code></p>
+<p><strong>Token requis</strong> : <code>OUI</code></p>
+<p><strong>Paramètres de la requête</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètres</th>
+<th>Type</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID de la conversation</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+<h5 id="requete-reussie_57">Requête réussie</h5>
+<p><strong>Code</strong> : <code>200</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: false,
+    &quot;message&quot;: &quot;Successful conversation messages acquisition&quot;,
+    &quot;messages&quot;: [{
+        &quot;conversationId&quot;: &quot;&quot;,
         &quot;userId&quot;: &quot;&quot;,
-        &quot;userId1&quot;: &quot;&quot;,
+        &quot;text&quot;: &quot;&quot;,
         &quot;createdAt&quot;: &quot;&quot;,
         &quot;updatedAt&quot;: &quot;&quot;,
     },{...}]
+}
+</code></pre>
+<h5 id="requete-echouee_50">Requête échouée</h5>
+<p><strong>Condition</strong> : ID de la conversation manquante.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;112251&quot;,
+    &quot;message&quot;: &quot;Missing id field&quot;
+}
+</code></pre>
+<p><strong>Condition</strong> : ID de la conversation invalide.</p>
+<p><strong>Code</strong> : <code>400</code></p>
+<pre><code class="language-json">{
+    &quot;error&quot;: true,
+    &quot;code&quot;: &quot;112252&quot;,
+    &quot;message&quot;: &quot;Invalid conversation id&quot;
 }
 </code></pre>
 <hr />
@@ -4879,21 +4995,22 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_54">Requête réussie</h5>
+<h5 id="requete-reussie_58">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Conversation successfully created&quot;,
     &quot;conversation&quot;: {
         &quot;id&quot;: &quot;&quot;,
-        &quot;userId&quot;: &quot;&quot;,
-        &quot;userId1&quot;: &quot;&quot;,
+        &quot;member1&quot;: &quot;&quot;,
+        &quot;member2&quot;: &quot;&quot;,
         &quot;createdAt&quot;: &quot;&quot;,
         &quot;updatedAt&quot;: &quot;&quot;,
+        &quot;lastMessage&quot;: &quot;&quot;,
     }
 }
 </code></pre>
-<h5 id="requete-echouee_47">Requête échouée</h5>
+<h5 id="requete-echouee_51">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4945,14 +5062,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_55">Requête réussie</h5>
+<h5 id="requete-reussie_59">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Conversation successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_48">Requête échouée</h5>
+<h5 id="requete-echouee_52">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -4996,7 +5113,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_56">Requête réussie</h5>
+<h5 id="requete-reussie_60">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -5011,7 +5128,7 @@ npm start
     },{...}]
 }
 </code></pre>
-<h5 id="requete-echouee_49">Requête échouée</h5>
+<h5 id="requete-echouee_53">Requête échouée</h5>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 <h3 id="notifications">Notifications</h3>
 <h4 id="liste-des-notifications">Liste des notifications</h4>
@@ -5039,7 +5156,7 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_57">Requête réussie</h5>
+<h5 id="requete-reussie_61">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
@@ -5084,14 +5201,14 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_58">Requête réussie</h5>
+<h5 id="requete-reussie_62">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;Notification successfully deleted&quot;
 }
 </code></pre>
-<h5 id="requete-echouee_50">Requête échouée</h5>
+<h5 id="requete-echouee_54">Requête échouée</h5>
 <p><strong>Condition</strong> : Champs obligatoires manquants.</p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5154,13 +5271,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_59">Requête réussie</h5>
+<h5 id="requete-reussie_63">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_51">Requête échouée</h5>
+<h5 id="requete-echouee_55">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5215,13 +5332,13 @@ npm start
 </tr>
 </tbody>
 </table>
-<h5 id="requete-reussie_60">Requête réussie</h5>
+<h5 id="requete-reussie_64">Requête réussie</h5>
 <p><strong>Code</strong> : <code>200</code></p>
 <pre><code class="language-json">{
     &quot;error&quot;: false
 }
 </code></pre>
-<h5 id="requete-echouee_52">Requête échouée</h5>
+<h5 id="requete-echouee_56">Requête échouée</h5>
 <p><strong>Condition</strong> : </p>
 <p><strong>Code</strong> : <code>400</code></p>
 <pre><code class="language-json">{
@@ -5361,5 +5478,5 @@ npm start
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-06-15 21:23:01.331937+00:00
+Build Date UTC : 2021-08-28 12:28:51.331323+00:00
 -->
