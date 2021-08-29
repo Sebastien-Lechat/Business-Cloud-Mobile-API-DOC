@@ -2940,7 +2940,6 @@ npm start
 | clientId | string | ID du client lié au devis | ✔️ | 
 | entrepriseId | string | ID de l'entreprise du gérant | ✔️ | 
 | estimateNum | string | Numéro unique de devis | ✔️ | 
-<!-- | currency | string | Monnaie avec laquelle le devis sera généré | ✔️ | -->
 | deadline | date | Date limite à laquelle le client peut accepter le devis | ✔️ |
 
 ##### Requête réussie
@@ -3668,7 +3667,7 @@ npm start
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| :id | string | ID du projet à supprimer | ✔️ |
+| :id | string | ID du projet à récupérer | ✔️ |
 
 ##### Requête réussie
 
@@ -4180,6 +4179,65 @@ npm start
 {
     "error": true,
     "code": "108252",
+    "message": "Invalid project id"
+}
+```
+
+---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Transformer un projet en facture
+
+---
+
+**Route de transformation d'un projet par un employé ou un gérant.**
+
+**URL** : `/project/transform/:id`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | ID du projet à transformer | ✔️ |
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Project successfully transformed",
+    "billId": "",
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108301",
+    "message": "Missing id field"
+}
+```
+
+**Condition** : ID du projet invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "108302",
     "message": "Invalid project id"
 }
 ```
@@ -5173,45 +5231,6 @@ npm start
 ```
 
 ---
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
-#### Liste des messages
-
----
-
-**Route de récupération de la liste des messages pour une conversation.**
-
-**URL** : `/conversation/:id/messages`
-
-**Methode** : `GET`
-
-**Token requis** : `OUI`
-
-**Paramètres de la requête**
-
-| Paramètres | Type | Description | Obligatoire |
-| ------ | ------ | ------ | ------ |
-| - | - | - | - | 
-
-##### Requête réussie
-
-**Code** : `200`
-
-```json
-{
-    "error": false,
-    "message": "Successful messages acquisition",
-    "conversations": [{
-        "id": "",
-        "userId": "",
-        "idConversation": "",
-        "text": "",
-        "createdAt": "",
-        "updatedAt": "",
-    },{...}]
-}
-```
-
-##### Requête échouée
 
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -5258,6 +5277,40 @@ npm start
 ```
 
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Compteur de notification
+
+---
+
+**Route de récupération du nombre de notifications non lu.**
+
+**URL** : `/notifications/count`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| - | - | - | - | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful notifications count acquisition",
+    "count": "",
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Supprimer une notification
 
@@ -5317,6 +5370,55 @@ npm start
 ---
 
 ### Paiement
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Génération des informations pour le paiement
+
+---
+
+**Route pour effectuer un paiement.**
+
+**URL** : `/bill/payment-sheet`
+
+**Methode** : `POST`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| amount | number | montant à payer | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "paymentIntent": "",
+    "ephemeralKey": "",
+    "customer": ""
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104351",
+    "message": "Missing important fields"
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Effectuer un paiement
 
@@ -5324,20 +5426,17 @@ npm start
 
 **Route pour effectuer un paiement.**
 
-**URL** : ``
+**URL** : `/bill/payment/:id`
 
-**Methode** : ``
+**Methode** : `POST`
 
-**Token requis** : ``
+**Token requis** : `OUI`
 
 **Paramètres de la requête**
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
+| :id | string | ID de la facture pour le paiement | ✔️ | 
 
 ##### Requête réussie
 
@@ -5345,27 +5444,54 @@ npm start
 
 ```json
 {
-    "error": false
+    "error": false,
+    "message": "Bill successfully payed",
+
 }
 ```
 
 ##### Requête échouée
 
-**Condition** : 
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "",
-    "message": ""
+    "code": "104401",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Id de la facture invalide.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104402",
+    "message": "Invalid bill id"
+}
+```
+
+**Condition** : Statut de la facture invalide (déjà payée).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "104403",
+    "message": "Invalid bill status"
 }
 ```
 
 ---
 
 ### Statistiques
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 #### Obtenir les statistiques
 
@@ -5373,20 +5499,17 @@ npm start
 
 **Route de récupération des statistiques pour la page d'accueil.**
 
-**URL** : ``
+**URL** : `/global/statistics`
 
-**Methode** : ``
+**Methode** : `GET`
 
-**Token requis** : ``
+**Token requis** : `OUI`
 
 **Paramètres de la requête**
 
 | Paramètres | Type | Description | Obligatoire |
 | ------ | ------ | ------ | ------ |
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
-| xxxx | xxxx | xxxx | xxxx | 
+| - | - | - | - | 
 
 ##### Requête réussie
 
@@ -5394,24 +5517,163 @@ npm start
 
 ```json
 {
-    "error": false
+    "error": false,
+    "statistics": {
+        "gainTotal": "",
+        "expenseTotal": "",
+        "employeeTotal": "",
+        "customerTotal": "",
+        "projectTotal": "",
+        "projectTimeTotal": "",
+        "billUnpaidTotal": "",
+        "billUnpaidAmountTotal": "",
+    }
+}
+```
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+### Routes globales
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Obtenir un numéro pour la création d'un document
+
+---
+
+**Route de récupération du prochain numéro disponible pour un document.**
+
+**URL** : `/global/nextNumber&acronym=''`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| &acronym | string | Acronyme du document pour lequel on veut récupérer le numéro (FAC, DEV, PRO, EXP, etc...) | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Successful statistic acquisition",
+    "statistics": {
+        "gainTotal": "",
+        "expenseTotal": "",
+        "employeeTotal": "",
+        "customerTotal": "",
+        "projectTotal": "",
+        "projectTimeTotal": "",
+        "billUnpaidTotal": "",
+        "billUnpaidAmountTotal": "",
+    }
 }
 ```
 
 ##### Requête échouée
 
-**Condition** : 
+**Condition** : Champs obligatoires manquants.
 
 **Code** : `400`
 
 ```json
 {
     "error": true,
-    "code": "",
-    "message": ""
+    "code": "114001",
+    "message": "Missing important fields"
 }
 ```
+
 ---
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+#### Génération d'un document
+
+---
+
+**Route de génération d'un document en pdf pour l'envoyer par mail.**
+
+**URL** : `/global/generateInvoice/:type/:id`
+
+**Methode** : `GET`
+
+**Token requis** : `OUI`
+
+**Paramètres de la requête**
+
+| Paramètres | Type | Description | Obligatoire |
+| ------ | ------ | ------ | ------ |
+| :id | string | Id du document pour lequel | ✔️ | 
+| :type | string | Précision du type de document (bill, estimate) | ✔️ | 
+
+##### Requête réussie
+
+**Code** : `200`
+
+```json
+{
+    "error": false,
+    "message": "Document successfully send"
+}
+```
+
+##### Requête échouée
+
+**Condition** : Champs obligatoires manquants.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "114051",
+    "message": "Missing important fields"
+}
+```
+
+**Condition** : Format du type invalide (estimate, bill).
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "114052",
+    "message": "Invalid type field"
+}
+```
+
+**Condition** : Le client n'existe plus.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "114053",
+    "message": "Invalid customer id"
+}
+```
+
+**Condition** : Le document n'existe pas.
+
+**Code** : `400`
+
+```json
+{
+    "error": true,
+    "code": "114054",
+    "message": "Invalid file id"
+}
+```
+
+---
+
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 ### Erreurs globales
